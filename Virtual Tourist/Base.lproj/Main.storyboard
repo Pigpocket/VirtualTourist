@@ -33,6 +33,9 @@
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="vkf-fv-SNb">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TDU-No-FSn"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="MapView" destination="ZhM-mD-nQ5" id="JSG-Ug-Xkb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
