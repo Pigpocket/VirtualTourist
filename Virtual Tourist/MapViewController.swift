@@ -32,6 +32,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
     }
     
+    // MARK: Lifecycle
+    
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer) {
         if gestureRecognizer.state != .began { return }
         print("Tap gesture recognized")
@@ -46,7 +48,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Add the annotation
         mapView.addAnnotation(annotation)
     }
+    
+}
 
+extension MapViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return !(touch.view is MKPinAnnotationView)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -55,7 +64,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         } else {
@@ -68,16 +76,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation?.title != nil {
-            print("didSelect is being pressed")
             performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
-    }
-
-}
-
-extension MapViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return !(touch.view is MKPinAnnotationView)
     }
 }
 
