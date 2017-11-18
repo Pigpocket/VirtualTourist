@@ -41,6 +41,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let newCoordinate = self.mapView.convert(touchPoint, toCoordinateFrom:self.mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
+        annotation.title = "placeholder"
         
         // Add the annotation
         mapView.addAnnotation(annotation)
@@ -64,17 +65,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
-    // Show browser and navigate to media URL when annotation is tapped
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:]) { (success) in
-                }
-            }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if view.annotation?.title != nil {
+            print("didSelect is being pressed")
+            performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
     }
-    
+
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {

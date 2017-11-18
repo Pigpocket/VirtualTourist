@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		375BFC331FC0E9D200957749 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375BFC321FC0E9D200957749 /* CollectionViewController.swift */; };
 		37CDD17C1FBF635700930D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDD17B1FBF635700930D44 /* AppDelegate.swift */; };
 		37CDD17E1FBF635700930D44 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDD17D1FBF635700930D44 /* MapViewController.swift */; };
 		37CDD1811FBF635700930D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CDD17F1FBF635700930D44 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		375BFC321FC0E9D200957749 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		37CDD1781FBF635700930D44 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CDD17B1FBF635700930D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CDD17D1FBF635700930D44 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				37CDD17B1FBF635700930D44 /* AppDelegate.swift */,
 				37CDD17D1FBF635700930D44 /* MapViewController.swift */,
+				375BFC321FC0E9D200957749 /* CollectionViewController.swift */,
 				37CDD17F1FBF635700930D44 /* Main.storyboard */,
 				37CDD1821FBF635700930D44 /* Assets.xcassets */,
 				37CDD1841FBF635700930D44 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375BFC331FC0E9D200957749 /* CollectionViewController.swift in Sources */,
 				37CDD17E1FBF635700930D44 /* MapViewController.swift in Sources */,
 				37CDD17C1FBF635700930D44 /* AppDelegate.swift in Sources */,
 			);
