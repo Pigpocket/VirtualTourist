@@ -5,7 +5,7 @@
 //  Created by Tomas Sidenfaden on 11/20/17.
 //  Copyright © 2017 Tomas Sidenfaden. All rights reserved.
 //
-
+/*
 import UIKit
 
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
@@ -37,3 +37,4 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
 //    }
     
 }
+*/
