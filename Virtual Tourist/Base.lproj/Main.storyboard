@@ -83,17 +83,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="426"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weu-7J-SFS">
-                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="itemSize" width="102" height="109"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="Cfp-uw-750" customClass="CollectionViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25j-oo-DqX">
@@ -103,10 +103,20 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-pk-7RE">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
+                                                                </imageView>
                                                             </subviews>
                                                         </view>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="fkq-pk-7RE" secondAttribute="bottom" id="4WX-ND-NO9"/>
+                                                            <constraint firstAttribute="trailing" secondItem="fkq-pk-7RE" secondAttribute="trailing" id="6FJ-q2-ndQ"/>
+                                                            <constraint firstItem="fkq-pk-7RE" firstAttribute="leading" secondItem="Cfp-uw-750" secondAttribute="leading" id="TUq-lM-qvn"/>
+                                                            <constraint firstItem="fkq-pk-7RE" firstAttribute="top" secondItem="Cfp-uw-750" secondAttribute="top" id="UBr-iu-pH0"/>
+                                                        </constraints>
                                                         <connections>
                                                             <outlet property="collectionCellLabel" destination="25j-oo-DqX" id="99o-nt-c5u"/>
+                                                            <outlet property="imageView" destination="fkq-pk-7RE" id="SMQ-Y2-jEj"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

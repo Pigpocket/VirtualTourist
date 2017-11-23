@@ -31,6 +31,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.collectionCellLabel.text = self.items[indexPath.item]
+        cell.imageView.image = UIImage(named: "holiday_collection17-300x600")
+        cell.imageView.contentMode = .scaleAspectFit
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
         return cell
