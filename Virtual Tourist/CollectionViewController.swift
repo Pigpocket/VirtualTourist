@@ -53,43 +53,20 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
-        
-        //collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
-//        collectionViewFlowLayout = CollectionViewFlowLayout()
-//        gridCollectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: collectionViewFlowLayout)
-//        gridCollectionView.backgroundColor = UIColor.orange
-//        gridCollectionView.showsVerticalScrollIndicator = false
-//        gridCollectionView.showsHorizontalScrollIndicator = false
-//        self.view.addSubview(gridCollectionView)
-//
-//        gridCollectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
-//        gridCollectionView.dataSource = self
-//        gridCollectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    
         
-    collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
+        collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-//        var frame = gridCollectionView.frame
-//        frame.size.height = self.view.frame.size.height
-//        frame.size.width = self.view.frame.size.width
-//        frame.origin.x = 0
-//        frame.origin.y = 0
-//        gridCollectionView.frame = frame
     }
     
     func itemWidth() -> CGFloat {
-        print("This is the width: \(collectionView.frame.size.width)")
-        print("This is width minus space: \(collectionView.frame.size.width - (self.innerSpace * 2))")
-        print("Final value is: \((collectionView!.frame.size.width - (self.innerSpace * 2)) / self.numberOfCellsOnRow)")
-        print("Application width is: \(UIScreen.main.bounds.width)")
         return ((UIScreen.main.bounds.width - (self.innerSpace * 2)) / self.numberOfCellsOnRow)
     }
 
