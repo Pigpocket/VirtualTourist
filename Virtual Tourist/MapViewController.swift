@@ -26,7 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // Implement the tap gesture recognizer
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
-        longPressRecognizer.minimumPressDuration = 1.0
+        longPressRecognizer.minimumPressDuration = 0.2
         mapView.addGestureRecognizer(longPressRecognizer)
         
         self.mapView.delegate = self
