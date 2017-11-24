@@ -19,6 +19,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
+    var photos = Photos()
+    
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
@@ -43,6 +45,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        //FlickrClient.sharedInstance().getImageFromFlickr()
     }
     
     func itemWidth() -> CGFloat {
@@ -64,7 +67,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.collectionCellLabel.text = self.items[indexPath.item]
-        cell.imageView.image = UIImage(named: "holiday_collection17-300x600")
+        cell.imageView.image = Photos.shared.image // UIImage(named: "holiday_collection17-300x600")
         cell.imageView.contentMode = .scaleAspectFit
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         

@@ -76,7 +76,13 @@ extension MapViewController: UIGestureRecognizerDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation?.title != nil {
-            performSegue(withIdentifier: "collectionViewSegue", sender: self)
+            FlickrClient.sharedInstance().getImageFromFlickr { (success, error) in
+                if success {
+                    self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+                } else {
+                    print("You're totally fucked")
+                }
+            }
         }
     }
 }
