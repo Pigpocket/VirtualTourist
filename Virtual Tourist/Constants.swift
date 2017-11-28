@@ -23,6 +23,9 @@ struct Constants {
         static let Extras = "extras"
         static let Format = "format"
         static let NoJSONCallback = "nojsoncallback"
+        static let Lat = "lat"
+        static let Lon = "lon"
+        static let PerPage = "per_page"
     }
     
     // MARK: Flickr Parameter Values
@@ -31,8 +34,11 @@ struct Constants {
         static let ResponseFormat = "json"
         static let DisableJSONCallback = "1" /* 1 means "yes" */
         static let GalleryPhotosMethod = "flickr.galleries.getPhotos"
+        static let FlickrPhotosSearch = "flickr.photos.search"
         static let GalleryID = "5704-72157622566655097"
         static let MediumURL = "url_m"
+        static let PerPage = 21
+        
     }
     
     // MARK: Flickr Response Keys

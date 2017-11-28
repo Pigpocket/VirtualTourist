@@ -76,6 +76,16 @@ extension MapViewController: UIGestureRecognizerDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation?.title != nil {
+            
+            let lat = view.annotation!.coordinate.latitude
+            let lon = view.annotation!.coordinate.longitude
+            print("Latitude = \(lat)")
+            print("Longitude = \(lon)")
+            
+            FlickrClient.sharedInstance().getImagesFromFlicker(latitude: lat, longitude: lon, completionHandler: { (success, error) in
+                
+            })
+            
             FlickrClient.sharedInstance().getImageFromFlickr { (success, error) in
                 if success {
                     self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
