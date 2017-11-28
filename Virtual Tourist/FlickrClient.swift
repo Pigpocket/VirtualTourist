@@ -175,11 +175,13 @@ class FlickrClient: NSObject {
                 return
             }
             
+            /*
             if let string = String(data: data, encoding: .utf8) {
                 print("Data looks like this: \(string)")
             } else {
                 print("not a valid UTF-8 sequence")
             }
+             */
             
             // parse the data
             let parsedResult: [String:Any]!
@@ -209,32 +211,19 @@ class FlickrClient: NSObject {
             
             for photo in photoArray {
                 
-                print("This is a photo: \(photo) \n")
-                print(photo["title"] as! String)
-                
-                if let image = photo as? [String:Any],
-                    let farm = image["farm"] as? Int,
-                    let id = image["id"] as? Int,
-                    let isFamily = image["isfamily"] as? Int,
-                    let isFriend = image["isfriend"] as? Int,
-                    let isPublic = image["ispublic"] as? Int,
-                    let owner = image["owner"] as? Int,
-                    let secret = image["secret"] as? Int,
-                    let server = image["server"] as? Int,
-                    let title = image["title"] as? String {
-                
-                imageGallery.append(Image(farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
-                    
-                    print("IS ANYTHING EVEN FUCKING HAPPENING")
-                    print("This is the imageGallery count: \(imageGallery.count)")
-                }
-                
+                let farm = photo["farm"] as? Int ?? 0
+                let id = photo["id"] as? String ?? ""
+                let isFamily = photo["isfamily"] as? Int ?? 0
+                let isFriend = photo["isfriend"] as? Int ?? 0
+                let isPublic = photo["ispublic"] as? Int ?? 0
+                let owner = photo["owner"] as? String ?? ""
+                let secret = photo["secret"] as? String ?? ""
+                let server = photo["server"] as? String ?? ""
+                let title = photo["title"] as? String ?? ""
+            
+            imageGallery.append(Image(farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
             }
-            
-            //print("String array is: \(stringArray)")
-            
-            print("This is how the photosDictionary looks: /n \(photosDictionary)")
-            print("This is how the photoArray looks: /n \(photoArray)")
+
             print("There are \(imageGallery.count) images in the imageGallery")
             
             /* select a random photo
