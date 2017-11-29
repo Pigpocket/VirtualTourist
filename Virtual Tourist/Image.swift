@@ -11,6 +11,8 @@ import UIKit
 
 struct Image {
     
+    static var imageGallery: [Image] = []
+    //var image: UIImage
     var farm: Int
     var id: String
     var isFamily: Int
@@ -21,8 +23,13 @@ struct Image {
     var server: String
     var title: String
     
+    var photoUrl: NSURL {
+        return NSURL(string: "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")!
+    }
+    
     init(farm: Int, id: String, isFamily: Int, isFriend: Int, isPublic: Int, owner: String, secret: String, server: String, title: String) {
     
+        //self.image = image
         self.farm = farm
         self.id = id
         self.isFamily = isFamily
@@ -34,7 +41,7 @@ struct Image {
         self.title = title
 
     }
- 
+ /*
     init?(dictionary: [String:AnyObject]) {
         
         // GUARD: Do all dictionary keys have values?
@@ -63,6 +70,7 @@ struct Image {
             self.server = server
             self.title = title
     }
+ 
 
     static func imageGalleryFromResults(_ results: [[String:AnyObject]]) -> [Image] {
             
@@ -75,7 +83,7 @@ struct Image {
             }
         }
         return imageGallery
-    }
+    } */
 }
 
 

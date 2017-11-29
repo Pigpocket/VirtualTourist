@@ -113,10 +113,7 @@ class FlickrClient: NSObject {
                 displayError("Image does not exist at \(imageURL!)")
             }
         }
-        
-        print("We connected with the Flickr API")
-        print("Downloaded image is: \(Photos.shared.image)")
-        print("Photo title is: \(Photos.shared.photoTitleLabel)")
+
         // start the task!
         task.resume()
     }
@@ -127,6 +124,7 @@ class FlickrClient: NSObject {
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.FlickrPhotosSearch,
             Constants.FlickrParameterKeys.APIKey: Constants.FlickrParameterValues.APIKey,
             Constants.FlickrParameterKeys.Format: Constants.FlickrParameterValues.ResponseFormat,
+            Constants.FlickrParameterKeys.Extras: Constants.FlickrParameterValues.MediumURL,
             Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback,
             Constants.FlickrParameterKeys.Lat: latitude as Any,
             Constants.FlickrParameterKeys.Lon: longitude as Any,
@@ -136,9 +134,8 @@ class FlickrClient: NSObject {
         // create url and request
         let session = URLSession.shared
         let urlString = Constants.Flickr.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
-        //let urlString = "\(Constants.Flickr.APIBaseURL)?method=\(Constants.FlickrParameterValues.FlickrPhotosSearch)&format=\(Constants.FlickrParameterValues.ResponseFormat)&api_key=\(Constants.FlickrParameterValues.APIKey)&lat=\(latitude)&nojsoncallback=\(Constants.FlickrParameterValues.DisableJSONCallback)&lon=\(longitude)&radius=5"
         let url = URL(string: urlString)!
-        print("This is what the URL request looks like: \n ****** \n \(url) \n ********")
+        //print("This is what the URL request looks like: \n ****** \n \(url) \n ********")
         let request = URLRequest(url: url)
         
         // create network request
@@ -175,14 +172,6 @@ class FlickrClient: NSObject {
                 return
             }
             
-            /*
-            if let string = String(data: data, encoding: .utf8) {
-                print("Data looks like this: \(string)")
-            } else {
-                print("not a valid UTF-8 sequence")
-            }
-             */
-            
             // parse the data
             let parsedResult: [String:Any]!
             do {
@@ -207,10 +196,47 @@ class FlickrClient: NSObject {
                 return
             }
             
+            // select a random photo
+            let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
+            let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
+            let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
+            
+            print("\n This is the photoDictionary: \n \(photoDictionary) \n")
+            
+            // GUARD: Does our photo have a key for 'url_m'?
+            guard let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String else {
+                displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photoDictionary)")
+                completionHandler(false, "There was an error")
+                return
+            }
+            
+            print("\n This is the photoArray from the multiple image method: \n \(photoArray) \n")
+            
+            // if an image exists at the url, set the image and title
+            let imageURL = URL(string: imageUrlString)
+            if let imageData = try? Data(contentsOf: imageURL!) {
+                performUIUpdatesOnMain {
+                    //self.setUIEnabled(true)
+                    Photos.shared.image = UIImage(data: imageData)!
+                    print("The image data is: \(UIImage(data: imageData)!)")
+                    Photos.shared.photoTitleLabel = photoTitle ?? "(Untitled)"
+                    completionHandler(true, nil)
+                }
+            }
+            
             var imageGallery: [Image] = []
             
             for photo in photoArray {
                 
+                // get the photo
+                /*let imageUrlString = photo["url-m"] as? String ?? ""
+                let imageURL = URL(string: imageUrlString)
+                var image = UIImage()
+                if let imageData = try? Data(contentsOf: imageURL!) {
+                    image = UIImage(data: imageData)!
+                } */
+ 
+                // get the remaining metadata
                 let farm = photo["farm"] as? Int ?? 0
                 let id = photo["id"] as? String ?? ""
                 let isFamily = photo["isfamily"] as? Int ?? 0
@@ -221,39 +247,12 @@ class FlickrClient: NSObject {
                 let server = photo["server"] as? String ?? ""
                 let title = photo["title"] as? String ?? ""
             
-            imageGallery.append(Image(farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
+                imageGallery.append(Image(farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
             }
 
             print("There are \(imageGallery.count) images in the imageGallery")
-            
-            /* select a random photo
-            let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
-            let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
-            let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
-            */
-            
-            /* GUARD: Does our photo have a key for 'url_m'?
-            guard let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photoDictionary)")
-                completionHandler(false, "There was an error")
-                return
-            } */
-            
-            /* if an image exists at the url, set the image and title
-            let imageURL = URL(string: imageUrlString)
-            if let imageData = try? Data(contentsOf: imageURL!) {
-                performUIUpdatesOnMain {
-                    //self.setUIEnabled(true)
-                    Photos.shared.image = UIImage(data: imageData)!
-                    print("The image data is: \(UIImage(data: imageData)!)")
-                    Photos.shared.photoTitleLabel = photoTitle ?? "(Untitled)"
-                    completionHandler(true, nil)
-                }
-            } else {
-                displayError("Image does not exist at \(imageURL!)")
-            } */
+            //print("These is the fourth image in the imageGallery: \(imageGallery[3].image)")
         }
-        
         print("We connected with the Flickr API")
         // start the task!
         task.resume()
