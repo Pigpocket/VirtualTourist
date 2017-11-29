@@ -14,6 +14,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Outlets
     
+    @IBOutlet weak var MapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionFlow: UICollectionViewFlowLayout!
     
@@ -68,7 +69,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.collectionCellLabel.text = self.items[indexPath.item]
-        cell.imageView.image = image?.photoUrl // UIImage(named: "holiday_collection17-300x600")
+        cell.imageView.image = self.images[indexPath.item].image  //Photos.shared.image // UIImage(named: "holiday_collection17-300x600")
         cell.imageView.contentMode = .scaleAspectFit
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         

@@ -196,37 +196,26 @@ class FlickrClient: NSObject {
                 return
             }
             
-            // select a random photo
-            let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
-            let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
-            let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
-            
-            print("\n This is the photoDictionary: \n \(photoDictionary) \n")
-            
-            // GUARD: Does our photo have a key for 'url_m'?
-            guard let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photoDictionary)")
-                completionHandler(false, "There was an error")
-                return
-            }
-            
-            print("\n This is the photoArray from the multiple image method: \n \(photoArray) \n")
-            
-            // if an image exists at the url, set the image and title
-            let imageURL = URL(string: imageUrlString)
-            if let imageData = try? Data(contentsOf: imageURL!) {
-                performUIUpdatesOnMain {
-                    //self.setUIEnabled(true)
-                    Photos.shared.image = UIImage(data: imageData)!
-                    print("The image data is: \(UIImage(data: imageData)!)")
-                    Photos.shared.photoTitleLabel = photoTitle ?? "(Untitled)"
-                    completionHandler(true, nil)
-                }
-            }
-            
-            var imageGallery: [Image] = []
+            //var imageGallery: [Image] = []
             
             for photo in photoArray {
+                
+                // GUARD: Does our photo have a key for 'url_m'?
+                guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
+                    displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
+                    completionHandler(false, "There was an error")
+                    return
+                }
+                
+                var image = UIImage()
+                // if an image exists at the url, set the image and title
+                let imageURL = URL(string: imageUrlString)
+                if let imageData = try? Data(contentsOf: imageURL!) {
+                        //self.setUIEnabled(true)
+                        image = UIImage(data: imageData)!
+                        print("The image data is: \(UIImage(data: imageData)!)")
+                        completionHandler(true, nil)
+                }
                 
                 // get the photo
                 /*let imageUrlString = photo["url-m"] as? String ?? ""
@@ -247,10 +236,11 @@ class FlickrClient: NSObject {
                 let server = photo["server"] as? String ?? ""
                 let title = photo["title"] as? String ?? ""
             
-                imageGallery.append(Image(farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
+                Image.imageGallery.append(Image(image: image, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
             }
+            completionHandler(true, nil)
 
-            print("There are \(imageGallery.count) images in the imageGallery")
+            print("There are \(Image.imageGallery.count) images in the imageGallery")
             //print("These is the fourth image in the imageGallery: \(imageGallery[3].image)")
         }
         print("We connected with the Flickr API")

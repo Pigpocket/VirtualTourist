@@ -81,17 +81,23 @@ extension MapViewController: UIGestureRecognizerDelegate {
             let lon = view.annotation!.coordinate.longitude
             
             FlickrClient.sharedInstance().getImagesFromFlicker(latitude: lat, longitude: lon, completionHandler: { (success, error) in
-                
+                if success {
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+                    }
+                } else {
+                    print("You're totally fucked")
+                }
                 })
             
-            
+            /*
             FlickrClient.sharedInstance().getImageFromFlickr { (success, error) in
                 if success {
                     self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
                 } else {
                     print("You're totally fucked")
                 }
-            }
+            } */
         }
     }
 }
