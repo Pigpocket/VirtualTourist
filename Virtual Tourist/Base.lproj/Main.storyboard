@@ -35,12 +35,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MapView" destination="ZhM-mD-nQ5" id="JSG-Ug-Xkb"/>
-                        <segue destination="9uX-7j-brY" kind="show" identifier="collectionViewSegue" id="Uf0-xt-Xdb"/>
+                        <segue destination="9uX-7j-brY" kind="show" identifier="collectionViewSegue" id="FhB-Uu-E9Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1225" y="116"/>
+            <point key="canvasLocation" x="1242" y="116"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="PvV-AA-GdT">

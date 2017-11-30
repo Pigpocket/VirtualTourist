@@ -107,7 +107,7 @@ class FlickrClient: NSObject {
                         //self.setUIEnabled(true)
                         image = UIImage(data: imageData)!
                         print("The image data is: \(UIImage(data: imageData)!)")
-                        completionHandler(true, nil)
+                        //completionHandler(true, nil)
                 }
  
                 // get the remaining metadata
@@ -122,13 +122,13 @@ class FlickrClient: NSObject {
                 let title = photo["title"] as? String ?? ""
             
                 Image.imageGallery.append(Image(image: image, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
-                completionHandler(true, nil)
             }
             
 
             print("There are \(Image.imageGallery.count) images in the imageGallery")
             //print("These is the fourth image in the imageGallery: \(imageGallery[3].image)")
         }
+        completionHandler(true, nil)
         print("We connected with the Flickr API")
         // start the task!
         task.resume()
