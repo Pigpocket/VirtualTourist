@@ -46,8 +46,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        //FlickrClient.sharedInstance().getImageFromFlickr()
+
     }
     
     func itemWidth() -> CGFloat {
@@ -58,7 +57,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
+        return self.images.count
     }
     
     // make a cell for each cell index path
