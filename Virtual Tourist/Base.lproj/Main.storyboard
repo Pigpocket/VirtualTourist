@@ -50,17 +50,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQf-LS-YMB">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="New Collection" id="wwr-my-Ah0" userLabel="New Collection">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
-                                    </tabBarItem>
-                                </items>
-                            </tabBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="THi-0Y-kNU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iI9-EL-YKZ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -79,10 +70,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NXi-bJ-Chw">
-                                        <rect key="frame" x="0.0" y="128" width="375" height="426"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="431"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kDq-bu-Ips">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="426"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weu-7J-SFS">
                                                     <size key="itemSize" width="102" height="109"/>
@@ -130,22 +121,38 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="kDq-bu-Ips" secondAttribute="trailing" id="1Pf-le-LRN"/>
+                                            <constraint firstAttribute="bottom" secondItem="kDq-bu-Ips" secondAttribute="bottom" id="K2o-fZ-O71"/>
                                             <constraint firstItem="kDq-bu-Ips" firstAttribute="leading" secondItem="NXi-bJ-Chw" secondAttribute="leading" id="foP-1E-T89"/>
                                             <constraint firstAttribute="bottom" secondItem="kDq-bu-Ips" secondAttribute="bottom" id="lOy-kv-54i"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUz-jh-Zct">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="T7B-Cs-A4p"/>
+                                    <barButtonItem title="New Collection" id="r8i-I6-nUS">
+                                        <connections>
+                                            <action selector="newCollectionAction:" destination="9uX-7j-brY" id="HIR-sA-IGG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dzr-qn-Gu5"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tQf-LS-YMB" firstAttribute="top" secondItem="THi-0Y-kNU" secondAttribute="bottom" id="2Tf-2D-Ntc"/>
                             <constraint firstItem="THi-0Y-kNU" firstAttribute="leading" secondItem="o2x-R7-rlf" secondAttribute="leading" id="4kQ-2w-mgC"/>
-                            <constraint firstAttribute="bottom" secondItem="tQf-LS-YMB" secondAttribute="bottom" id="IAq-4u-bF9"/>
+                            <constraint firstItem="pUz-jh-Zct" firstAttribute="top" secondItem="THi-0Y-kNU" secondAttribute="bottom" id="FB4-Zl-S4a"/>
+                            <constraint firstItem="THi-0Y-kNU" firstAttribute="top" secondItem="o2x-R7-rlf" secondAttribute="top" id="Gk6-Jm-Osp"/>
                             <constraint firstItem="THi-0Y-kNU" firstAttribute="top" secondItem="o2x-R7-rlf" secondAttribute="top" id="LFb-do-c2A"/>
-                            <constraint firstItem="tQf-LS-YMB" firstAttribute="leading" secondItem="4cG-kC-Ep9" secondAttribute="leading" id="OGx-J8-Lok"/>
+                            <constraint firstItem="pUz-jh-Zct" firstAttribute="bottom" secondItem="o2x-R7-rlf" secondAttribute="bottom" id="PHk-g4-Lp5"/>
+                            <constraint firstItem="THi-0Y-kNU" firstAttribute="trailing" secondItem="o2x-R7-rlf" secondAttribute="trailing" id="eD8-br-JXC"/>
+                            <constraint firstItem="THi-0Y-kNU" firstAttribute="leading" secondItem="o2x-R7-rlf" secondAttribute="leading" id="fek-cL-5y9"/>
                             <constraint firstItem="THi-0Y-kNU" firstAttribute="trailing" secondItem="o2x-R7-rlf" secondAttribute="trailing" id="fgF-47-hgX"/>
-                            <constraint firstAttribute="trailing" secondItem="tQf-LS-YMB" secondAttribute="trailing" id="tRB-if-TQe"/>
+                            <constraint firstItem="pUz-jh-Zct" firstAttribute="trailing" secondItem="o2x-R7-rlf" secondAttribute="trailing" id="pgl-wN-lne"/>
+                            <constraint firstItem="pUz-jh-Zct" firstAttribute="leading" secondItem="o2x-R7-rlf" secondAttribute="leading" id="rdb-Db-CkM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o2x-R7-rlf"/>
                     </view>
@@ -154,7 +161,7 @@
                         <outlet property="MapView" destination="lwP-Ml-amC" id="x28-re-KHc"/>
                         <outlet property="collectionFlow" destination="weu-7J-SFS" id="hdX-FV-g5t"/>
                         <outlet property="collectionView" destination="kDq-bu-Ips" id="tih-ND-6G0"/>
-                        <outlet property="tabBar" destination="tQf-LS-YMB" id="bfg-Sz-U3i"/>
+                        <outlet property="newCollectionButton" destination="r8i-I6-nUS" id="HlY-es-pjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVT-Mm-U2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
