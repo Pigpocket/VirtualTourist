@@ -107,7 +107,6 @@ class FlickrClient: NSObject {
                         //self.setUIEnabled(true)
                         image = UIImage(data: imageData)!
                         print("The image data is: \(UIImage(data: imageData)!)")
-                        //completionHandler(true, nil)
                 }
  
                 // get the remaining metadata

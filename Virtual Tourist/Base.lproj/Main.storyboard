@@ -54,7 +54,9 @@
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="New Collection" id="wwr-my-Ah0" userLabel="New Collection"/>
+                                    <tabBarItem title="New Collection" id="wwr-my-Ah0" userLabel="New Collection">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                                    </tabBarItem>
                                 </items>
                             </tabBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="THi-0Y-kNU">
@@ -152,6 +154,7 @@
                         <outlet property="MapView" destination="lwP-Ml-amC" id="x28-re-KHc"/>
                         <outlet property="collectionFlow" destination="weu-7J-SFS" id="hdX-FV-g5t"/>
                         <outlet property="collectionView" destination="kDq-bu-Ips" id="tih-ND-6G0"/>
+                        <outlet property="tabBar" destination="tQf-LS-YMB" id="bfg-Sz-U3i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVT-Mm-U2x" userLabel="First Responder" sceneMemberID="firstResponder"/>

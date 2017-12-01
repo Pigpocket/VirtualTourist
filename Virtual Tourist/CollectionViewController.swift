@@ -14,6 +14,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Outlets
     
+    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var MapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionFlow: UICollectionViewFlowLayout!
@@ -36,6 +37,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
         
+        self.tabBarItem = UITabBarItem(title: "New Collection", image: nil, selectedImage: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,8 +70,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        //cell.collectionCellLabel.text = self.items[indexPath.item]
-        cell.imageView.image = self.images[indexPath.item].image  //Photos.shared.image // UIImage(named: "holiday_collection17-300x600")
+        cell.imageView.image = self.images[indexPath.item].image
         cell.imageView.contentMode = .scaleAspectFill
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
