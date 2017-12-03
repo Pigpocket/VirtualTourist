@@ -141,7 +141,7 @@ extension FlickrClient {
                 /* GUARD: Are the "photos" and "photo" keys in our result? */
                 if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
                     //displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
-         
+                    
                 for photo in photoArray {
                     
                     // GUARD: Does our photo have a key for 'url_m'?

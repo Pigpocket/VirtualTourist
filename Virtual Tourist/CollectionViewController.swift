@@ -29,6 +29,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBAction func newCollectionAction(_ sender: Any) {
         
+        self.deleteImages()
+        
+        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, completionHandlerForGetImages: { (pin, error) in
+            
+            if let pin = pin {
+                self.pin = pin
+                print("latitude= \(pin.lat)")
+                print("longitude= \(pin.lon)")
+                performUIUpdatesOnMain {
+                    self.collectionView.reloadData()
+                }
+            }
+        })
     }
     
     // MARK: Lifecycle
@@ -73,11 +86,29 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        
+        if cell.imageView.image != nil {
+            cell.prepareForReuse()
+        }
+        
         cell.imageView.image = pin.images[indexPath.item].image
         cell.imageView.contentMode = .scaleAspectFill
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
         return cell
+    }
+    
+    func deleteImages(){
+        if pin.images.count > 0 {
+            pin.images = []
+            print("Pin contains \(pin.images.count) images")
+            //sharedContext.deleteObject(photo)
+            
+            
+            // Remove from documents directory
+            /*let id: String = "\(photo.imageID).jpg"
+            photo.removeFromDocumentsDirectory(id) */
+        }
     }
     
     // MARK: - UICollectionViewDelegate protocol

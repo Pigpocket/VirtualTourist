@@ -11,7 +11,7 @@ import MapKit
 
 struct Pin {
     
-    static var shared: Pin = Pin()
+    static var shared: [Pin] = []
     
     var lat: Double = 0.0
     var lon: Double = 0.0
