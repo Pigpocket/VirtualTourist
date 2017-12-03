@@ -22,6 +22,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Properties
     
     var image: Image?
+    var pin = Pin()
     
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
@@ -44,7 +45,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
         
-        self.tabBarItem = UITabBarItem(title: "New Collection", image: nil, selectedImage: nil)
+        print("Images quantity in Pin in CollectionViewController: \(pin.images.count)")
 
     }
     
@@ -67,7 +68,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count
+        return self.pin.images.count
     }
     
     // make a cell for each cell index path
@@ -77,7 +78,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.imageView.image = self.images[indexPath.item].image
+        cell.imageView.image = pin.images[indexPath.item].image
         cell.imageView.contentMode = .scaleAspectFill
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         

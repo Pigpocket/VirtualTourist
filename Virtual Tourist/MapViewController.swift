@@ -17,6 +17,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     
+    var pin: Pin = Pin()
+    
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView!
@@ -66,6 +68,18 @@ extension MapViewController: UIGestureRecognizerDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+            // Set the coordinates in the Pin struct
+            pin.lat = pinView!.annotation!.coordinate.latitude as Double
+            pin.lon = pinView!.annotation!.coordinate.longitude as Double
+            
+            // Download the images for the coordinates
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, completionHandlerForGetImages: { (pin, error) in
+                
+                if let pin = pin {
+                    self.pin = pin
+                }
+            })
         } else {
             pinView!.annotation = annotation
         }
@@ -76,19 +90,14 @@ extension MapViewController: UIGestureRecognizerDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation?.title != nil {
-            
-            let lat = view.annotation!.coordinate.latitude
-            let lon = view.annotation!.coordinate.longitude
-            
-            FlickrClient.sharedInstance().getImagesFromFlicker(latitude: lat, longitude: lon, completionHandler: { (success, error) in
-                if success {
-                    OperationQueue.main.addOperation {
-                        self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
-                    }
-                } else {
-                    print("You're totally fucked")
-                }
-            })
+            self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collectionViewSegue" {
+            let controller = segue.destination as! CollectionViewController
+            controller.pin = self.pin
         }
     }
     

@@ -11,14 +11,10 @@ import MapKit
 
 struct Pin {
     
-    let lat: Double
-    let lon: Double
-    var images: [Image]
+    static var shared: Pin = Pin()
     
-    init(lat: Double, lon: Double, images: [Image]) {
-        self.lat = lat
-        self.lon = lon
-        self.images = images
-    }
+    var lat: Double = 0.0
+    var lon: Double = 0.0
+    var images: [Image] = []
     
 }

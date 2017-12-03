@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="1242" y="116"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--CollectionViewController-->
         <scene sceneID="PvV-AA-GdT">
             <objects>
-                <viewController id="9uX-7j-brY" customClass="CollectionViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CollectionViewController" id="9uX-7j-brY" customClass="CollectionViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4cG-kC-Ep9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
