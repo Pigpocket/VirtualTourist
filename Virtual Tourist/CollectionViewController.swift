@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import MapKit
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
     
     // MARK: Outlets
     
     @IBOutlet weak var newCollectionButton: UIBarButtonItem!
-    @IBOutlet weak var MapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionFlow: UICollectionViewFlowLayout!
     
@@ -24,6 +24,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var pin = Pin()
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
+    var annotation = MKPointAnnotation()
     
     // MARK: Actions
     
@@ -49,6 +50,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.mapView.delegate = self
+        print("viewDidAppear latitude= \(pin.lat)")
+        print("viewDidAppear longtiude= \(pin.lon)")
+        
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
@@ -61,6 +66,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewWillAppear(true)
         
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
+        setAnnotations()
     }
     
     override func viewWillLayoutSubviews() {
@@ -70,6 +76,30 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func itemWidth() -> CGFloat {
         return ((UIScreen.main.bounds.width - (self.innerSpace * 2)) / self.numberOfCellsOnRow)
+    }
+    
+    // MARK: Map functions
+    
+    func setAnnotations() {
+        
+        // Set the coordinates
+        let coordinates = CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lon)
+        
+        // Set the map region
+        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.delegate = self
+        
+        // Set the annotation
+        //let title = "\((pin.images) + " " + (User.shared.lastName))"
+        //let subtitle = locationData.mediaURL
+        annotation.coordinate = coordinates
+        //annotation.title = title
+        //annotation.subtitle = subtitle
+        
+        // Add the annotation
+        mapView.addAnnotation(self.annotation)
+        self.mapView.addAnnotation(self.annotation)
     }
     
     // MARK: - UICollectionViewDataSource protocol
@@ -100,8 +130,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func deleteImages(){
         if pin.images.count > 0 {
+            
+            print("Before deleteImages, pin latitude= \(pin.lat)")
+            print("Before deleteImages, pin longitude= \(pin.lon)")
             pin.images = []
             print("Pin contains \(pin.images.count) images")
+            print("After deleteImages, pin latitude= \(pin.lat)")
+            print("After deleteImages, pin longitude= \(pin.lon)")
+            
             //sharedContext.deleteObject(photo)
             
             

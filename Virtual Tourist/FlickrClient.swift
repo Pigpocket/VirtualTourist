@@ -132,6 +132,12 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: latitude, longitude: longitude) { (results, error) in
             
+            print("This is the latitude in the taskForGetImages: \(latitude)")
+            print("This is the latitude of the pin in taskForGetImages: \(pin.lat)")
+            
+            pin.lat = latitude as! Double
+            pin.lon = longitude as! Double
+            
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
             } else {
@@ -174,7 +180,9 @@ extension FlickrClient {
                     
                 }
                 print("There are \(pin.images.count) images in the image array")
+                print("This the latitude of the pin after the for loop: \(pin.lat)")
             }
+                print("This is the latitude of the pin being sent the completion handler: \(pin.lat)")
             completionHandlerForGetImages(pin, nil)
             print("We connected with the Flickr API")
             }

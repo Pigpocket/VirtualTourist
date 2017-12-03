@@ -78,6 +78,8 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 
                 if let pin = pin {
                     self.pin = pin
+                    print("Networking pin unwrapping latitude= \(pin.lat)")
+                    print("Networking pin unwrapping longitude= \(pin.lon)")
                 }
             })
         } else {
@@ -98,6 +100,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
             controller.pin = self.pin
+            print("PrepareForSegue pin properties are: \(self.pin)")
         }
     }
     
