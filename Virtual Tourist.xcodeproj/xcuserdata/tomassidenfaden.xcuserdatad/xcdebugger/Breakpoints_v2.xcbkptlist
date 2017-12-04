@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Virtual Tourist/CollectionViewController.swift"
-            timestampString = "534032273.337098"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "newCollectionAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Virtual Tourist/FlickrClient.swift"
-            timestampString = "534032273.33722"
+            timestampString = "534041174.302928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "getImagesFromFlickr(latitude:longitude:completionHandlerForGetImages:)"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "getImagesFromFlickr(latitude:longitude:page:completionHandlerForGetImages:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

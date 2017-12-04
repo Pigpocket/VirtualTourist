@@ -25,14 +25,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
     var annotation = MKPointAnnotation()
+    var pageCount: Int = 1
     
     // MARK: Actions
     
     @IBAction func newCollectionAction(_ sender: Any) {
         
+        pageCount += 1
+            
         self.deleteImages()
         
-        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, completionHandlerForGetImages: { (pin, error) in
+        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
             
             if let pin = pin {
                 self.pin = pin

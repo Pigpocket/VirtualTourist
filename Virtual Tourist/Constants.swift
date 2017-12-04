@@ -26,6 +26,7 @@ struct Constants {
         static let Lat = "lat"
         static let Lon = "lon"
         static let PerPage = "per_page"
+        static let Page = "page"
     }
     
     // MARK: Flickr Parameter Values
@@ -38,7 +39,7 @@ struct Constants {
         static let GalleryID = "5704-72157622566655097"
         static let MediumURL = "url_m"
         static let PerPage = 21
-        
+        static let Page = 1
     }
     
     // MARK: Flickr Response Keys

@@ -115,7 +115,7 @@ class FlickrClient: NSObject {
 
 extension FlickrClient {
     
-    func getImagesFromFlickr(latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ pin: Pin?, _ errorString: String?) -> Void) {
+    func getImagesFromFlickr(latitude: Any, longitude: Any, page: Any, completionHandlerForGetImages: @escaping (_ pin: Pin?, _ errorString: String?) -> Void) {
         
         var pin = Pin()
         
@@ -128,15 +128,17 @@ extension FlickrClient {
             Constants.FlickrParameterKeys.Lat: latitude as Any,
             Constants.FlickrParameterKeys.Lon: longitude as Any,
             Constants.FlickrParameterKeys.PerPage: Constants.FlickrParameterValues.PerPage,
+            Constants.FlickrParameterKeys.Page: page
             ]
         
         taskForGetImages(methodParameters: methodParameters, latitude: latitude, longitude: longitude) { (results, error) in
             
             print("This is the latitude in the taskForGetImages: \(latitude)")
-            print("This is the latitude of the pin in taskForGetImages: \(pin.lat)")
             
             pin.lat = latitude as! Double
             pin.lon = longitude as! Double
+            
+            print("This is the latitude of the pin in taskForGetImages: \(pin.lat)")
             
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")

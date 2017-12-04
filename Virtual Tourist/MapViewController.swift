@@ -74,7 +74,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
             pin.lon = pinView!.annotation!.coordinate.longitude as Double
             
             // Download the images for the coordinates
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, completionHandlerForGetImages: { (pin, error) in
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: 1, completionHandlerForGetImages: { (pin, error) in
                 
                 if let pin = pin {
                     self.pin = pin
