@@ -54,8 +54,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         self.mapView.delegate = self
-        print("viewDidAppear latitude= \(pin.lat)")
-        print("viewDidAppear longtiude= \(pin.lon)")
+        print("viewDidLoad latitude= \(pin.lat)")
+        print("viewDidLoad longtiude= \(pin.lon)")
         
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0

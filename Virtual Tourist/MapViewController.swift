@@ -92,7 +92,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        
         if view.annotation?.title != nil {
             print("Pin was selected")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
@@ -101,13 +100,22 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
-            let controller = segue.destination as! CollectionViewController
             
-            controller.pin = self.pin
-            print("PrepareForSegue pin properties are: \(self.pin)")
+            performUIUpdatesOnMain {
+            let controller = segue.destination as! CollectionViewController
+                print("Pin inventory in prepForSegue is \(Pin.inventory.count)")
+            for pinFag in Pin.inventory {
+                if pinFag.lat == self.annotation.coordinate.longitude && pinFag.lon == self.annotation.coordinate.longitude {
+                        controller.pin = pinFag
+                    print("prepareForSegue pin properties in exsiting pin are: \(pinFag)")
+                } else {
+                        controller.pin = self.pin
+                        print("PrepareForSegue pin properties are: \(self.pin)")
+                    }
+                }
+            }
         }
     }
-    
 }
 
 
