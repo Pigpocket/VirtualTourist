@@ -54,6 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return !(touch.view is MKPinAnnotationView)
     }
@@ -91,7 +92,9 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        
         if view.annotation?.title != nil {
+            print("Pin was selected")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
     }
@@ -99,6 +102,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
+            
             controller.pin = self.pin
             print("PrepareForSegue pin properties are: \(self.pin)")
         }

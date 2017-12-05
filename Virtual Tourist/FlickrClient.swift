@@ -183,6 +183,8 @@ extension FlickrClient {
                 }
                 print("There are \(pin.images.count) images in the image array")
                 print("This the latitude of the pin after the for loop: \(pin.lat)")
+                Pin.inventory.append(pin)
+                    print("Pin inventory count is: \(Pin.inventory.count)")
             }
                 print("This is the latitude of the pin being sent the completion handler: \(pin.lat)")
             completionHandlerForGetImages(pin, nil)
