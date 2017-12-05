@@ -55,6 +55,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
 extension MapViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("Shit's getting pressed")
         return !(touch.view is MKPinAnnotationView)
     }
     
@@ -78,10 +79,13 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 
                 if let pin = pin {
                     self.pin = pin
+                    Pin.inventory.append(pin)
                     print("Networking pin unwrapping latitude= \(pin.lat)")
                     print("Networking pin unwrapping longitude= \(pin.lon)")
                 }
             })
+            
+            self.annotation.title = "downloaded"
         } else {
             pinView!.annotation = annotation
         }
@@ -91,16 +95,27 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        if view.annotation?.title != nil {
+        if view.annotation?.title! != "downloaded" {
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "existingPinSegue", sender: self)
         }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
             controller.pin = self.pin
-            print("PrepareForSegue pin properties are: \(self.pin)")
+            print("collectionViewSegue pin properties are: \(self.pin)")
+        } else {
+        
+        if segue.identifier == "existingPinSegue" {
+            let controller = segue.destination as! CollectionViewController
+            controller.pin = Pin.inventory[0]
+            print("existingPinSegue pin properties are: \(Pin.inventory[0])")
+            }
         }
     }
     
