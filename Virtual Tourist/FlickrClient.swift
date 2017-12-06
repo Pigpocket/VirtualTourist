@@ -164,7 +164,7 @@ extension FlickrClient {
                     if let imageData = try? Data(contentsOf: imageURL!) {
                         //self.setUIEnabled(true)
                         image = UIImage(data: imageData)!
-                        print("The image data is: \(UIImage(data: imageData)!)")
+                        //print("The image data is: \(UIImage(data: imageData)!)")
                     }
                     
                     // get the remaining metadata

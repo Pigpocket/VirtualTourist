@@ -92,6 +92,17 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        pin.lat = (view.annotation?.coordinate.latitude)!
+        pin.lon = (view.annotation?.coordinate.longitude)!
+        
+        for existingPin in Pin.inventory {
+            if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {
+                    print("We've identified that the coordinates are the same")
+                    self.pin = existingPin
+                    print("prepareForSegue pin properties in existing pin are: \n latitude: \(existingPin.lat) \n longitude: \(existingPin.lon)")
+            }
+        }
+        
         if view.annotation?.title != nil {
             print("Pin was selected")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
@@ -100,22 +111,15 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
-            
-            performUIUpdatesOnMain {
             let controller = segue.destination as! CollectionViewController
-                print("Pin inventory in prepForSegue is \(Pin.inventory.count)")
-            for pinFag in Pin.inventory {
-                if pinFag.lat == self.annotation.coordinate.longitude && pinFag.lon == self.annotation.coordinate.longitude {
-                        controller.pin = pinFag
-                    print("prepareForSegue pin properties in exsiting pin are: \(pinFag)")
-                } else {
-                        controller.pin = self.pin
-                        print("PrepareForSegue pin properties are: \(self.pin)")
-                    }
-                }
-            }
+            print("Pin inventory in prepForSegue is \(Pin.inventory.count)")
+            controller.pin = self.pin
+            print("PrepareForSegue pin properties are: \n latitude: \(self.pin.lat) \n longitude: \(self.pin.lon)")
         }
     }
+    
 }
+
+
 
 

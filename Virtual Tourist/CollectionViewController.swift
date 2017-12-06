@@ -57,6 +57,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         print("viewDidLoad latitude= \(pin.lat)")
         print("viewDidLoad longtiude= \(pin.lon)")
         
+        self.collectionView.reloadData()
+        
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
