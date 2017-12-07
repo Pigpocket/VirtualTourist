@@ -26,6 +26,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var numberOfCellsOnRow: CGFloat = 3.0
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: Actions
     
@@ -35,6 +36,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
         self.deleteImages()
         
+        let collectionViewCell = CollectionViewCell()
+        
+        AlertView.startActivityIndicator(collectionViewCell, activityIndicator: activityIndicator)
+        
         FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
             
             if let pin = pin {
@@ -42,6 +47,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 print("latitude= \(pin.lat)")
                 print("longitude= \(pin.lon)")
                 performUIUpdatesOnMain {
+                    AlertView.stopActivityController(collectionViewCell, activityIndicator: self.activityIndicator)
                     self.collectionView.reloadData()
                 }
             }
