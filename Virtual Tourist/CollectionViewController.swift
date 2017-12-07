@@ -35,11 +35,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         pageCount += 1
             
         self.deleteImages()
-        
-        let collectionViewCell = CollectionViewCell()
-        
-        AlertView.startActivityIndicator(collectionViewCell, activityIndicator: activityIndicator)
-        
+
         FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
             
             if let pin = pin {
@@ -47,7 +43,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 print("latitude= \(pin.lat)")
                 print("longitude= \(pin.lon)")
                 performUIUpdatesOnMain {
-                    AlertView.stopActivityController(collectionViewCell, activityIndicator: self.activityIndicator)
                     self.collectionView.reloadData()
                 }
             }
@@ -135,6 +130,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.imageView.image = pin.images[indexPath.item].image
         cell.imageView.contentMode = .scaleAspectFill
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        activityIndicator.center = CGPoint(x: cell.contentView.frame.size.width / 2, y: cell.contentView.frame.size.height / 2)
+        activityIndicator.startAnimating()
         
         return cell
     }
