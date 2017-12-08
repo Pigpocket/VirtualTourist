@@ -108,7 +108,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
             print("Pin inventory in prepForSegue is \(Pin.inventory.count)")
-            controller.pin = self.pin
+            controller.selectedPin = self.pin
             print("PrepareForSegue pin properties are: \n latitude: \(self.pin.lat) \n longitude: \(self.pin.lon)")
         }
     }

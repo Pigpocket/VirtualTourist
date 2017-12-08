@@ -21,7 +21,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
-    var pin = Pin()
+    var selectedPin = Pin()
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
     var annotation = MKPointAnnotation()
@@ -37,10 +37,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
         self.deleteImages()
 
-        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
+        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.lat, longitude: selectedPin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
             
             if let pin = pin {
-                self.pin = pin
+                self.selectedPin = pin
                 print("latitude= \(pin.lat)")
                 print("longitude= \(pin.lon)")
                 performUIUpdatesOnMain {
@@ -60,9 +60,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
-        
-        print("Images quantity in Pin in CollectionViewController: \(pin.images.count)")
-
+ 
+        print("This is what selectedPin looks like: \n \(selectedPin)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,11 +70,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
         setAnnotations()
     }
-    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//    }
     
     func itemWidth() -> CGFloat {
         return ((UIScreen.main.bounds.width - (self.innerSpace * 2)) / self.numberOfCellsOnRow)
@@ -86,7 +80,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func setAnnotations() {
         
         // Set the coordinates
-        let coordinates = CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lon)
+        let coordinates = CLLocationCoordinate2D(latitude: selectedPin.lat, longitude: selectedPin.lon)
         
         // Set the map region
         let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
@@ -108,25 +102,20 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDataSource protocol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pin.images.count
+        return self.selectedPin.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
-        //if cell.imageView.image == UIImage(named: "Grey Photo") {
-        
-            // Get them using the URL
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount) { (pin, error) in
+            // Get images = using the URL
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.lat, longitude: selectedPin.lon, page: pageCount) { (pin, error) in
                 
                 if let pin = pin {
                     let url = pin.images[indexPath.item].imageURL
                     let data = try? Data(contentsOf: url)
-                    self.photos.append(UIImage(data: data!)!)
-                    print("There are \(self.photos.count) photos in the array")
                     performUIUpdatesOnMain {
-                        
                         cell.imageView.image = UIImage(data: data!)
                         cell.imageView.contentMode = .scaleAspectFill
                     }
@@ -136,10 +125,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func deleteImages(){
-        if pin.images.count > 0 {
+        if selectedPin.images.count > 0 {
             
-            pin.images = []
-            print("Pin contains \(pin.images.count) images")
+            selectedPin.images = []
+            print("Pin contains \(selectedPin.images.count) images")
             
             //sharedContext.deleteObject(photo)
             
