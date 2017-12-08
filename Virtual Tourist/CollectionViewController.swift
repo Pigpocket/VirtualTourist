@@ -130,21 +130,15 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.imageView.image = pin.images[indexPath.item].image
         cell.imageView.contentMode = .scaleAspectFill
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
-        activityIndicator.center = CGPoint(x: cell.contentView.frame.size.width / 2, y: cell.contentView.frame.size.height / 2)
-        activityIndicator.startAnimating()
-        
+
         return cell
     }
     
     func deleteImages(){
         if pin.images.count > 0 {
             
-            print("Before deleteImages, pin latitude= \(pin.lat)")
-            print("Before deleteImages, pin longitude= \(pin.lon)")
             pin.images = []
             print("Pin contains \(pin.images.count) images")
-            print("After deleteImages, pin latitude= \(pin.lat)")
-            print("After deleteImages, pin longitude= \(pin.lon)")
             
             //sharedContext.deleteObject(photo)
             
