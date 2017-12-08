@@ -89,7 +89,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-pk-7RE">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey Image" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-pk-7RE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
                                                                 </imageView>
                                                             </subviews>
@@ -179,4 +179,7 @@
             <point key="canvasLocation" x="428" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Grey Image" width="802" height="744"/>
+    </resources>
 </document>

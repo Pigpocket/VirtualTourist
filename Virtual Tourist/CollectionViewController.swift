@@ -127,7 +127,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
             if let pin = pin {
                 let url = pin.images[indexPath.item].imageURL
-                    let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    let data = try? Data(contentsOf: url)
                     performUIUpdatesOnMain {
                         cell.imageView.image = UIImage(data: data!)
                         cell.imageView.contentMode = .scaleAspectFill
