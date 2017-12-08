@@ -45,21 +45,6 @@ class FlickrClient: NSObject {
             }
             
             self.parseJSONObject(data, completionHandlerForConvertData: completionHandlerForGetImages)
-            // parse the data
-            /*let parsedResult: [String:Any]!
-            do {
-                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-            } catch {
-                completionHandler(false, nil, "There was an error")
-                return
-            } */
-            
-            /* GUARD: Did Flickr return an error (stat != ok)?
-            guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String, stat == Constants.FlickrResponseValues.OKStatus else {
-                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
-                completionHandler(false, "There was an error")
-                return
-            } */
             
         // start the task!
         }
@@ -158,14 +143,10 @@ extension FlickrClient {
                         return
                     }
                     
-                    var image = UIImage()
+                    //var image = UIImage()
                     // if an image exists at the url, set the image and title
-                    let imageURL = URL(string: imageUrlString)
-                    if let imageData = try? Data(contentsOf: imageURL!) {
-                        //self.setUIEnabled(true)
-                        image = UIImage(data: imageData)!
-                        //print("The image data is: \(UIImage(data: imageData)!)")
-                    }
+                    let imageURL = URL(string: imageUrlString)!
+                    
                     
                     // get the remaining metadata
                     let farm = photo["farm"] as? Int ?? 0
@@ -178,7 +159,7 @@ extension FlickrClient {
                     let server = photo["server"] as? String ?? ""
                     let title = photo["title"] as? String ?? ""
                     
-                    pin.images.append(Image(image: image, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
+                    pin.images.append(Image(imageURL: imageURL, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
                     
                 }
                 print("There are \(pin.images.count) images in the image array")

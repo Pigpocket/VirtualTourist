@@ -12,7 +12,8 @@ import UIKit
 struct Image {
     
     static var imageGallery: [Image] = []
-    var image: UIImage
+    
+    var imageURL: URL
     var farm: Int
     var id: String
     var isFamily: Int
@@ -27,9 +28,9 @@ struct Image {
         return NSURL(string: "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")!
     }
     
-    init(image: UIImage, farm: Int, id: String, isFamily: Int, isFriend: Int, isPublic: Int, owner: String, secret: String, server: String, title: String) {
+    init(imageURL: URL, farm: Int, id: String, isFamily: Int, isFriend: Int, isPublic: Int, owner: String, secret: String, server: String, title: String) {
     
-        self.image = image
+        self.imageURL = imageURL
         self.farm = farm
         self.id = id
         self.isFamily = isFamily

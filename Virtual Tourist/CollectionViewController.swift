@@ -123,13 +123,20 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
-        if cell.imageView.image != nil {
-            cell.prepareForReuse()
-        }
+        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount) { (pin, error) in
+            
+            if let pin = pin {
+                let url = pin.images[indexPath.item].imageURL
+                    let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    performUIUpdatesOnMain {
+                        cell.imageView.image = UIImage(data: data!)
+                        cell.imageView.contentMode = .scaleAspectFill
+                    }
+                }
+            }
         
-        cell.imageView.image = pin.images[indexPath.item].image
-        cell.imageView.contentMode = .scaleAspectFill
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        
+        //cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
 
         return cell
     }
