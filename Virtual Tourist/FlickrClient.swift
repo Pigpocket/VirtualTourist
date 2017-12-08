@@ -118,12 +118,8 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: latitude, longitude: longitude) { (results, error) in
             
-            print("This is the latitude in the taskForGetImages: \(latitude)")
-            
             pin.lat = latitude as! Double
             pin.lon = longitude as! Double
-            
-            print("This is the latitude of the pin in taskForGetImages: \(pin.lat)")
             
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
@@ -133,7 +129,6 @@ extension FlickrClient {
                 
                 /* GUARD: Are the "photos" and "photo" keys in our result? */
                 if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
-                    //displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
                     
                 for photo in photoArray {
                     
@@ -143,12 +138,8 @@ extension FlickrClient {
                         return
                     }
                     
-                    //var image = UIImage()
-                    // if an image exists at the url, set the image and title
+                    // Get metadata
                     let imageURL = URL(string: imageUrlString)!
-                    
-                    
-                    // get the remaining metadata
                     let farm = photo["farm"] as? Int ?? 0
                     let id = photo["id"] as? String ?? ""
                     let isFamily = photo["isfamily"] as? Int ?? 0
@@ -162,14 +153,23 @@ extension FlickrClient {
                     pin.images.append(Image(imageURL: imageURL, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
                     
                 }
-                print("There are \(pin.images.count) images in the image array")
-                print("This the latitude of the pin after the for loop: \(pin.lat)")
-                Pin.inventory.append(pin)
-                    print("Pin inventory count is: \(Pin.inventory.count)")
+                    
+                // Add the pin to inventory
+                print("There are \(pin.images.count) 'images' in the imageMetaData array")
+                print("Pin inventory count before inventory pin loop is: \(Pin.inventory.count)")
+                    if Pin.inventory.count > 0 {
+                        for existingPin in Pin.inventory {
+                            if existingPin.lat != pin.lat && existingPin.lon != pin.lon {
+                                Pin.inventory.append(pin)
+                            }
+                        }
+                    } else {
+                        Pin.inventory.append(pin)
+                    }
+                print("Pin inventory count after inventory pin loop is: \(Pin.inventory.count)")
             }
-                print("This is the latitude of the pin being sent the completion handler: \(pin.lat)")
             completionHandlerForGetImages(pin, nil)
-            print("We connected with the Flickr API")
+            print("Networking completed")
             }
         }
     }

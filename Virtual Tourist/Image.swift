@@ -23,10 +23,12 @@ struct Image {
     var secret: String
     var server: String
     var title: String
+
+    var image: UIImage? = UIImage()
     
-    var photoUrl: NSURL {
-        return NSURL(string: "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")!
-    }
+//    var photoUrl: NSURL {
+//        return NSURL(string: "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")!
+//    }
     
     init(imageURL: URL, farm: Int, id: String, isFamily: Int, isFriend: Int, isPublic: Int, owner: String, secret: String, server: String, title: String) {
     

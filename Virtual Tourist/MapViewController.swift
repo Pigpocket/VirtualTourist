@@ -79,8 +79,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 
                 if let pin = pin {
                     self.pin = pin
-                    print("Networking pin unwrapping latitude= \(pin.lat)")
-                    print("Networking pin unwrapping longitude= \(pin.lon)")
                 }
             })
         } else {
@@ -97,14 +95,11 @@ extension MapViewController: UIGestureRecognizerDelegate {
         
         for existingPin in Pin.inventory {
             if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {
-                    print("We've identified that the coordinates are the same")
                     self.pin = existingPin
-                    print("prepareForSegue pin properties in existing pin are: \n latitude: \(existingPin.lat) \n longitude: \(existingPin.lon)")
             }
         }
         
         if view.annotation?.title != nil {
-            print("Pin was selected")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
     }

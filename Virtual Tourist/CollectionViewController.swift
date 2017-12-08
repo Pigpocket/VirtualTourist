@@ -27,6 +27,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
+    var photos: [UIImage] = []
     
     // MARK: Actions
     
@@ -55,10 +56,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         self.mapView.delegate = self
-        print("viewDidLoad latitude= \(pin.lat)")
-        print("viewDidLoad longtiude= \(pin.lon)")
-        
-        self.collectionView.reloadData()
         
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
@@ -75,10 +72,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         setAnnotations()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//
+//    }
     
     func itemWidth() -> CGFloat {
         return ((UIScreen.main.bounds.width - (self.innerSpace * 2)) / self.numberOfCellsOnRow)
@@ -110,34 +107,31 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - UICollectionViewDataSource protocol
     
-    // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.pin.images.count
     }
     
-    // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        //if cell.imageView.image == UIImage(named: "Grey Photo") {
         
-        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount) { (pin, error) in
-            
-            if let pin = pin {
-                let url = pin.images[indexPath.item].imageURL
+            // Get them using the URL
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: pageCount) { (pin, error) in
+                
+                if let pin = pin {
+                    let url = pin.images[indexPath.item].imageURL
                     let data = try? Data(contentsOf: url)
+                    self.photos.append(UIImage(data: data!)!)
+                    print("There are \(self.photos.count) photos in the array")
                     performUIUpdatesOnMain {
+                        
                         cell.imageView.image = UIImage(data: data!)
                         cell.imageView.contentMode = .scaleAspectFill
                     }
                 }
             }
-        
-        
-        //cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
-
         return cell
     }
     
