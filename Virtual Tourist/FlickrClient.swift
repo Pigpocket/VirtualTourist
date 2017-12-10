@@ -157,14 +157,27 @@ extension FlickrClient {
                 // Add the pin to inventory
                 print("There are \(pin.images.count) 'images' in the imageMetaData array")
                 print("Pin inventory count before inventory pin loop is: \(Pin.inventory.count)")
-                    if Pin.inventory.count > 0 {
+                    
+                    // If there are no pins in inventory
+                    if Pin.inventory.count == 0 {
+                        
+                        // Add the pin to inventory
+                        Pin.inventory.append(pin)
+                        
+                    } else {
+                        
+                        // Check if a pin in inventory has these coordinates
                         for existingPin in Pin.inventory {
-                            if existingPin.lat != pin.lat && existingPin.lon != pin.lon {
+                            if existingPin.lat == pin.lat && existingPin.lon == pin.lon {
+                                
+                                // Break the loop
+                                break
+                            } else {
+                                
+                                // Add a pin to inventory
                                 Pin.inventory.append(pin)
                             }
                         }
-                    } else {
-                        Pin.inventory.append(pin)
                     }
                 print("Pin inventory count after inventory pin loop is: \(Pin.inventory.count)")
             }

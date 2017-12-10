@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372A77E21FDDD61700D30159 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A77E11FDDD61700D30159 /* CoreDataStack.swift */; };
+		372A77E61FDDDA0100D30159 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 372A77E41FDDDA0100D30159 /* Model.xcdatamodeld */; };
 		373732F01FC761CE0044A713 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373732EF1FC761CE0044A713 /* FlickrClient.swift */; };
 		373732F21FC762210044A713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373732F11FC762210044A713 /* Constants.swift */; };
 		373732F41FC762690044A713 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373732F31FC762690044A713 /* GCDBlackBox.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372A77E11FDDD61700D30159 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		372A77E51FDDDA0100D30159 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		373732EF1FC761CE0044A713 /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		373732F11FC762210044A713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		373732F31FC762690044A713 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372A77E31FDDD95A00D30159 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				372A77E11FDDD61700D30159 /* CoreDataStack.swift */,
+				372A77E41FDDDA0100D30159 /* Model.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		37CDD16F1FBF635700930D44 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 		37CDD17A1FBF635700930D44 /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				372A77E31FDDD95A00D30159 /* Models */,
 				37CDD17B1FBF635700930D44 /* AppDelegate.swift */,
 				37CDD17D1FBF635700930D44 /* MapViewController.swift */,
 				375BFC321FC0E9D200957749 /* CollectionViewController.swift */,
@@ -166,6 +180,7 @@
 				37A54B821FCCD3EC0011ADA4 /* Image.swift in Sources */,
 				375BFC331FC0E9D200957749 /* CollectionViewController.swift in Sources */,
 				373732F01FC761CE0044A713 /* FlickrClient.swift in Sources */,
+				372A77E21FDDD61700D30159 /* CoreDataStack.swift in Sources */,
 				37CDD17E1FBF635700930D44 /* MapViewController.swift in Sources */,
 				375BFC351FC10A6700957749 /* CollectionViewCell.swift in Sources */,
 				37A54B841FD0F6910011ADA4 /* Pin.swift in Sources */,
@@ -173,6 +188,7 @@
 				37CDD17C1FBF635700930D44 /* AppDelegate.swift in Sources */,
 				378D5F421FD901EF0096662D /* AlertController.swift in Sources */,
 				373732F21FC762210044A713 /* Constants.swift in Sources */,
+				372A77E61FDDDA0100D30159 /* Model.xcdatamodeld in Sources */,
 				373732F41FC762690044A713 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +374,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		372A77E41FDDDA0100D30159 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				372A77E51FDDDA0100D30159 /* Model.xcdatamodel */,
+			);
+			currentVersion = 372A77E51FDDDA0100D30159 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 37CDD1701FBF635700930D44 /* Project object */;
 }
