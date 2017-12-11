@@ -71,11 +71,11 @@ extension MapViewController: UIGestureRecognizerDelegate {
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             
             // Set the coordinates in the Pin struct
-            pin.lat = pinView!.annotation!.coordinate.latitude as Double
-            pin.lon = pinView!.annotation!.coordinate.longitude as Double
+            pin.latitude = pinView!.annotation!.coordinate.latitude as Double
+            pin.longitude = pinView!.annotation!.coordinate.longitude as Double
             
             // Download the images for the coordinates
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.lat, longitude: pin.lon, page: 1, completionHandlerForGetImages: { (pin, error) in
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.latitude, longitude: pin.longitude, page: 1, completionHandlerForGetImages: { (pin, error) in
                 
                 if let pin = pin {
                     self.pin = pin
@@ -90,8 +90,8 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        pin.lat = (view.annotation?.coordinate.latitude)!
-        pin.lon = (view.annotation?.coordinate.longitude)!
+        pin.latitude = (view.annotation?.coordinate.latitude)!
+        pin.longitude = (view.annotation?.coordinate.longitude)!
         
         for existingPin in Pin.inventory {
             if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {

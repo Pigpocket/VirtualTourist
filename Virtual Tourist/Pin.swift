@@ -5,7 +5,7 @@
 //  Created by Tomas Sidenfaden on 11/30/17.
 //  Copyright © 2017 Tomas Sidenfaden. All rights reserved.
 //
-
+/*
 import Foundation
 import MapKit
 
@@ -18,3 +18,4 @@ struct Pin {
     var images: [Image] = []
     
 }
+*/

@@ -102,7 +102,7 @@ extension FlickrClient {
     
     func getImagesFromFlickr(latitude: Any, longitude: Any, page: Any, completionHandlerForGetImages: @escaping (_ pin: Pin?, _ errorString: String?) -> Void) {
         
-        var pin = Pin()
+        //var pin = Pin()
         
         let methodParameters = [
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.FlickrPhotosSearch,
@@ -118,8 +118,8 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: latitude, longitude: longitude) { (results, error) in
             
-            pin.lat = latitude as! Double
-            pin.lon = longitude as! Double
+            pin.latitude = latitude as! Double
+            pin.longitude = longitude as! Double
             
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
