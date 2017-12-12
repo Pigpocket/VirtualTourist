@@ -27,7 +27,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
-    var photos: [UIImage] = []
+    var photos: [Images] = []
     
     // MARK: Actions
     
@@ -37,12 +37,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
         self.deleteImages()
 
-        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.lat, longitude: selectedPin.lon, page: pageCount, completionHandlerForGetImages: { (pin, error) in
+        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.latitude, longitude: selectedPin.longitude, page: pageCount, completionHandlerForGetImages: { (pin, error) in
             
             if let pin = pin {
                 self.selectedPin = pin
-                print("latitude= \(pin.lat)")
-                print("longitude= \(pin.lon)")
+                print("latitude= \(pin.latitude)")
+                print("longitude= \(pin.longitude)")
                 performUIUpdatesOnMain {
                     self.collectionView.reloadData()
                 }
@@ -80,7 +80,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func setAnnotations() {
         
         // Set the coordinates
-        let coordinates = CLLocationCoordinate2D(latitude: selectedPin.lat, longitude: selectedPin.lon)
+        let coordinates = CLLocationCoordinate2D(latitude: selectedPin.latitude, longitude: selectedPin.longitude)
         
         // Set the map region
         let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
@@ -102,15 +102,33 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDataSource protocol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.selectedPin.images.count
+        return self.selectedPin.images!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
+        let photo = photos[indexPath.row]
         
-            // Get images = using the URL
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.lat, longitude: selectedPin.lon, page: pageCount) { (pin, error) in
+        // Get a photo if it already exists
+        if let photoImage = photo.getImage() {
+            cell.imageView.image = photoImage
+        
+        } else {
+            
+            FlickrClient.sharedInstance().imageDataForPhoto(image: photo, completionHandler: { (imageData, error) in
+                
+                guard error == nil else {
+                    return
+                }
+                
+                performUIUpdatesOnMain {
+                    cell.imageView.image = UIImage(data: imageData!)
+                }
+            })
+            
+            /* Otherwise get the
+            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.latitude, longitude: selectedPin.longitude, page: pageCount) { (pin, error) in
                 
                 if let pin = pin {
                     let url = pin.images[indexPath.item].imageURL
@@ -118,17 +136,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                     performUIUpdatesOnMain {
                         cell.imageView.image = UIImage(data: data!)
                         cell.imageView.contentMode = .scaleAspectFill
+                        }
                     }
-                }
+                } */
             }
         return cell
     }
     
     func deleteImages(){
-        if selectedPin.images.count > 0 {
+        //if selectedPin.images.count > 0 {
             
             selectedPin.images = []
-            print("Pin contains \(selectedPin.images.count) images")
+          //  print("Pin contains \(selectedPin.images.count) images")
             
             //sharedContext.deleteObject(photo)
             
@@ -136,7 +155,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             // Remove from documents directory
             /*let id: String = "\(photo.imageID).jpg"
             photo.removeFromDocumentsDirectory(id) */
-        }
+        //}
     }
     
     // MARK: - UICollectionViewDelegate protocol

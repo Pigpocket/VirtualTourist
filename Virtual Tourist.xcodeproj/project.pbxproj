@@ -20,6 +20,7 @@
 		375BFC331FC0E9D200957749 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375BFC321FC0E9D200957749 /* CollectionViewController.swift */; };
 		375BFC351FC10A6700957749 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375BFC341FC10A6700957749 /* CollectionViewCell.swift */; };
 		378D5F421FD901EF0096662D /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378D5F411FD901EF0096662D /* AlertController.swift */; };
+		379600E91FDE121E005B4695 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379600E81FDE121E005B4695 /* PinAnnotation.swift */; };
 		37A54B821FCCD3EC0011ADA4 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A54B811FCCD3EC0011ADA4 /* Image.swift */; };
 		37A54B841FD0F6910011ADA4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A54B831FD0F6910011ADA4 /* Pin.swift */; };
 		37CDD17C1FBF635700930D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDD17B1FBF635700930D44 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		375BFC321FC0E9D200957749 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		375BFC341FC10A6700957749 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		378D5F411FD901EF0096662D /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		379600E81FDE121E005B4695 /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		37A54B811FCCD3EC0011ADA4 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		37A54B831FD0F6910011ADA4 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		37CDD1781FBF635700930D44 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				37CDD17B1FBF635700930D44 /* AppDelegate.swift */,
 				37CDD17D1FBF635700930D44 /* MapViewController.swift */,
 				375BFC321FC0E9D200957749 /* CollectionViewController.swift */,
+				379600E81FDE121E005B4695 /* PinAnnotation.swift */,
 				375BFC341FC10A6700957749 /* CollectionViewCell.swift */,
 				37CDD17F1FBF635700930D44 /* Main.storyboard */,
 				37CDD1821FBF635700930D44 /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 				372A77EC1FDDED3F00D30159 /* Images+CoreDataProperties.swift in Sources */,
 				372A77ED1FDDED3F00D30159 /* Pin+CoreDataClass.swift in Sources */,
 				372A77E61FDDDA0100D30159 /* Model.xcdatamodeld in Sources */,
+				379600E91FDE121E005B4695 /* PinAnnotation.swift in Sources */,
 				373732F41FC762690044A713 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

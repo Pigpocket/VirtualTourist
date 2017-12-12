@@ -8,8 +8,13 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class FlickrClient: NSObject {
+    
+    enum HTTPMethod: String {
+        case GET, POST, PUT, DELETE
+    }
     
     func taskForGetImages(methodParameters: [String:Any], latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
@@ -102,7 +107,7 @@ extension FlickrClient {
     
     func getImagesFromFlickr(latitude: Any, longitude: Any, page: Any, completionHandlerForGetImages: @escaping (_ pin: Pin?, _ errorString: String?) -> Void) {
         
-        //var pin = Pin()
+        let pin = Pin()
         
         let methodParameters = [
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.FlickrPhotosSearch,
@@ -132,6 +137,7 @@ extension FlickrClient {
                     
                 for photo in photoArray {
                     
+                    let image = Images(context: CoreDataStack.sharedInstance().context)
                     // GUARD: Does our photo have a key for 'url_m'?
                     guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
                         completionHandlerForGetImages(nil, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
@@ -150,10 +156,17 @@ extension FlickrClient {
                     let server = photo["server"] as? String ?? ""
                     let title = photo["title"] as? String ?? ""
                     
-                    pin.images.append(Image(imageURL: imageURL, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
+                    image.imageURL = String(describing: imageURL)
+                    image.pin = pin
+                    image.title = title
+                    
+                    pin.addToImages(image)
+                    
+                    //pin.images.append(Image(imageURL: imageURL, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
                     
                 }
                     
+                    /*
                 // Add the pin to inventory
                 print("There are \(pin.images.count) 'images' in the imageMetaData array")
                 print("Pin inventory count before inventory pin loop is: \(Pin.inventory.count)")
@@ -179,11 +192,58 @@ extension FlickrClient {
                             }
                         }
                     }
-                print("Pin inventory count after inventory pin loop is: \(Pin.inventory.count)")
+                print("Pin inventory count after inventory pin loop is: \(Pin.inventory.count)") */
             }
             completionHandlerForGetImages(pin, nil)
             print("Networking completed")
             }
+        }
+    }
+    
+    private func makeRequestAtURL(url: NSURL, method: HTTPMethod, headers: [String:String]? = nil, body: [String:AnyObject]? = nil, completionHandler: @escaping (Data?, Error?) -> Void) {
+        
+        let request = NSMutableURLRequest(url: url as URL)
+        
+        if let headers = headers {
+            for (key, value) in headers {
+                request.addValue(value, forHTTPHeaderField: key)
+            }
+        }
+        
+        if let body = body {
+            request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
+        }
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            (data, response, error) in
+            
+            guard error == nil else {
+                return completionHandler(nil, error)
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                return completionHandler(nil, error)
+            }
+            
+            completionHandler(data, nil)
+        }
+        
+        task.resume()
+    }
+    
+    func imageDataForPhoto(image: Images, completionHandler: @escaping (_ imageData: Data?, _ error: Error?) -> Void) {
+        
+        let url = NSURL(string: image.imageURL!)!
+        
+        makeRequestAtURL(url: url, method: .GET) {
+            (data, error) in
+            
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            
+            completionHandler(data, nil)
         }
     }
     

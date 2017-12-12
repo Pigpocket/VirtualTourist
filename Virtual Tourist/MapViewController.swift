@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
@@ -17,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     
-    var pin: Pin = Pin()
+    var pin: Pin?
     
     // MARK: Outlets
     
@@ -26,12 +27,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.mapView.delegate = self
+        
         // Implement the tap gesture recognizer
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
         longPressRecognizer.minimumPressDuration = 0.2
         mapView.addGestureRecognizer(longPressRecognizer)
         
-        self.mapView.delegate = self
+        loadAnnotations()
     }
     
     // MARK: Lifecycle
@@ -45,10 +48,35 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let newCoordinate = self.mapView.convert(touchPoint, toCoordinateFrom:self.mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
-        annotation.title = "placeholder"
+        //annotation.title = "placeholder"
+        
+        let pin = Pin(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude, context: CoreDataStack.sharedInstance().context)
+        pin.setValue(annotation.coordinate.latitude, forKey: "latitude")
+        pin.setValue(annotation.coordinate.longitude, forKey: "longitude")
+        let pinAnnotation = PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
         
         // Add the annotation
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(pinAnnotation)
+        CoreDataStack.sharedInstance().saveContext()
+    }
+    
+    func loadAnnotations() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+        do {
+            if let pins = try? CoreDataStack.sharedInstance().context.fetch(fetchRequest) as! [Pin] {
+                var pinAnnotations = [PinAnnotation]()
+                
+                for pin in pins {
+                    let latitude = CLLocationDegrees(pin.latitude)
+                    let longitude = CLLocationDegrees(pin.longitude)
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    pinAnnotations.append(PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: coordinate))
+                }
+                
+                mapView.addAnnotations(pinAnnotations)
+            }
+        }
     }
     
 }
@@ -71,16 +99,18 @@ extension MapViewController: UIGestureRecognizerDelegate {
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             
             // Set the coordinates in the Pin struct
+            if let pin = pin {
             pin.latitude = pinView!.annotation!.coordinate.latitude as Double
             pin.longitude = pinView!.annotation!.coordinate.longitude as Double
+            }
             
             // Download the images for the coordinates
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.latitude, longitude: pin.longitude, page: 1, completionHandlerForGetImages: { (pin, error) in
-                
-                if let pin = pin {
-                    self.pin = pin
-                }
-            })
+//            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.latitude, longitude: pin.longitude, page: 1, completionHandlerForGetImages: { (pin, error) in
+//
+//                if let pin = pin {
+//                    self.pin = pin
+//                }
+//            })
         } else {
             pinView!.annotation = annotation
         }
@@ -90,27 +120,51 @@ extension MapViewController: UIGestureRecognizerDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        pin.latitude = (view.annotation?.coordinate.latitude)!
-        pin.longitude = (view.annotation?.coordinate.longitude)!
-        
-        for existingPin in Pin.inventory {
-            if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {
-                    self.pin = existingPin
-            }
+        do {
+            let pinAnnotation = view.annotation as! PinAnnotation
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+            let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
+            fetchRequest.predicate = predicate
+            let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
+            pin = pins![0]
+        } catch let error as NSError {
+            print("failed to get pin by object id")
+            print(error.localizedDescription)
+            return
         }
         
-        if view.annotation?.title != nil {
+//        if editing {
+//            mapView.removeAnnotation(view.annotation!)
+//            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(pin)
+//            CoreDataStackManager.sharedInstance().saveContext()
+//            return
+//        } else {
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
-    }
+//
+//        pin.latitude = (view.annotation?.coordinate.latitude)!
+//        pin.longitude = (view.annotation?.coordinate.longitude)!
+//
+//        for existingPin in Pin.shared {
+//            if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {
+//                    self.pin = existingPin
+//            }
+//        }
+//
+//        if view.annotation?.title != nil {
+//            self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+//        }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
-            print("Pin inventory in prepForSegue is \(Pin.inventory.count)")
-            controller.selectedPin = self.pin
-            print("PrepareForSegue pin properties are: \n latitude: \(self.pin.lat) \n longitude: \(self.pin.lon)")
-        }
+            print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
+            if let pin = self.pin {
+            controller.selectedPin = pin
+            print("PrepareForSegue pin properties are: \n latitude: \(pin.latitude) \n longitude: \(pin.longitude)")
+            }
+            }
     }
     
 }

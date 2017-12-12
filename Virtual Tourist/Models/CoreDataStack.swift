@@ -10,6 +10,13 @@ import CoreData
 
 struct CoreDataStack {
     
+    static func sharedInstance() -> CoreDataStack {
+        struct Static {
+            static let instance = CoreDataStack(modelName: "Model")
+        }
+        return Static.instance!
+    }
+    
     // MARK: Properties
     
     private let model: NSManagedObjectModel
@@ -86,11 +93,20 @@ internal extension CoreDataStack  {
 
 extension CoreDataStack {
     
-    func saveContext() throws {
-        if context.hasChanges {
-            try context.save()
+    func saveContext() {
+        
+            var error: NSError? = nil
+            
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    NSLog("Unresolved error \(String(describing: error)), \(error!.userInfo)")
+                    abort()
+                }
+            }
         }
-    }
     
     func autoSave(_ delayInSeconds : Int) {
         
