@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     
-    var pin: Pin?
+    var pin: Pin!
     
     // MARK: Outlets
     
@@ -50,14 +50,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotation.coordinate = newCoordinate
         //annotation.title = "placeholder"
         
-        let pin = Pin(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude, context: CoreDataStack.sharedInstance().context)
-        pin.setValue(annotation.coordinate.latitude, forKey: "latitude")
-        pin.setValue(annotation.coordinate.longitude, forKey: "longitude")
+        pin = Pin(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude, context: CoreDataStack.sharedInstance().context)
+        
+        if let pin = pin {
+        //pin.setValue(annotation.coordinate.latitude, forKey: "latitude")
+        //pin.setValue(annotation.coordinate.longitude, forKey: "longitude")
         let pinAnnotation = PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
         
         // Add the annotation
         mapView.addAnnotation(pinAnnotation)
         CoreDataStack.sharedInstance().saveContext()
+        }
     }
     
     func loadAnnotations() {
@@ -102,6 +105,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
             if let pin = pin {
             pin.latitude = pinView!.annotation!.coordinate.latitude as Double
             pin.longitude = pinView!.annotation!.coordinate.longitude as Double
+            pin.images = nil
             }
             
             // Download the images for the coordinates
@@ -111,6 +115,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
 //                    self.pin = pin
 //                }
 //            })
+//            }
         } else {
             pinView!.annotation = annotation
         }
