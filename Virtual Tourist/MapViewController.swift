@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     
-    var pin: Pin!
+    var pin = Pin.init(entity: NSEntityDescription.entity(forEntityName: "Pin", in: CoreDataStack.sharedInstance().context)!, insertInto: CoreDataStack.sharedInstance().context)
     
     // MARK: Outlets
     
@@ -48,19 +48,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let newCoordinate = self.mapView.convert(touchPoint, toCoordinateFrom:self.mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
-        //annotation.title = "placeholder"
+
         
         pin = Pin(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude, context: CoreDataStack.sharedInstance().context)
-        
-        if let pin = pin {
-        //pin.setValue(annotation.coordinate.latitude, forKey: "latitude")
-        //pin.setValue(annotation.coordinate.longitude, forKey: "longitude")
         let pinAnnotation = PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
         
         // Add the annotation
         mapView.addAnnotation(pinAnnotation)
         CoreDataStack.sharedInstance().saveContext()
-        }
     }
     
     func loadAnnotations() {
@@ -90,6 +85,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
         return !(touch.view is MKPinAnnotationView)
     }
     
+    /*
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -122,6 +118,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
         
         return pinView
     }
+ */
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
@@ -137,15 +134,14 @@ extension MapViewController: UIGestureRecognizerDelegate {
             print(error.localizedDescription)
             return
         }
-        
-//        if editing {
-//            mapView.removeAnnotation(view.annotation!)
-//            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(pin)
-//            CoreDataStackManager.sharedInstance().saveContext()
-//            return
-//        } else {
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
+    //        if editing {
+    //            mapView.removeAnnotation(view.annotation!)
+    //            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(pin)
+    //            CoreDataStackManager.sharedInstance().saveContext()
+    //            return
+    //        } else {
 //
 //        pin.latitude = (view.annotation?.coordinate.latitude)!
 //        pin.longitude = (view.annotation?.coordinate.longitude)!
@@ -165,10 +161,11 @@ extension MapViewController: UIGestureRecognizerDelegate {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
             print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
-            if let pin = self.pin {
-            controller.selectedPin = pin
+                controller.selectedPin = pin
+                if let images = pin.images?.allObjects as? [Images] {
+                    controller.photos = images
+                }
             print("PrepareForSegue pin properties are: \n latitude: \(pin.latitude) \n longitude: \(pin.longitude)")
-            }
             }
     }
     

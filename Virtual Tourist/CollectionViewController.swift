@@ -61,7 +61,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
  
-        print("This is what selectedPin looks like: \n \(selectedPin)")
+        //print("This is what selectedPin looks like: \n \(selectedPin)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +102,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDataSource protocol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.selectedPin.images!.count
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
