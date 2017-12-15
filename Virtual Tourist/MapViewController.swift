@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     
-    var pin = Pin.init(entity: NSEntityDescription.entity(forEntityName: "Pin", in: CoreDataStack.sharedInstance().context)!, insertInto: CoreDataStack.sharedInstance().context)
+    var selectedPin: Pin?
     
     // MARK: Outlets
     
@@ -49,13 +49,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
 
+        // Initialize NSManagedObject 'Pin' with properties
+        selectedPin = Pin(context: CoreDataStack.sharedInstance().context)
+        selectedPin?.latitude = annotation.coordinate.latitude
+        selectedPin?.longitude = annotation.coordinate.longitude
         
-        pin = Pin(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude, context: CoreDataStack.sharedInstance().context)
-        let pinAnnotation = PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
-        
+        if let selectedPin = selectedPin {
+        let pinAnnotation = PinAnnotation(objectID: selectedPin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
+
         // Add the annotation
         mapView.addAnnotation(pinAnnotation)
+        }
+        
         CoreDataStack.sharedInstance().saveContext()
+        print("This is what the ole save looks like: \(CoreDataStack.sharedInstance().context)")
     }
     
     func loadAnnotations() {
@@ -128,7 +135,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
             let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
             fetchRequest.predicate = predicate
             let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
-            pin = pins![0]
+            selectedPin = pins![0]
         } catch let error as NSError {
             print("failed to get pin by object id")
             print(error.localizedDescription)
@@ -161,12 +168,14 @@ extension MapViewController: UIGestureRecognizerDelegate {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
             print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
-                controller.selectedPin = pin
-                if let images = pin.images?.allObjects as? [Images] {
+            if let selectedPin = selectedPin {
+                controller.selectedPin = selectedPin
+                if let images = selectedPin.images?.allObjects as? [Images] {
                     controller.photos = images
                 }
-            print("PrepareForSegue pin properties are: \n latitude: \(pin.latitude) \n longitude: \(pin.longitude)")
             }
+            print("PrepareForSegue pin properties are: \n latitude: \(selectedPin?.latitude) \n longitude: \(selectedPin?.longitude)")
+        }
     }
     
 }
