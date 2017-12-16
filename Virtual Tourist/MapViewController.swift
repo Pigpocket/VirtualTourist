@@ -22,11 +22,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Outlets
     
+    @IBOutlet weak var editButtonLabel: UILabel!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = editButtonItem
         self.mapView.delegate = self
         
         // Implement the tap gesture recognizer
@@ -62,7 +65,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         CoreDataStack.sharedInstance().saveContext()
-        print("This is what the ole save looks like: \(CoreDataStack.sharedInstance().context)")
     }
     
     func loadAnnotations() {
@@ -78,12 +80,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     pinAnnotations.append(PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: coordinate))
                 }
-                
                 mapView.addAnnotations(pinAnnotations)
             }
         }
     }
-    
+
+    @IBAction func editPinAction(_ sender: Any) {
+        editButtonItem.isEnabled = true
+    }
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {
@@ -92,77 +96,31 @@ extension MapViewController: UIGestureRecognizerDelegate {
         return !(touch.view is MKPinAnnotationView)
     }
     
-    /*
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let reuseId = "pin"
-        
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.pinTintColor = .red
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            
-            // Set the coordinates in the Pin struct
-            if let pin = pin {
-            pin.latitude = pinView!.annotation!.coordinate.latitude as Double
-            pin.longitude = pinView!.annotation!.coordinate.longitude as Double
-            pin.images = nil
-            }
-            
-            // Download the images for the coordinates
-//            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: pin.latitude, longitude: pin.longitude, page: 1, completionHandlerForGetImages: { (pin, error) in
-//
-//                if let pin = pin {
-//                    self.pin = pin
-//                }
-//            })
-//            }
-        } else {
-            pinView!.annotation = annotation
-        }
-        
-        return pinView
-    }
- */
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        do {
-            let pinAnnotation = view.annotation as! PinAnnotation
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
-            let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
-            fetchRequest.predicate = predicate
-            let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
-            selectedPin = pins![0]
-        } catch let error as NSError {
-            print("failed to get pin by object id")
-            print(error.localizedDescription)
+        if !isEditing {
+            do {
+                let pinAnnotation = view.annotation as! PinAnnotation
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+                let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
+                fetchRequest.predicate = predicate
+                let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
+                selectedPin = pins![0]
+            } catch let error as NSError {
+                print("failed to get pin by object id")
+                print(error.localizedDescription)
+                return
+            }
+            self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
+        } else {
+            mapView.removeAnnotation(view.annotation!)
+            if let selectedPin = selectedPin {
+                CoreDataStack.sharedInstance().context.delete(selectedPin)
+            }
+            CoreDataStack.sharedInstance().saveContext()
             return
         }
-            self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
-        }
-    //        if editing {
-    //            mapView.removeAnnotation(view.annotation!)
-    //            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(pin)
-    //            CoreDataStackManager.sharedInstance().saveContext()
-    //            return
-    //        } else {
-//
-//        pin.latitude = (view.annotation?.coordinate.latitude)!
-//        pin.longitude = (view.annotation?.coordinate.longitude)!
-//
-//        for existingPin in Pin.shared {
-//            if existingPin.lat == view.annotation?.coordinate.latitude && existingPin.lon == view.annotation?.coordinate.longitude {
-//                    self.pin = existingPin
-//            }
-//        }
-//
-//        if view.annotation?.title != nil {
-//            self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
-//        }
-    
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
@@ -174,7 +132,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
                     controller.photos = images
                 }
             }
-            print("PrepareForSegue pin properties are: \n latitude: \(selectedPin?.latitude) \n longitude: \(selectedPin?.longitude)")
         }
     }
     

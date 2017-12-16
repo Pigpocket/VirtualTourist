@@ -31,10 +31,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="vkf-fv-SNb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TDU-No-FSn"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TDU-No-FSn">
+                            <connections>
+                                <action selector="editPinAction:" destination="BYZ-38-t0r" id="wdP-gs-zVe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="MapView" destination="ZhM-mD-nQ5" id="JSG-Ug-Xkb"/>
+                        <outlet property="editButton" destination="TDU-No-FSn" id="jPE-c0-AzY"/>
                         <segue destination="9uX-7j-brY" kind="show" identifier="collectionViewSegue" id="FhB-Uu-E9Q"/>
                     </connections>
                 </viewController>
