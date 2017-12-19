@@ -105,9 +105,7 @@ class FlickrClient: NSObject {
 
 extension FlickrClient {
     
-    func getImagesFromFlickr(latitude: Any, longitude: Any, page: Any, completionHandlerForGetImages: @escaping (_ pin: Pin?, _ errorString: String?) -> Void) {
-        
-        let pin = Pin()
+    func getImagesFromFlickr(pin: Pin, context: NSManagedObjectContext, page: Any, completionHandlerForGetImages: @escaping (_ images: [Images]?, _ errorString: String?) -> Void) {
         
         let methodParameters = [
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.FlickrPhotosSearch,
@@ -115,16 +113,15 @@ extension FlickrClient {
             Constants.FlickrParameterKeys.Format: Constants.FlickrParameterValues.ResponseFormat,
             Constants.FlickrParameterKeys.Extras: Constants.FlickrParameterValues.MediumURL,
             Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback,
-            Constants.FlickrParameterKeys.Lat: latitude as Any,
-            Constants.FlickrParameterKeys.Lon: longitude as Any,
+            Constants.FlickrParameterKeys.Lat: pin.latitude as Any,
+            Constants.FlickrParameterKeys.Lon: pin.longitude as Any,
             Constants.FlickrParameterKeys.PerPage: Constants.FlickrParameterValues.PerPage,
             Constants.FlickrParameterKeys.Page: page
             ]
         
-        taskForGetImages(methodParameters: methodParameters, latitude: latitude, longitude: longitude) { (results, error) in
+        taskForGetImages(methodParameters: methodParameters, latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
             
-            pin.latitude = latitude as! Double
-            pin.longitude = longitude as! Double
+            var imageArray = [Images]()
             
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
@@ -132,12 +129,13 @@ extension FlickrClient {
                 
                 // Create a dictionary from the data:
                 
-                /* GUARD: Are the "photos" and "photo" keys in our result? */
-                if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
+            /* GUARD: Are the "photos" and "photo" keys in our result? */
+            if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
                     
                 for photo in photoArray {
                     
                     let image = Images(context: CoreDataStack.sharedInstance().context)
+                    
                     // GUARD: Does our photo have a key for 'url_m'?
                     guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
                         completionHandlerForGetImages(nil, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
@@ -146,58 +144,25 @@ extension FlickrClient {
                     
                     // Get metadata
                     let imageURL = URL(string: imageUrlString)!
-                    let farm = photo["farm"] as? Int ?? 0
-                    let id = photo["id"] as? String ?? ""
-                    let isFamily = photo["isfamily"] as? Int ?? 0
-                    let isFriend = photo["isfriend"] as? Int ?? 0
-                    let isPublic = photo["ispublic"] as? Int ?? 0
-                    let owner = photo["owner"] as? String ?? ""
-                    let secret = photo["secret"] as? String ?? ""
-                    let server = photo["server"] as? String ?? ""
+                    let data = try? Data(contentsOf: imageURL)
                     let title = photo["title"] as? String ?? ""
                     
-                    image.imageURL = String(describing: imageURL)
-                    image.pin = pin
-                    image.title = title
                     
-                    pin.addToImages(image)
-                    
-                    //pin.images.append(Image(imageURL: imageURL, farm: farm, id: id, isFamily: isFamily, isFriend: isFriend, isPublic: isPublic, owner: owner, secret: secret, server: server, title: title))
-                    
-                }
-                    
-                    /*
-                // Add the pin to inventory
-                print("There are \(pin.images.count) 'images' in the imageMetaData array")
-                print("Pin inventory count before inventory pin loop is: \(Pin.inventory.count)")
-                    
-                    // If there are no pins in inventory
-                    if Pin.inventory.count == 0 {
+                    // Assign the metadata to images NSManagedObject
+                    performUIUpdatesOnMain {
+                        image.imageData = (data! as NSData)
+                        image.imageURL = String(describing: imageURL)
+                        image.pin = pin
+                        image.title = title
                         
-                        // Add the pin to inventory
-                        Pin.inventory.append(pin)
-                        
-                    } else {
-                        
-                        // Check if a pin in inventory has these coordinates
-                        for existingPin in Pin.inventory {
-                            if existingPin.lat == pin.lat && existingPin.lon == pin.lon {
-                                
-                                // Break the loop
-                                break
-                            } else {
-                                
-                                // Add a pin to inventory
-                                Pin.inventory.append(pin)
-                            }
-                        }
+                        imageArray.append(image)
                     }
-                print("Pin inventory count after inventory pin loop is: \(Pin.inventory.count)") */
+                }
             }
-            completionHandlerForGetImages(pin, nil)
-            print("Networking completed")
-            }
+                print("Networking completed")
+                completionHandlerForGetImages(imageArray, nil)
         }
+    }
     }
     
     private func makeRequestAtURL(url: NSURL, method: HTTPMethod, headers: [String:String]? = nil, body: [String:AnyObject]? = nil, completionHandler: @escaping (Data?, Error?) -> Void) {

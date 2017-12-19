@@ -21,16 +21,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
-    var selectedPin = Pin()
+    var selectedPin: Pin!
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
-    var photos: [Images] = []
+    var photos: [Images?] = []
     
     // MARK: Actions
     
+    /*
     @IBAction func newCollectionAction(_ sender: Any) {
         
         pageCount += 1
@@ -49,6 +50,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             }
         })
     }
+ */
     
     // MARK: Lifecycle
     
@@ -61,6 +63,26 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
  
+        setAnnotations()
+        
+        /*
+        if self.photos.count == 0 {
+            FlickrClient.sharedInstance().getImagesFromFlickr(pin: self.selectedPin, context: CoreDataStack.sharedInstance().context, page: self.pageCount, completionHandlerForGetImages: { (images, error) in
+                
+                if let images = images {
+                    
+                    performUIUpdatesOnMain {
+                    for image in images {
+                        self.photos.append(image)
+                        print("This is the photos count in the photos array: \(self.photos.count)")
+                    }
+                    }
+                } else {
+                    print("No images existed")
+                }
+            })
+        } */
+        print("Final count of photos in the photos array: \(photos.count)")
         //print("This is what selectedPin looks like: \n \(selectedPin)")
     }
     
@@ -68,7 +90,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewWillAppear(true)
         
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
-        setAnnotations()
+        
     }
     
     func itemWidth() -> CGFloat {
@@ -111,12 +133,16 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let photo = photos[indexPath.row]
         
         // Get a photo if it already exists
-        if let photoImage = photo.getImage() {
-            cell.imageView.image = photoImage
-        
-        } else {
+        if let photo = photo {
+            performUIUpdatesOnMain {
+            print("there is a photo")
+            cell.imageView.image = photo.getImage()
+                print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
+            }
+        }
+        //} else {
             
-            FlickrClient.sharedInstance().imageDataForPhoto(image: photo, completionHandler: { (imageData, error) in
+            /*FlickrClient.sharedInstance().imageDataForPhoto(image: photo, completionHandler: { (imageData, error) in
                 
                 guard error == nil else {
                     return
@@ -125,7 +151,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 performUIUpdatesOnMain {
                     cell.imageView.image = UIImage(data: imageData!)
                 }
-            })
+            }) */
             
             /* Otherwise get the
             FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.latitude, longitude: selectedPin.longitude, page: pageCount) { (pin, error) in
@@ -139,7 +165,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                         }
                     }
                 } */
-            }
+            //}
         return cell
     }
     

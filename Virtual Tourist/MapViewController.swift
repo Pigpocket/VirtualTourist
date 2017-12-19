@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotationArray: [MKPointAnnotation] = []
     
     var selectedPin: Pin?
+    var images: [Images?] = []
     
     // MARK: Outlets
     
@@ -58,10 +59,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         selectedPin?.longitude = annotation.coordinate.longitude
         
         if let selectedPin = selectedPin {
-        let pinAnnotation = PinAnnotation(objectID: selectedPin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
-
-        // Add the annotation
-        mapView.addAnnotation(pinAnnotation)
+            let pinAnnotation = PinAnnotation(objectID: selectedPin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
+            mapView.addAnnotation(pinAnnotation)
+        
+            FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: 1) { (images, error) in
+            
+                guard error == nil else {
+                    print("There was an error get images objects")
+                    return
+                }
+                
+                if let images = images {
+                    self.images = images
+                }
+            }
         }
         
         CoreDataStack.sharedInstance().saveContext()
@@ -128,6 +139,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
             print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
             if let selectedPin = selectedPin {
                 controller.selectedPin = selectedPin
+                controller.photos = images
                 if let images = selectedPin.images?.allObjects as? [Images] {
                     controller.photos = images
                 }
