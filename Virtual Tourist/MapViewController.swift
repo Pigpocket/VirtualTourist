@@ -126,6 +126,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
         } else {
             mapView.removeAnnotation(view.annotation!)
             if let selectedPin = selectedPin {
+                print("selectedPin contents prior to deletion: \(selectedPin)")
                 CoreDataStack.sharedInstance().context.delete(selectedPin)
             }
             CoreDataStack.sharedInstance().saveContext()

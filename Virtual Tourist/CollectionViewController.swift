@@ -138,6 +138,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             print("there is a photo")
             cell.imageView.image = photo.getImage()
                 print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
+                print("This the photo count: \(self.photos.count)")
             }
         }
         //} else {

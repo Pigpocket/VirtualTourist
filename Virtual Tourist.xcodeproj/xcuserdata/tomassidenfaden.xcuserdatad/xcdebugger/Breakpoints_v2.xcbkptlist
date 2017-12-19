@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Virtual Tourist/CollectionViewController.swift"
-            timestampString = "535339914.774115"
+            filePath = "Virtual Tourist/MapViewController.swift"
+            timestampString = "535403048.071934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Virtual Tourist/CollectionViewController.swift"
-            timestampString = "535339914.774343"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "mapView(_:didSelect:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
