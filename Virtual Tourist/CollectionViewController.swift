@@ -135,10 +135,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         // Get a photo if it already exists
         if let photo = photo {
             performUIUpdatesOnMain {
-            print("there is a photo")
-            cell.imageView.image = photo.getImage()
+                cell.imageView.image = photo.getImage()
                 print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
-                print("This the photo count: \(self.photos.count)")
             }
         }
         //} else {

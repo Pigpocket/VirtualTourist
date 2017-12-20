@@ -70,12 +70,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
                 
                 if let images = images {
-                    self.images = images
+                    for image in images {
+                        image.pin = selectedPin
+                    }
+                    performUIUpdatesOnMain {
+                        self.images = images
+                        CoreDataStack.sharedInstance().saveContext()
+                    }
                 }
             }
         }
-        
+        print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
         CoreDataStack.sharedInstance().saveContext()
+        
     }
     
     func loadAnnotations() {
@@ -108,6 +115,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //mapView.deselectAnnotation(view.annotation, animated: false)
         
         if !isEditing {
             do {
@@ -122,15 +130,32 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 print(error.localizedDescription)
                 return
             }
+            print("This pin contains the following data: \(selectedPin!)")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
-        } else {
-            mapView.removeAnnotation(view.annotation!)
-            if let selectedPin = selectedPin {
-                print("selectedPin contents prior to deletion: \(selectedPin)")
-                CoreDataStack.sharedInstance().context.delete(selectedPin)
-            }
-            CoreDataStack.sharedInstance().saveContext()
-            return
+        }
+        
+        if isEditing {
+            print("We're in editing mode")
+//            do {
+//                let pinAnnotation = view.annotation as! PinAnnotation
+//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+//                let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
+//                fetchRequest.predicate = predicate
+//                let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
+//                print("This is what pins looks like: \(String(describing: pins))")
+//                selectedPin = pins![0]
+                print("selectedPin contents prior to deletion: \(String(describing: selectedPin))")
+                //fetchRequest.returnsObjectsAsFaults = false
+                CoreDataStack.sharedInstance().context.delete(selectedPin!)
+                print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
+                mapView.removeAnnotation(view.annotation!)
+                CoreDataStack.sharedInstance().saveContext()
+                return
+//            } catch let error as NSError {
+//                print("failed to get by object id")
+//                print(error.localizedDescription)
+//                return
+//            }
         }
     }
     
