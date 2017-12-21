@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         selectedPin = Pin(context: CoreDataStack.sharedInstance().context)
         selectedPin?.latitude = annotation.coordinate.latitude
         selectedPin?.longitude = annotation.coordinate.longitude
-        
+            
         if let selectedPin = selectedPin {
             let pinAnnotation = PinAnnotation(objectID: selectedPin.objectID, title: nil, subtitle: nil, coordinate: annotation.coordinate)
             mapView.addAnnotation(pinAnnotation)
@@ -70,19 +70,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
                 
                 if let images = images {
-                    for image in images {
-                        image.pin = selectedPin
-                    }
                     performUIUpdatesOnMain {
                         self.images = images
+                        print("Images just prior to saving: \(images)")
                         CoreDataStack.sharedInstance().saveContext()
                     }
                 }
             }
         }
         print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
-        CoreDataStack.sharedInstance().saveContext()
-        
     }
     
     func loadAnnotations() {
@@ -136,14 +132,14 @@ extension MapViewController: UIGestureRecognizerDelegate {
         
         if isEditing {
             print("We're in editing mode")
-//            do {
-//                let pinAnnotation = view.annotation as! PinAnnotation
-//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
-//                let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
-//                fetchRequest.predicate = predicate
-//                let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
-//                print("This is what pins looks like: \(String(describing: pins))")
-//                selectedPin = pins![0]
+            do {
+                let pinAnnotation = view.annotation as! PinAnnotation
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+                let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
+                fetchRequest.predicate = predicate
+                let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
+                print("This is what pins looks like: \(String(describing: pins))")
+                selectedPin = pins![0]
                 print("selectedPin contents prior to deletion: \(String(describing: selectedPin))")
                 //fetchRequest.returnsObjectsAsFaults = false
                 CoreDataStack.sharedInstance().context.delete(selectedPin!)
@@ -151,11 +147,11 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 mapView.removeAnnotation(view.annotation!)
                 CoreDataStack.sharedInstance().saveContext()
                 return
-//            } catch let error as NSError {
-//                print("failed to get by object id")
-//                print(error.localizedDescription)
-//                return
-//            }
+            } catch let error as NSError {
+                print("failed to get by object id")
+                print(error.localizedDescription)
+                return
+            }
         }
     }
     
