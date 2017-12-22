@@ -31,26 +31,29 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Actions
     
-    /*
+    
     @IBAction func newCollectionAction(_ sender: Any) {
         
         pageCount += 1
             
         self.deleteImages()
 
-        FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.latitude, longitude: selectedPin.longitude, page: pageCount, completionHandlerForGetImages: { (pin, error) in
+        FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
             
-            if let pin = pin {
-                self.selectedPin = pin
-                print("latitude= \(pin.latitude)")
-                print("longitude= \(pin.longitude)")
+            guard error == nil else {
+                print("There was an error getting the images")
+                return
+            }
+            
+            if let images = images {
+                self.photos = images
                 performUIUpdatesOnMain {
                     self.collectionView.reloadData()
                 }
             }
         })
     }
- */
+
     
     // MARK: Lifecycle
     
@@ -64,33 +67,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.scrollDirection = .vertical
  
         setAnnotations()
-        
-        /*
-        if self.photos.count == 0 {
-            FlickrClient.sharedInstance().getImagesFromFlickr(pin: self.selectedPin, context: CoreDataStack.sharedInstance().context, page: self.pageCount, completionHandlerForGetImages: { (images, error) in
-                
-                if let images = images {
-                    
-                    performUIUpdatesOnMain {
-                    for image in images {
-                        self.photos.append(image)
-                        print("This is the photos count in the photos array: \(self.photos.count)")
-                    }
-                    }
-                } else {
-                    print("No images existed")
-                }
-            })
-        } */
-        print("Final count of photos in the photos array: \(photos.count)")
-        //print("This is what selectedPin looks like: \n \(selectedPin)")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
-        
+        print("This pin has \(String(describing: selectedPin.images?.count)) images")
     }
     
     func itemWidth() -> CGFloat {
@@ -136,51 +120,21 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         if let photo = photo {
             performUIUpdatesOnMain {
                 cell.imageView.image = photo.getImage()
-                print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
+                print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
+                //print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
             }
         }
-        //} else {
-            
-            /*FlickrClient.sharedInstance().imageDataForPhoto(image: photo, completionHandler: { (imageData, error) in
-                
-                guard error == nil else {
-                    return
-                }
-                
-                performUIUpdatesOnMain {
-                    cell.imageView.image = UIImage(data: imageData!)
-                }
-            }) */
-            
-            /* Otherwise get the
-            FlickrClient.sharedInstance().getImagesFromFlickr(latitude: selectedPin.latitude, longitude: selectedPin.longitude, page: pageCount) { (pin, error) in
-                
-                if let pin = pin {
-                    let url = pin.images[indexPath.item].imageURL
-                    let data = try? Data(contentsOf: url)
-                    performUIUpdatesOnMain {
-                        cell.imageView.image = UIImage(data: data!)
-                        cell.imageView.contentMode = .scaleAspectFill
-                        }
-                    }
-                } */
-            //}
         return cell
     }
     
     func deleteImages(){
-        //if selectedPin.images.count > 0 {
-            
+        if selectedPin.images!.count > 0 {
+            selectedPin.removePhotos(context: CoreDataStack.sharedInstance().context)
             selectedPin.images = []
-          //  print("Pin contains \(selectedPin.images.count) images")
-            
-            //sharedContext.deleteObject(photo)
-            
-            
-            // Remove from documents directory
-            /*let id: String = "\(photo.imageID).jpg"
-            photo.removeFromDocumentsDirectory(id) */
-        //}
+            photos.removeAll()
+            print("Pin contains \(selectedPin.images!.count) images")
+            print("Photos contains \(photos.count) photos")
+        }
     }
     
     // MARK: - UICollectionViewDelegate protocol

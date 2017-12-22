@@ -72,7 +72,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 if let images = images {
                     performUIUpdatesOnMain {
                         self.images = images
-                        print("Images just prior to saving: \(images)")
+                        //print("Images just prior to saving: \(images)")
                         CoreDataStack.sharedInstance().saveContext()
                     }
                 }
@@ -126,7 +126,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 print(error.localizedDescription)
                 return
             }
-            print("This pin contains the following data: \(selectedPin!)")
+            //print("This pin contains the following data: \(selectedPin!)")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
         
