@@ -28,6 +28,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
     var photos: [Images?] = []
+    var selectedIndexes = [IndexPath]()
     
     // MARK: Actions
     
@@ -35,7 +36,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBAction func newCollectionAction(_ sender: Any) {
         
         pageCount += 1
-            
+        
         self.deleteImages()
 
         FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
@@ -46,8 +47,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             }
             
             if let images = images {
-                self.photos = images
                 performUIUpdatesOnMain {
+                    self.photos = images
                     self.collectionView.reloadData()
                 }
             }
@@ -114,14 +115,13 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
+        print("The image count in the pin is: \(String(describing: selectedPin.images?.count))")
         let photo = photos[indexPath.row]
         
         // Get a photo if it already exists
         if let photo = photo {
             performUIUpdatesOnMain {
                 cell.imageView.image = photo.getImage()
-                print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
-                //print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
             }
         }
         return cell
