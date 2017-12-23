@@ -28,6 +28,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
     var photos: [Images?] = []
+    var imageData: [Data?] = []
     
     // MARK: Actions
     
@@ -67,7 +68,23 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.scrollDirection = .vertical
  
         setAnnotations()
-
+        
+//        for photo in photos {
+//            FlickrClient.sharedInstance().imageDataForPhoto(image: photo) { (imageData, error) in
+//
+//                guard error == nil else {
+//                    print("There is an error: \(String(describing: error))")
+//                    return
+//                }
+//
+//                if let imageData = imageData {
+//                    performUIUpdatesOnMain {
+//                        self.imageData.append(imageData)
+//
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +92,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
         print("This pin has \(String(describing: selectedPin.images?.count)) images")
+        
     }
     
     func itemWidth() -> CGFloat {
@@ -116,12 +134,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         let photo = photos[indexPath.row]
         
-        // Get a photo if it already exists
+        
+        
         if let photo = photo {
             performUIUpdatesOnMain {
-                cell.imageView.image = photo.getImage()
+                let url = URL(string: photo.imageURL!)
+                let data = try? Data(contentsOf: url!)
+                cell.imageView.image = UIImage(data: data!)
                 print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
-                //print("This is what getImage function looks like: \(String(describing: photo.getImage()))")
             }
         }
         return cell

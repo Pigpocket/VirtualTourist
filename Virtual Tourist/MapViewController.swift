@@ -161,7 +161,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
             print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
             if let selectedPin = selectedPin {
                 controller.selectedPin = selectedPin
-                controller.photos = images
+                controller.photos = images as! [Images]
                 if let images = selectedPin.images?.allObjects as? [Images] {
                     controller.photos = images
                 }

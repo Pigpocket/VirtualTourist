@@ -144,13 +144,13 @@ extension FlickrClient {
                     
                     // Get metadata
                     let imageURL = URL(string: imageUrlString)!
-                    let data = try? Data(contentsOf: imageURL)
+                    //let data = try? Data(contentsOf: imageURL)
                     let title = photo["title"] as? String ?? ""
                     
                     
                     // Assign the metadata to images NSManagedObject
                     performUIUpdatesOnMain {
-                        image.imageData = (data! as NSData)
+                        //image.imageData = (data! as NSData)
                         image.imageURL = String(describing: imageURL)
                         image.pin = pin
                         image.title = title
