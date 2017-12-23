@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import Imaginary
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
     
@@ -134,13 +135,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         let photo = photos[indexPath.row]
         
-        
-        
         if let photo = photo {
             performUIUpdatesOnMain {
                 let url = URL(string: photo.imageURL!)
-                let data = try? Data(contentsOf: url!)
-                cell.imageView.image = UIImage(data: data!)
+                //let data = try? Data(contentsOf: url!)
+                cell.imageView.setImage(url: url!)
                 print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
             }
         }
