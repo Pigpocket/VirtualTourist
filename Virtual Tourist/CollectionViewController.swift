@@ -30,30 +30,73 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var activityIndicator = UIActivityIndicatorView()
     var photos: [Images?] = []
     var imageData: [Data?] = []
+    var selectedIndexes = [IndexPath]()
     
     // MARK: Actions
     
     
     @IBAction func newCollectionAction(_ sender: Any) {
         
-        pageCount += 1
+        print("selectedIndexes count is: \(selectedIndexes.count)")
+        if selectedIndexes.isEmpty {
+            pageCount += 1
             
-        self.deleteImages()
+            self.deleteImages()
 
-        FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
+            FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
+                
+                guard error == nil else {
+                    print("There was an error getting the images")
+                    return
+                }
+                
+                if let images = images {
+                    self.photos = images
+                    performUIUpdatesOnMain {
+                        self.collectionView.reloadData()
+                    }
+                }
+            })
+        } else {
+            //var selectedPhotos = [Images]()
             
-            guard error == nil else {
-                print("There was an error getting the images")
-                return
-            }
-            
-            if let images = images {
-                self.photos = images
-                performUIUpdatesOnMain {
-                    self.collectionView.reloadData()
+            collectionView.performBatchUpdates ({
+                
+                let sortedIndexes = self.selectedIndexes.sorted(by: {$0.row > $1.row})
+                
+                for indexPath in sortedIndexes {
+                    if let photoObject = self.photos[indexPath.row] {
+                        self.photos.remove(at: indexPath.row)
+                        self.collectionView.deleteItems(at: [indexPath])
+                        CoreDataStack.sharedInstance().context.delete(photoObject)
+                        print("Number of images in pin: \(String(describing: self.selectedPin.images?.count))")
+                        print("Number of images in photos array: \(self.photos.count)")
+                        //selectedPhotos.append(photoObject)
+                    }
                 }
             }
-        })
+                , completion: { (completed) in
+                    
+                    if self.photos.count == 0 {
+                        performUIUpdatesOnMain {
+                            //self.noImagesLabel.text = "Album is Empty"
+                            //self.noImagesLabel.hidden = false
+                            CoreDataStack.sharedInstance().saveContext()
+                        }
+                    }
+            })
+            
+            //for photo in selectedPhotos {
+              //  CoreDataStack.sharedInstance().context.delete(photo)
+            //}
+            
+            CoreDataStack.sharedInstance().saveContext()
+            
+            selectedIndexes.removeAll()
+            collectionView.reloadData()
+            
+            setBarButtonText()
+        }
     }
 
     
@@ -70,22 +113,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
  
         setAnnotations()
         
-//        for photo in photos {
-//            FlickrClient.sharedInstance().imageDataForPhoto(image: photo) { (imageData, error) in
-//
-//                guard error == nil else {
-//                    print("There is an error: \(String(describing: error))")
-//                    return
-//                }
-//
-//                if let imageData = imageData {
-//                    performUIUpdatesOnMain {
-//                        self.imageData.append(imageData)
-//
-//                    }
-//                }
-//            }
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,11 +140,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         self.mapView.delegate = self
         
         // Set the annotation
-        //let title = "\((pin.images) + " " + (User.shared.lastName))"
-        //let subtitle = locationData.mediaURL
         annotation.coordinate = coordinates
-        //annotation.title = title
-        //annotation.subtitle = subtitle
         
         // Add the annotation
         mapView.addAnnotation(self.annotation)
@@ -139,10 +162,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             performUIUpdatesOnMain {
                 let url = URL(string: photo.imageURL!)
                 //let data = try? Data(contentsOf: url!)
+                
                 cell.imageView.setImage(url: url!)
-                print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
+                cell.imageView.alpha = 1.0
             }
         }
+        print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
         return cell
     }
     
@@ -156,12 +181,27 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func setBarButtonText() {
+        newCollectionButton.title = selectedIndexes.count > 0 ? "Remove Selected Photos" : "New Collection"
+        newCollectionButton.tintColor = newCollectionButton.title == "Remove Selected Photos" ? UIColor.red : UIColor(red: 0, green: 0.48, blue: 1, alpha: 1)
+    }
+    
     // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        
+        if let index = selectedIndexes.index(of: indexPath) {
+            selectedIndexes.remove(at: index)
+            cell.imageView.alpha = 1.0
+        } else {
+            selectedIndexes.append(indexPath)
+            cell.imageView.alpha = 0.3
+        }
+        setBarButtonText()
     }
-    
 }
 
