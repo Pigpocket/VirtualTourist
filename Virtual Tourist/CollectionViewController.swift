@@ -53,6 +53,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 if let images = images {
                     self.photos = images
                     performUIUpdatesOnMain {
+                        for image in images {
+                            self.selectedPin.addToImages(image)
+                        }
                         self.collectionView.reloadData()
                     }
                 }
@@ -68,7 +71,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                     if let photoObject = self.photos[indexPath.row] {
                         self.photos.remove(at: indexPath.row)
                         self.collectionView.deleteItems(at: [indexPath])
-                        CoreDataStack.sharedInstance().context.delete(photoObject)
+                        self.selectedPin.removeFromImages(photoObject)
                         print("Number of images in pin: \(String(describing: self.selectedPin.images?.count))")
                         print("Number of images in photos array: \(self.photos.count)")
                         //selectedPhotos.append(photoObject)
