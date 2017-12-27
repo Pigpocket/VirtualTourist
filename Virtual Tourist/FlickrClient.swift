@@ -160,56 +160,10 @@ extension FlickrClient {
                 }
             }
                 print("Networking completed")
+                print("\(imageArray.count)")
                 completionHandlerForGetImages(imageArray, nil)
         }
     }
-    }
-    
-    private func makeRequestAtURL(url: NSURL, method: HTTPMethod, headers: [String:String]? = nil, body: [String:AnyObject]? = nil, completionHandler: @escaping (Data?, Error?) -> Void) {
-        
-        let request = NSMutableURLRequest(url: url as URL)
-        
-        if let headers = headers {
-            for (key, value) in headers {
-                request.addValue(value, forHTTPHeaderField: key)
-            }
-        }
-        
-        if let body = body {
-            request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
-        }
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            (data, response, error) in
-            
-            guard error == nil else {
-                return completionHandler(nil, error)
-            }
-            
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                return completionHandler(nil, error)
-            }
-            
-            completionHandler(data, nil)
-        }
-        
-        task.resume()
-    }
-    
-    func imageDataForPhoto(image: Images, completionHandler: @escaping (_ imageData: Data?, _ error: Error?) -> Void) {
-        
-        let url = NSURL(string: image.imageURL!)!
-        
-        makeRequestAtURL(url: url, method: .GET) {
-            (data, error) in
-            
-            guard error == nil else {
-                completionHandler(nil, error)
-                return
-            }
-            
-            completionHandler(data, nil)
-        }
     }
     
 }

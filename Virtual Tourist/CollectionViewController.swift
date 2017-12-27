@@ -38,60 +38,100 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBAction func newCollectionAction(_ sender: Any) {
         
         print("selectedIndexes count is: \(selectedIndexes.count)")
+        
+        // If no images are selected, get a new image collection
         if selectedIndexes.isEmpty {
+            
+            // Increment the page count
             pageCount += 1
             
+            // Delete existing images
             self.deleteImages()
 
+            // Get new images from Flickr
             FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
+                print("1. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
                 
+                // Make sure there were no errors
                 guard error == nil else {
                     print("There was an error getting the images")
                     return
                 }
                 
+                // If we got images
                 if let images = images {
+                    print("\(images.count) images were sent to the completionHandler")
+                    print("2. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
+                    
+                    // Add them to our class level image array
                     self.photos = images
-                    performUIUpdatesOnMain {
-                        for image in images {
-                            self.selectedPin.addToImages(image)
+
+                    print("There are \(self.photos.count) images in photos after completionHandler")
+                    print("3. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
+
+                    print("4. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
+                    self.selectedPin.images?.adding(images)
+                        performUIUpdatesOnMain {
+                            self.collectionView.reloadData()
                         }
-                        self.collectionView.reloadData()
-                    }
                 }
             })
+            
+        // If there were images selected, remove them
         } else {
-            //var selectedPhotos = [Images]()
+            
+            // Create a local array of Images
+            var selectedPhotos = [Images]()
             
             collectionView.performBatchUpdates ({
-                
+            
+                // Sort the indexes
                 let sortedIndexes = self.selectedIndexes.sorted(by: {$0.row > $1.row})
                 
                 for indexPath in sortedIndexes {
+                    
+                    // If an image exists
                     if let photoObject = self.photos[indexPath.row] {
+                        
+                        // Remove it from the class array
                         self.photos.remove(at: indexPath.row)
+                        
+                        // Remove it from the collectionView
                         self.collectionView.deleteItems(at: [indexPath])
+                        
+                        // Remove it from the selectedPin object
                         self.selectedPin.removeFromImages(photoObject)
-                        print("Number of images in pin: \(String(describing: self.selectedPin.images?.count))")
-                        print("Number of images in photos array: \(self.photos.count)")
-                        //selectedPhotos.append(photoObject)
+                        print("3. Number of images in pin: \(String(describing: self.selectedPin.images?.count))")
+                        print("3. Number of images in photos array: \(self.photos.count)")
+                        
+                        // Add the selected image object to the local array of Images
+                        selectedPhotos.append(photoObject)
                     }
                 }
             }
+                // When completed....
                 , completion: { (completed) in
                     
+                    // If there are no images in the local array of Images
                     if self.photos.count == 0 {
                         performUIUpdatesOnMain {
                             //self.noImagesLabel.text = "Album is Empty"
                             //self.noImagesLabel.hidden = false
+                            
+                            // Save the context
                             CoreDataStack.sharedInstance().saveContext()
                         }
                     }
             })
             
-            //for photo in selectedPhotos {
-              //  CoreDataStack.sharedInstance().context.delete(photo)
-            //}
+            
+            for photo in selectedPhotos {
+                self.selectedPin.removeFromImages(photo)
+                CoreDataStack.sharedInstance().context.delete(photo)
+                print("4. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
+                print("5. There are now \(String(describing: self.photos.count)) images in the photos array")
+                
+            }
             
             CoreDataStack.sharedInstance().saveContext()
             
@@ -159,13 +199,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
+        print("There are \(String(describing: selectedPin.images?.count)) images in the pin when cellForRowAt is called")
+        print("There are \(String(describing: photos.count)) images in the photos when cellForItemAt is called")
+        
         let photo = photos[indexPath.row]
         
         if let photo = photo {
             performUIUpdatesOnMain {
                 let url = URL(string: photo.imageURL!)
-                //let data = try? Data(contentsOf: url!)
-                
                 cell.imageView.setImage(url: url!)
                 cell.imageView.alpha = 1.0
             }
