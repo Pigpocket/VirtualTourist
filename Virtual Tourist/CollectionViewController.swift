@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import MapKit
 import Imaginary
+import CoreData
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: Outlets
     
