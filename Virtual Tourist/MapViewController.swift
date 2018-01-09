@@ -72,8 +72,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 if let images = images {
                     performUIUpdatesOnMain {
                         self.images = images
-                        //print("Images just prior to saving: \(images)")
                         CoreDataStack.sharedInstance().saveContext()
+                        print("Context content is: \(CoreDataStack.sharedInstance().context)")
+                        print("Image quantity just after saving: \(images.count)")
                     }
                 }
             }

@@ -21,6 +21,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionFlow: UICollectionViewFlowLayout!
     
+    // Initialize FetchedResultsController
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Images> = { () -> NSFetchedResultsController<Images> in
+        
+        let fetchRequest = NSFetchRequest<Images>(entityName: "Images")
+        fetchRequest.sortDescriptors = []
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
     // MARK: Properties
     
     var selectedPin: Pin!
@@ -34,7 +47,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var selectedIndexes = [IndexPath]()
     
     // MARK: Actions
-    
     
     @IBAction func newCollectionAction(_ sender: Any) {
         
@@ -157,6 +169,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
  
         setAnnotations()
         
+        // Start the fetched results controller
+        var error: NSError?
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error1 as NSError {
+            error = error1
+        }
+        
+        if let error = error {
+            print("Error performing initial fetch: \(error)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -194,24 +217,25 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDataSource protocol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        let sectionInfo = self.fetchedResultsController.sections![section]
+        
+        print("number Of Cells: \(sectionInfo.numberOfObjects)")
+        return sectionInfo.numberOfObjects // photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
-        print("There are \(String(describing: selectedPin.images?.count)) images in the pin when cellForRowAt is called")
-        print("There are \(String(describing: photos.count)) images in the photos when cellForItemAt is called")
         
-        let photo = photos[indexPath.row]
+        let image = self.fetchedResultsController.object(at: indexPath)
+        print("Fetched image is : \(image) and url is \(String(describing: image.imageURL))")
         
-        if let photo = photo {
-            performUIUpdatesOnMain {
-                let url = URL(string: photo.imageURL!)
+        
+    //        performUIUpdatesOnMain {
+                let url = URL(string: image.imageURL!)
                 cell.imageView.setImage(url: url!)
                 cell.imageView.alpha = 1.0
-            }
-        }
+        
         print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
         return cell
     }

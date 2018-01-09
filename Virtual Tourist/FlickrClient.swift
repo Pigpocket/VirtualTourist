@@ -144,23 +144,23 @@ extension FlickrClient {
                     
                     // Get metadata
                     let imageURL = URL(string: imageUrlString)!
-                    //let data = try? Data(contentsOf: imageURL)
+                    print("This is the imageURL: \(imageURL)")
                     let title = photo["title"] as? String ?? ""
                     
                     
                     // Assign the metadata to images NSManagedObject
-                    performUIUpdatesOnMain {
-                        //image.imageData = (data! as NSData)
-                        image.imageURL = String(describing: imageURL)
-                        image.pin = pin
-                        image.title = title
+                    image.imageURL = String(describing: imageURL)
+                    print("This is the image.imageURL: \(String(describing: image.imageURL))")
+                    image.pin = pin
+                    image.title = title
                         
-                        imageArray.append(image)
-                    }
+                    imageArray.append(image)
+                    CoreDataStack.sharedInstance().context.insert(image)
                 }
+                CoreDataStack.sharedInstance().saveContext()
+                print("Image array count is: \(imageArray.count)")
             }
                 print("Networking completed")
-                print("\(imageArray.count)")
                 completionHandlerForGetImages(imageArray, nil)
         }
     }
