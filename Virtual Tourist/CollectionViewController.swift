@@ -36,6 +36,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
+    // Keep the changes. We will keep track of insertions, deletions, and updates.
+    var insertedIndexPaths: [IndexPath]!
+    var deletedIndexPaths: [IndexPath]!
+    var updatedIndexPaths: [IndexPath]!
+    
     var selectedPin: Pin!
     var innerSpace: CGFloat = 1.0
     var numberOfCellsOnRow: CGFloat = 3.0
@@ -59,34 +64,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             pageCount += 1
             
             // Delete existing images
-            self.deleteImages()
+            self.deleteImages2()
 
             // Get new images from Flickr
             FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
-                print("1. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
                 
                 // Make sure there were no errors
                 guard error == nil else {
                     print("There was an error getting the images")
                     return
                 }
-                
-                // If we got images
-                if let images = images {
-                    print("\(images.count) images were sent to the completionHandler")
-                    print("2. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
-                    
-                    // Add them to our class level image array
-                    self.photos = images
 
-                    print("There are \(self.photos.count) images in photos after completionHandler")
-                    print("3. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
-
-                    print("4. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
-                    self.selectedPin.images?.adding(images)
-                        performUIUpdatesOnMain {
-                            self.collectionView.reloadData()
-                        }
+                performUIUpdatesOnMain {
+                    self.collectionView.reloadData()
                 }
             })
             
@@ -94,57 +84,20 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         } else {
             
             // Create a local array of Images
-            var selectedPhotos = [Images]()
+            //var selectedPhotos = [Images]()
             
             collectionView.performBatchUpdates ({
             
-                // Sort the indexes
-                let sortedIndexes = self.selectedIndexes.sorted(by: {$0.row > $1.row})
-                
-                for indexPath in sortedIndexes {
-                    
-                    // If an image exists
-                    if let photoObject = self.photos[indexPath.row] {
-                        
-                        // Remove it from the class array
-                        self.photos.remove(at: indexPath.row)
-                        
-                        // Remove it from the collectionView
-                        self.collectionView.deleteItems(at: [indexPath])
-                        
-                        // Remove it from the selectedPin object
-                        self.selectedPin.removeFromImages(photoObject)
-                        print("3. Number of images in pin: \(String(describing: self.selectedPin.images?.count))")
-                        print("3. Number of images in photos array: \(self.photos.count)")
-                        
-                        // Add the selected image object to the local array of Images
-                        selectedPhotos.append(photoObject)
-                    }
+                self.deleteImages2()
+
+            }
+            // When completed....
+            , completion: { (completed) in
+
+                performUIUpdatesOnMain {
+                    CoreDataStack.sharedInstance().saveContext()
                 }
-            }
-                // When completed....
-                , completion: { (completed) in
-                    
-                    // If there are no images in the local array of Images
-                    if self.photos.count == 0 {
-                        performUIUpdatesOnMain {
-                            //self.noImagesLabel.text = "Album is Empty"
-                            //self.noImagesLabel.hidden = false
-                            
-                            // Save the context
-                            CoreDataStack.sharedInstance().saveContext()
-                        }
-                    }
             })
-            
-            
-            for photo in selectedPhotos {
-                self.selectedPin.removeFromImages(photo)
-                CoreDataStack.sharedInstance().context.delete(photo)
-                print("4. There are now \(String(describing: self.selectedPin.images?.count)) images in the pin")
-                print("5. There are now \(String(describing: self.photos.count)) images in the photos array")
-                
-            }
             
             CoreDataStack.sharedInstance().saveContext()
             
@@ -228,15 +181,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
         let image = self.fetchedResultsController.object(at: indexPath)
-        print("Fetched image is : \(image) and url is \(String(describing: image.imageURL))")
-        
         
     //        performUIUpdatesOnMain {
                 let url = URL(string: image.imageURL!)
                 cell.imageView.setImage(url: url!)
                 cell.imageView.alpha = 1.0
-        
-        print("The pin image quantity in new viewController is \(String(describing: self.selectedPin.images?.count))")
+
         return cell
     }
     
@@ -245,9 +195,27 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             selectedPin.removePhotos(context: CoreDataStack.sharedInstance().context)
             selectedPin.images = []
             photos.removeAll()
-            print("Pin contains \(selectedPin.images!.count) images")
-            print("Photos contains \(photos.count) photos")
         }
+    }
+    
+    func deleteImages2() {
+        var imagesToDelete = [Images]()
+        
+        if selectedIndexes.isEmpty {
+            for image in selectedPin.images! {
+                CoreDataStack.sharedInstance().context.delete(image as! NSManagedObject)
+            }
+        }
+        
+        for indexPath in selectedIndexes {
+            imagesToDelete.append(fetchedResultsController.object(at: indexPath) )
+        }
+        
+        for image in imagesToDelete {
+            CoreDataStack.sharedInstance().context.delete(image)
+        }
+        
+        selectedIndexes = [IndexPath]()
     }
     
     func setBarButtonText() {
@@ -258,7 +226,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
+
         print("You selected cell #\(indexPath.item)!")
         
         let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
@@ -271,6 +239,57 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.imageView.alpha = 0.3
         }
         setBarButtonText()
+    }
+  
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
+        insertedIndexPaths = [IndexPath]()
+        deletedIndexPaths = [IndexPath]()
+        updatedIndexPaths = [IndexPath]()
+        
+        print("in controllerWillChangeContent")
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            
+        case .insert:
+            print("Insert an item")
+            insertedIndexPaths.append(newIndexPath!)
+            break
+        case .delete:
+            print("Delete an item")
+            deletedIndexPaths.append(indexPath!)
+            break
+        case .update:
+            print("Update an item.")
+            updatedIndexPaths.append(indexPath!)
+            break
+        case .move:
+            print("Move an item. We don't expect to see this in this app.")
+            break
+        }
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        print("in controllerDidChangeContent. changes.count: \(insertedIndexPaths.count + deletedIndexPaths.count)")
+        
+        collectionView.performBatchUpdates({() -> Void in
+            
+            for indexPath in self.insertedIndexPaths {
+                self.collectionView.insertItems(at: [indexPath])
+            }
+            
+            for indexPath in self.deletedIndexPaths {
+                self.collectionView.deleteItems(at: [indexPath])
+            }
+            
+            for indexPath in self.updatedIndexPaths {
+                self.collectionView.reloadItems(at: [indexPath])
+            }
+            
+        }, completion: nil)
     }
 }
 
