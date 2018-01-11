@@ -121,6 +121,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         print("selectedPin is: \(selectedPin)")
         
         // Start the fetched results controller
+        
         var error: NSError?
         do {
             try fetchedResultsController.performFetch()
@@ -180,10 +181,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let image = self.fetchedResultsController.object(at: indexPath)
         
-    //        performUIUpdatesOnMain {
                 let url = URL(string: image.imageURL!)
                 cell.imageView.setImage(url: url!)
                 cell.imageView.alpha = 1.0
+        
 
         return cell
     }

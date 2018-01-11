@@ -24,6 +24,8 @@ struct CoreDataStack {
     private let modelURL: URL
     internal let dbURL: URL
     let context: NSManagedObjectContext
+    let persistingContext: NSManagedObjectContext
+    let backgroundContext: NSManagedObjectContext
     
     // MARK: Initializers
     
@@ -49,6 +51,14 @@ struct CoreDataStack {
         // create a context and add it to the coordinator
         context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
+        
+        // create a persisting context and add it to the coordinator
+        persistingContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        persistingContext.persistentStoreCoordinator = coordinator
+        
+        // create a background context and add it to the coordinator
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.parent = context
         
         // Add a SQLite store located in the documents folder
         let fm = FileManager.default
@@ -81,6 +91,22 @@ struct CoreDataStack {
 
 internal extension CoreDataStack  {
     
+    typealias Batch=(_ workerContext: NSManagedObjectContext) -> ()
+    
+    func performBackgroundBatchOperation(_ batch: @escaping Batch) {
+        backgroundContext.perform(){
+            batch(self.backgroundContext)
+            
+            // Save it to the parent context, so normal saving
+            // can work
+            do{
+                try self.backgroundContext.save()
+            }catch{
+                fatalError("Error while saving backgroundContext: \(error)")
+            }
+        }
+    }
+    
     func dropAllData() throws {
         // delete all the objects in the db. This won't delete the files, it will
         // just leave empty tables.
@@ -92,6 +118,26 @@ internal extension CoreDataStack  {
 // MARK: - CoreDataStack (Save Data)
 
 extension CoreDataStack {
+    
+    func save() {
+        context.performAndWait(){
+            if self.context.hasChanges{
+                do {
+                    try self.context.save()
+                } catch {
+                    fatalError("Fatal error while saving main context: \(error)")
+                }
+                
+                self.persistingContext.perform(){
+                    do {
+                        try self.persistingContext.save()
+                    } catch {
+                        fatalError("Fatal error while saving persisting context: \(error)")
+                    }
+                }
+            }
+        }
+    }
     
     func saveContext() {
         
