@@ -28,6 +28,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let fetchRequest = NSFetchRequest<Images>(entityName: "Images")
         fetchRequest.sortDescriptors = []
         
+        let predicate = NSPredicate(format: "pin = %@", argumentArray: [selectedPin])
+        fetchRequest.predicate = predicate
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         
@@ -103,7 +106,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -183,9 +185,13 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
                 let url = URL(string: image.imageURL!)
                 cell.imageView.setImage(url: url!)
-                cell.imageView.alpha = 1.0
         
-
+        if let _ = selectedIndexes.index(of: indexPath) {
+            cell.imageView.alpha = 0.5
+        } else {
+            cell.imageView.alpha = 1.0
+        }
+    
         return cell
     }
     

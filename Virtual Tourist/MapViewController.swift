@@ -76,6 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func loadAnnotations() {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+
         do {
             if let pins = try? CoreDataStack.sharedInstance().context.fetch(fetchRequest) as! [Pin] {
                 var pinAnnotations = [PinAnnotation]()
