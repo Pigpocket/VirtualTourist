@@ -121,7 +121,7 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
             
-            var imageArray = [Images]()
+            //var imageArray = [Images]()
             
             if let error = error {
                 completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
@@ -144,24 +144,19 @@ extension FlickrClient {
                     
                     // Get metadata
                     let imageURL = URL(string: imageUrlString)!
-                    print("This is the imageURL: \(imageURL)")
                     let title = photo["title"] as? String ?? ""
                     
                     
                     // Assign the metadata to images NSManagedObject
                     image.imageURL = String(describing: imageURL)
-                    print("This is the image.imageURL: \(String(describing: image.imageURL))")
                     image.pin = pin
                     image.title = title
-                        
-                    imageArray.append(image)
+
                     CoreDataStack.sharedInstance().context.insert(image)
                 }
                 CoreDataStack.sharedInstance().saveContext()
-                print("Image array count is: \(imageArray.count)")
             }
                 print("Networking completed")
-                completionHandlerForGetImages(imageArray, nil)
         }
     }
     }

@@ -68,17 +68,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     print("There was an error get images objects")
                     return
                 }
-                
-                if let images = images {
-                    performUIUpdatesOnMain {
-                        self.images = images
-                        CoreDataStack.sharedInstance().saveContext()
-                        print("Context content is: \(CoreDataStack.sharedInstance().context)")
-                        print("Image quantity just after saving: \(images.count)")
-                    }
                 }
             }
-        }
         print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
     }
     
@@ -112,7 +103,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //mapView.deselectAnnotation(view.annotation, animated: false)
         
         if !isEditing {
             do {
@@ -127,7 +117,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 print(error.localizedDescription)
                 return
             }
-            //print("This pin contains the following data: \(selectedPin!)")
             self.performSegue(withIdentifier: "collectionViewSegue", sender: self)
         }
         
@@ -139,12 +128,8 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
                 fetchRequest.predicate = predicate
                 let pins = try CoreDataStack.sharedInstance().context.fetch(fetchRequest) as? [Pin]
-                print("This is what pins looks like: \(String(describing: pins))")
                 selectedPin = pins![0]
-                print("selectedPin contents prior to deletion: \(String(describing: selectedPin))")
-                //fetchRequest.returnsObjectsAsFaults = false
                 CoreDataStack.sharedInstance().context.delete(selectedPin!)
-                print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
                 mapView.removeAnnotation(view.annotation!)
                 CoreDataStack.sharedInstance().saveContext()
                 return
@@ -162,10 +147,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
             print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
             if let selectedPin = selectedPin {
                 controller.selectedPin = selectedPin
-                controller.photos = images as! [Images]
-                if let images = selectedPin.images?.allObjects as? [Images] {
-                    controller.photos = images
-                }
             }
         }
     }

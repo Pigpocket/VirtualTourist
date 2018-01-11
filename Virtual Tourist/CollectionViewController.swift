@@ -47,8 +47,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
     var activityIndicator = UIActivityIndicatorView()
-    var photos: [Images?] = []
-    var imageData: [Data?] = []
     var selectedIndexes = [IndexPath]()
     
     // MARK: Actions
@@ -83,13 +81,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         // If there were images selected, remove them
         } else {
             
-            // Create a local array of Images
-            //var selectedPhotos = [Images]()
+            self.deleteImages2()
             
             collectionView.performBatchUpdates ({
             
-                self.deleteImages2()
-
             }
             // When completed....
             , completion: { (completed) in
@@ -119,8 +114,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
         collectionFlow.scrollDirection = .vertical
- 
+        
         setAnnotations()
+        
+        print("selectedIndexes count is: \(selectedIndexes.count)")
+        print("selectedPin is: \(selectedPin)")
         
         // Start the fetched results controller
         var error: NSError?
@@ -188,14 +186,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 cell.imageView.alpha = 1.0
 
         return cell
-    }
-    
-    func deleteImages(){
-        if selectedPin.images!.count > 0 {
-            selectedPin.removePhotos(context: CoreDataStack.sharedInstance().context)
-            selectedPin.images = []
-            photos.removeAll()
-        }
     }
     
     func deleteImages2() {
