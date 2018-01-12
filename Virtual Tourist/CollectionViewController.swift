@@ -20,6 +20,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionFlow: UICollectionViewFlowLayout!
+    @IBOutlet weak var noImagesLabel: UILabel!
     
     // Initialize FetchedResultsController
     
@@ -67,19 +68,34 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             // Delete existing images
             self.deleteImages2()
 
+            self.activityIndicator.startAnimating()
             // Get new images from Flickr
-            FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (images, error) in
+            FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (success, error) in
                 
                 // Make sure there were no errors
                 guard error == nil else {
                     print("There was an error getting the images")
                     return
                 }
-
-                performUIUpdatesOnMain {
+                
+                
+                if success {
+                    performUIUpdatesOnMain {
+                        self.activityIndicator.stopAnimating()
+                    print("***Success! The selectedPin has \(String(describing: self.selectedPin.images?.count)) images")
+                    if self.selectedPin.images?.count != 0 {
+                        self.noImagesLabel.isHidden = true
+                        print("Label is hidden = \(self.noImagesLabel.isHidden)")
+                    } else {
+                        self.noImagesLabel.isHidden = false
+                        print("Label is hidden = \(self.noImagesLabel.isHidden)")
+                    }
                     self.collectionView.reloadData()
+                    }
                 }
             })
+            
+
             
         // If there were images selected, remove them
         } else {
@@ -119,11 +135,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         setAnnotations()
         
-        print("selectedIndexes count is: \(selectedIndexes.count)")
-        print("selectedPin is: \(selectedPin)")
+        performUIUpdatesOnMain {
+            if self.selectedPin.images?.count != 0 {
+                self.noImagesLabel.isHidden = true
+                print("Label is hidden = \(self.noImagesLabel.isHidden)")
+            } else {
+                self.noImagesLabel.isHidden = false
+                print("Label is hidden = \(self.noImagesLabel.isHidden)")
+            }
+        }
         
         // Start the fetched results controller
-        
         var error: NSError?
         do {
             try fetchedResultsController.performFetch()
@@ -140,8 +162,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewWillAppear(true)
         
         collectionFlow.itemSize = CGSize(width:itemWidth(), height: itemWidth())
-        print("This pin has \(String(describing: selectedPin.images?.count)) images")
-        
     }
     
     func itemWidth() -> CGFloat {
@@ -172,8 +192,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections![section]
-        
-        print("number Of Cells: \(sectionInfo.numberOfObjects)")
+
         return sectionInfo.numberOfObjects // photos.count
     }
     
@@ -181,9 +200,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
+        cell.contentView.addSubview(activityIndicator)
+        //cell.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         let image = self.fetchedResultsController.object(at: indexPath)
         
                 let url = URL(string: image.imageURL!)
+        activityIndicator.stopAnimating()
                 cell.imageView.setImage(url: url!)
         
         if let _ = selectedIndexes.index(of: indexPath) {

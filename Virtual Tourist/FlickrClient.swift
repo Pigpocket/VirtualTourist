@@ -105,7 +105,7 @@ class FlickrClient: NSObject {
 
 extension FlickrClient {
     
-    func getImagesFromFlickr(pin: Pin, context: NSManagedObjectContext, page: Any, completionHandlerForGetImages: @escaping (_ images: [Images]?, _ errorString: String?) -> Void) {
+    func getImagesFromFlickr(pin: Pin, context: NSManagedObjectContext, page: Any, completionHandlerForGetImages: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         let methodParameters = [
             Constants.FlickrParameterKeys.Method: Constants.FlickrParameterValues.FlickrPhotosSearch,
@@ -124,7 +124,7 @@ extension FlickrClient {
             //var imageArray = [Images]()
             
             if let error = error {
-                completionHandlerForGetImages(nil, "There was an error getting the images: \(error)")
+                completionHandlerForGetImages(false, "There was an error getting the images: \(error)")
             } else {
                 
                 // Create a dictionary from the data:
@@ -138,7 +138,7 @@ extension FlickrClient {
                     
                     // GUARD: Does our photo have a key for 'url_m'?
                     guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                        completionHandlerForGetImages(nil, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
+                        completionHandlerForGetImages(false, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
                         return
                     }
                     
@@ -154,8 +154,10 @@ extension FlickrClient {
 
                     CoreDataStack.sharedInstance().context.insert(image)
                 }
+                
                 CoreDataStack.sharedInstance().saveContext()
             }
+                completionHandlerForGetImages(true, nil)
                 print("Networking completed")
         }
     }

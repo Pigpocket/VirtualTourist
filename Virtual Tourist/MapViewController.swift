@@ -145,7 +145,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionViewSegue" {
             let controller = segue.destination as! CollectionViewController
-            print("CoreDataStack context in segue= \(CoreDataStack.sharedInstance().context)")
             if let selectedPin = selectedPin {
                 controller.selectedPin = selectedPin
             }
