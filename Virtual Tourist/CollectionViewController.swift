@@ -196,8 +196,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
+        
         cell.activityIndicator.hidesWhenStopped = true
         cell.activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        cell.activityIndicator.center = CGPoint(x: cell.frame.size.width/2, y: cell.frame.size.height/2)
+        
         performUIUpdatesOnMain {
         cell.activityIndicator.startAnimating()
         }
