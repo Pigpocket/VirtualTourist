@@ -50,7 +50,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     var numberOfCellsOnRow: CGFloat = 3.0
     var annotation = MKPointAnnotation()
     var pageCount: Int = 1
-    var activityIndicator = UIActivityIndicatorView()
     var selectedIndexes = [IndexPath]()
     
     // MARK: Actions
@@ -68,7 +67,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             // Delete existing images
             self.deleteImages2()
 
-            self.activityIndicator.startAnimating()
             // Get new images from Flickr
             FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (success, error) in
                 
@@ -81,7 +79,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 
                 if success {
                     performUIUpdatesOnMain {
-                        self.activityIndicator.stopAnimating()
                     print("***Success! The selectedPin has \(String(describing: self.selectedPin.images?.count)) images")
                     if self.selectedPin.images?.count != 0 {
                         self.noImagesLabel.isHidden = true
@@ -200,14 +197,15 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
         
-        cell.contentView.addSubview(activityIndicator)
-        //cell.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        cell.activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        cell.activityIndicator.startAnimating()
+        print("Cell is animating: \(cell.activityIndicator.isAnimating)")
         
         let image = self.fetchedResultsController.object(at: indexPath)
         
                 let url = URL(string: image.imageURL!)
-        activityIndicator.stopAnimating()
+        cell.activityIndicator.stopAnimating()
+    print("Cell is animating: \(cell.activityIndicator.isAnimating)")
                 cell.imageView.setImage(url: url!)
         
         if let _ = selectedIndexes.index(of: indexPath) {

@@ -104,6 +104,10 @@
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey Image" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-pk-7RE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="102" height="109"/>
                                                                 </imageView>
+                                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jkO-Q4-dHY">
+                                                                    <rect key="frame" x="41" y="44" width="20" height="20"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </activityIndicatorView>
                                                             </subviews>
                                                         </view>
                                                         <constraints>
@@ -113,6 +117,7 @@
                                                             <constraint firstItem="fkq-pk-7RE" firstAttribute="top" secondItem="Cfp-uw-750" secondAttribute="top" id="UBr-iu-pH0"/>
                                                         </constraints>
                                                         <connections>
+                                                            <outlet property="activityIndicator" destination="jkO-Q4-dHY" id="duq-5y-Dc3"/>
                                                             <outlet property="imageView" destination="fkq-pk-7RE" id="SMQ-Y2-jEj"/>
                                                         </connections>
                                                     </collectionViewCell>

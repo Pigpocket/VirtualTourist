@@ -11,9 +11,8 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
-    
-    //var imageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,9 +22,5 @@ class CollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
 //        fatalError("init(coder:) has not been implemented")
     }
-    
-    /*override func prepareForReuse() {
-        imageView.image = nil
-    } */
-    
+
 }
