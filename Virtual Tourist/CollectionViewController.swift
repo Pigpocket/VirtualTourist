@@ -196,23 +196,28 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath as IndexPath) as! CollectionViewCell
-        
+        cell.activityIndicator.hidesWhenStopped = true
         cell.activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        performUIUpdatesOnMain {
         cell.activityIndicator.startAnimating()
-        print("Cell is animating: \(cell.activityIndicator.isAnimating)")
-        
+        }
         let image = self.fetchedResultsController.object(at: indexPath)
+        let url = URL(string: image.imageURL!)
         
-                let url = URL(string: image.imageURL!)
-        cell.activityIndicator.stopAnimating()
-    print("Cell is animating: \(cell.activityIndicator.isAnimating)")
-                cell.imageView.setImage(url: url!)
-        
-        if let _ = selectedIndexes.index(of: indexPath) {
+        cell.imageView.setImage(url: url!) { result in
+            
+            performUIUpdatesOnMain {
+                cell.activityIndicator.stopAnimating()
+            }
+            
+        }
+            
+        if let _ = self.selectedIndexes.index(of: indexPath) {
             cell.imageView.alpha = 0.5
         } else {
             cell.imageView.alpha = 1.0
         }
+        
     
         return cell
     }
