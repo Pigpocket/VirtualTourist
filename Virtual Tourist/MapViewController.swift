@@ -20,7 +20,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var selectedPin: Pin?
     var images: [Images?] = []
-    var editingNotificationBar = UIImageView()
     
     // MARK: Outlets
     
@@ -42,8 +41,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         loadAnnotations()
         
-        configureEditingNotificationBar()
-        self.view.addSubview(editingNotificationBar)
+        self.view.addSubview(deletePinsLabel)
+        deletePinsLabel.isHidden = true
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -51,21 +50,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         if editing {
             print("Are we editing NOW: \(isEditing)")
-            mapView.frame.origin.y = -24
-            editingNotificationBar.isHidden = false
-            configureEditingNotificationBar()
+            mapView.frame.origin.y = 0
+            deletePinsLabel.isHidden = false
         } else {
             print("Are we editing: \(isEditing)")
             mapView.frame.origin.y = 64
-            editingNotificationBar.isHidden = true
+            deletePinsLabel.isHidden = true
         }
-    }
-    
-    func configureEditingNotificationBar() {
-        
-        editingNotificationBar.frame = CGRect(x: super.view.frame.origin.x, y: super.view.frame.origin.y, width: super.view.frame.width, height: 64)
-        print("editingNotificationBar frame location is x = \(editingNotificationBar.frame.origin.x), y = \(editingNotificationBar.frame.origin.y)")
-        editingNotificationBar.backgroundColor = UIColor.cyan
     }
     
     // MARK: Lifecycle
