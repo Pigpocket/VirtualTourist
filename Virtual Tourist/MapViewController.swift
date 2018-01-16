@@ -20,10 +20,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var selectedPin: Pin?
     var images: [Images?] = []
+    var editingNotificationBar = UIView()
     
     // MARK: Outlets
     
-    @IBOutlet weak var editButtonLabel: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -31,7 +31,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = editButtonItem
+        
         self.mapView.delegate = self
+        setEditing(false, animated: true)
+        print("Are we editing on viewDidLoad: \(isEditing)")
         
         // Implement the tap gesture recognizer
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
@@ -39,6 +42,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addGestureRecognizer(longPressRecognizer)
         
         loadAnnotations()
+        
+        self.view.addSubview(editingNotificationBar)
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        
+        if editing {
+            print("Are we editing NOW: \(isEditing)")
+            mapView.frame.origin.y = -24
+        } else {
+            print("Are we editing: \(isEditing)")
+            mapView.frame.origin.y = 64
+        }
     }
     
     // MARK: Lifecycle
@@ -91,9 +108,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-
-    @IBAction func editPinAction(_ sender: Any) {
-        editButtonItem.isEnabled = true
+    
+//    func shiftMapView() {
+//        if isEditing {
+//            print("Are we editing: \(isEditing)")
+//            mapView.frame.origin.y = mapView.frame.origin.y + 24
+//        } else {
+//            print("Are we editing: \(isEditing)")
+//            mapView.frame.origin.y = 0
+//        }
+//    }
+    
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
     }
 }
 
