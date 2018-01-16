@@ -20,12 +20,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var selectedPin: Pin?
     var images: [Images?] = []
-    var editingNotificationBar = UIView()
+    var editingNotificationBar = UIImageView()
     
     // MARK: Outlets
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var deletePinsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         navigationItem.rightBarButtonItem = editButtonItem
         
         self.mapView.delegate = self
-        setEditing(false, animated: true)
-        print("Are we editing on viewDidLoad: \(isEditing)")
         
         // Implement the tap gesture recognizer
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
@@ -43,6 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         loadAnnotations()
         
+        configureEditingNotificationBar()
         self.view.addSubview(editingNotificationBar)
     }
     
@@ -52,10 +52,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if editing {
             print("Are we editing NOW: \(isEditing)")
             mapView.frame.origin.y = -24
+            editingNotificationBar.isHidden = false
+            configureEditingNotificationBar()
         } else {
             print("Are we editing: \(isEditing)")
             mapView.frame.origin.y = 64
+            editingNotificationBar.isHidden = true
         }
+    }
+    
+    func configureEditingNotificationBar() {
+        
+        editingNotificationBar.frame = CGRect(x: super.view.frame.origin.x, y: super.view.frame.origin.y, width: super.view.frame.width, height: 64)
+        print("editingNotificationBar frame location is x = \(editingNotificationBar.frame.origin.x), y = \(editingNotificationBar.frame.origin.y)")
+        editingNotificationBar.backgroundColor = UIColor.cyan
     }
     
     // MARK: Lifecycle
@@ -107,22 +117,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 mapView.addAnnotations(pinAnnotations)
             }
         }
-    }
-    
-//    func shiftMapView() {
-//        if isEditing {
-//            print("Are we editing: \(isEditing)")
-//            mapView.frame.origin.y = mapView.frame.origin.y + 24
-//        } else {
-//            print("Are we editing: \(isEditing)")
-//            mapView.frame.origin.y = 0
-//        }
-//    }
-    
-    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
     }
 }
 
