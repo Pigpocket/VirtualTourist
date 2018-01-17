@@ -107,8 +107,7 @@ internal extension CoreDataStack  {
     }
     
     func dropAllData() throws {
-        // delete all the objects in the db. This won't delete the files, it will
-        // just leave empty tables.
+        // delete all the objects in the db. This won't delete the files, it will just leave empty tables.
         try coordinator.destroyPersistentStore(at: dbURL, ofType:NSSQLiteStoreType , options: nil)
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
     }
@@ -157,12 +156,8 @@ extension CoreDataStack {
     func autoSave(_ delayInSeconds : Int) {
         
         if delayInSeconds > 0 {
-            do {
-                try saveContext()
-                print("Autosaving")
-            } catch {
-                print("Error while autosaving")
-            }
+
+            saveContext()
             
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
             let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
