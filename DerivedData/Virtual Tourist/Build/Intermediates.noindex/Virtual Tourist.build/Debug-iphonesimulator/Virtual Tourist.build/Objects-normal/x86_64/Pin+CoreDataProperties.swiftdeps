@@ -1,0 +1,191 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["15Virtual_Tourist3PinC", ""]
+- ["15Virtual_Tourist3PinC", "fetchRequest"]
+- ["15Virtual_Tourist3PinC", "latitude"]
+- ["15Virtual_Tourist3PinC", "longitude"]
+- ["15Virtual_Tourist3PinC", "images"]
+- ["15Virtual_Tourist3PinC", "addToImages"]
+- ["15Virtual_Tourist3PinC", "removeFromImages"]
+- ["15Virtual_Tourist3PinC", "addToImages"]
+- ["15Virtual_Tourist3PinC", "removeFromImages"]
+provides-dynamic-lookup:
+- "addToImages"
+- "images"
+- "latitude"
+- "longitude"
+- "removeFromImages"
+depends-top-level:
+- "Double"
+- "Images"
+- "NSFetchRequest"
+- "NSSet"
+- "Pin"
+- !private "StringLiteralType"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s7CVarArgP", "NSFetchRequest"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "NSFetchRequest"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "NSFetchRequest"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "NSFetchRequest"]
+- !private ["s9EquatableP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "NSFetchRequest"]
+- !private ["s8HashableP", "init"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So14NSFetchRequestC", "init"]
+- !private ["So20NSFetchRequestResultP", "NSFetchRequest"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- ["So15NSManagedObjectC", "Double"]
+- ["So15NSManagedObjectC", "Images"]
+- ["So15NSManagedObjectC", "NSFetchRequest"]
+- ["So15NSManagedObjectC", "NSSet"]
+- ["So15NSManagedObjectC", "Pin"]
+- ["So15NSManagedObjectC", "addToImages"]
+- ["So15NSManagedObjectC", "fetchRequest"]
+- ["So15NSManagedObjectC", "images"]
+- ["So15NSManagedObjectC", "latitude"]
+- ["So15NSManagedObjectC", "longitude"]
+- ["So15NSManagedObjectC", "removeFromImages"]
+- !private ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "Double"]
+- ["So8NSObjectC", "Images"]
+- ["So8NSObjectC", "NSFetchRequest"]
+- ["So8NSObjectC", "NSSet"]
+- ["So8NSObjectC", "Pin"]
+- ["So8NSObjectC", "addToImages"]
+- ["So8NSObjectC", "fetchRequest"]
+- ["So8NSObjectC", "images"]
+- ["So8NSObjectC", "latitude"]
+- ["So8NSObjectC", "longitude"]
+- ["So8NSObjectC", "removeFromImages"]
+- !private ["So16NSObjectProtocolP", "NSFetchRequest"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- ["15Virtual_Tourist3PinC", "Double"]
+- ["15Virtual_Tourist3PinC", "Images"]
+- ["15Virtual_Tourist3PinC", "NSFetchRequest"]
+- ["15Virtual_Tourist3PinC", "NSSet"]
+- ["15Virtual_Tourist3PinC", "Pin"]
+- ["15Virtual_Tourist3PinC", "addToImages"]
+- ["15Virtual_Tourist3PinC", "deinit"]
+- ["15Virtual_Tourist3PinC", "fetchRequest"]
+- ["15Virtual_Tourist3PinC", "images"]
+- ["15Virtual_Tourist3PinC", "latitude"]
+- ["15Virtual_Tourist3PinC", "longitude"]
+- ["15Virtual_Tourist3PinC", "removeFromImages"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s8SequenceP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSFetchRequest"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So14NSFetchRequestC"
+- !private "So20NSFetchRequestResultP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- "So15NSManagedObjectC"
+- !private "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- "15Virtual_Tourist3PinC"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/Cache.swiftmodule/x86_64.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Imaginary/Imaginary.framework/Modules/Imaginary.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Imaginary/Imaginary.framework/Headers/Imaginary-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Imaginary/Imaginary.framework/Headers/Imaginary-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/module.modulemap"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Imaginary/Imaginary.framework/Modules/module.modulemap"
+interface-hash: "7503b05821c94bd8cfc9328bd5d2a57a"

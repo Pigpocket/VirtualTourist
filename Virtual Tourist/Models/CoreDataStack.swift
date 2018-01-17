@@ -154,7 +154,7 @@ extension CoreDataStack {
         }
     
     
-    func autoSave(_ delayInSeconds : Int) {
+    /*func autoSave(_ delayInSeconds : Int) {
         
         if delayInSeconds > 0 {
             do {
@@ -171,6 +171,6 @@ extension CoreDataStack {
                 self.autoSave(delayInSeconds)
             }
         }
-    }
+    } */
 
 }

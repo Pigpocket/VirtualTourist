@@ -39,6 +39,7 @@
 		373732F31FC762690044A713 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		375BFC321FC0E9D200957749 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		375BFC341FC10A6700957749 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		377D2C8B200FF6E300A96495 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Pods/Cache/README.md; sourceTree = "<group>"; };
 		379600E81FDE121E005B4695 /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		37CDD1781FBF635700930D44 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CDD17B1FBF635700930D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		F0EEBE3189868C139965352A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				377D2C8B200FF6E300A96495 /* README.md */,
 				37D3E2901FEE1EC80058CE97 /* Cache.framework */,
 				37D3E2911FEE1EC80058CE97 /* Imaginary.framework */,
 				87E4EF1399DA559F8D0F34EF /* Pods_Virtual_Tourist.framework */,

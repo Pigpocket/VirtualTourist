@@ -1,0 +1,57 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["10Foundation4DateV", ""]
+- ["10Foundation4DateV", "inThePast"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "<"
+- "Bool"
+- "Date"
+depends-member:
+- !private ["s10ComparableP", "timeIntervalSinceNow"]
+- !private ["s28CustomDebugStringConvertibleP", "timeIntervalSinceNow"]
+- !private ["s29CustomPlaygroundQuickLookableP", "timeIntervalSinceNow"]
+- !private ["s17CustomReflectableP", "timeIntervalSinceNow"]
+- !private ["s23CustomStringConvertibleP", "timeIntervalSinceNow"]
+- ["10Foundation4DateV", "Bool"]
+- ["10Foundation4DateV", "inThePast"]
+- !private ["10Foundation4DateV", "timeIntervalSinceNow"]
+- !private ["s9DecodableP", "timeIntervalSinceNow"]
+- !private ["s9EncodableP", "timeIntervalSinceNow"]
+- !private ["s9EquatableP", "timeIntervalSinceNow"]
+- !private ["s8HashableP", "timeIntervalSinceNow"]
+- !private ["10Foundation20ReferenceConvertibleP", "timeIntervalSinceNow"]
+- !private ["s21_ObjectiveCBridgeableP", "timeIntervalSinceNow"]
+depends-nominal:
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- "10Foundation4DateV"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s8HashableP"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/unextended-module.modulemap"
+interface-hash: "1b47078626c1543e0f1cc7fe6423fba2"

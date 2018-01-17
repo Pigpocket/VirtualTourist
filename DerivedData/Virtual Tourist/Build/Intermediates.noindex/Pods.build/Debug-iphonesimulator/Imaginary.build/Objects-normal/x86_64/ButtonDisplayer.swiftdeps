@@ -1,0 +1,154 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ButtonDisplayer"
+provides-nominal:
+- "9Imaginary15ButtonDisplayerC"
+provides-member:
+- ["9Imaginary15ButtonDisplayerC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "Array"
+- !private "Button"
+- "ButtonDisplayer"
+- "CastingPrecedence"
+- "Image"
+- "ImageDisplayer"
+- !private "UIView"
+- "View"
+depends-member:
+- !private ["9Imaginary15ButtonDisplayerC", "Button"]
+- ["9Imaginary15ButtonDisplayerC", "Image"]
+- !private ["9Imaginary15ButtonDisplayerC", "UIView"]
+- ["9Imaginary15ButtonDisplayerC", "View"]
+- ["9Imaginary15ButtonDisplayerC", "deinit"]
+- ["9Imaginary15ButtonDisplayerC", "display"]
+- ["9Imaginary15ButtonDisplayerC", "init"]
+- !private ["So15CALayerDelegateP", "setImage"]
+- !private ["So15CALayerDelegateP", "transition"]
+- !private ["s7CVarArgP", "setImage"]
+- !private ["s7CVarArgP", "transition"]
+- !private ["s28CustomDebugStringConvertibleP", "setImage"]
+- !private ["s28CustomDebugStringConvertibleP", "transition"]
+- !private ["s23CustomStringConvertibleP", "setImage"]
+- !private ["s23CustomStringConvertibleP", "transition"]
+- !private ["s9EquatableP", "allowUserInteraction"]
+- !private ["s9EquatableP", "normal"]
+- !private ["s9EquatableP", "setImage"]
+- !private ["s9EquatableP", "transition"]
+- !private ["s9EquatableP", "transitionCrossDissolve"]
+- !private ["s25ExpressibleByArrayLiteralP", "allowUserInteraction"]
+- !private ["s25ExpressibleByArrayLiteralP", "normal"]
+- !private ["s25ExpressibleByArrayLiteralP", "transitionCrossDissolve"]
+- !private ["s8HashableP", "setImage"]
+- !private ["s8HashableP", "transition"]
+- !private ["9Imaginary14ImageDisplayerP", "UIView"]
+- ["9Imaginary14ImageDisplayerP", "display"]
+- ["9Imaginary14ImageDisplayerP", ""]
+- !private ["So8NSCodingP", "setImage"]
+- !private ["So8NSCodingP", "transition"]
+- !private ["So8NSObjectC", "setImage"]
+- !private ["So8NSObjectC", "transition"]
+- !private ["So16NSObjectProtocolP", "setImage"]
+- !private ["So16NSObjectProtocolP", "transition"]
+- !private ["s9OptionSetP", "allowUserInteraction"]
+- !private ["s9OptionSetP", "normal"]
+- !private ["s9OptionSetP", "transitionCrossDissolve"]
+- !private ["s16RawRepresentableP", "allowUserInteraction"]
+- !private ["s16RawRepresentableP", "normal"]
+- !private ["s16RawRepresentableP", "transitionCrossDissolve"]
+- !private ["s10SetAlgebraP", "allowUserInteraction"]
+- !private ["s10SetAlgebraP", "normal"]
+- !private ["s10SetAlgebraP", "transitionCrossDissolve"]
+- !private ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "setImage"]
+- !private ["So29UIAccessibilityIdentificationP", "setImage"]
+- !private ["So29UIAccessibilityIdentificationP", "transition"]
+- !private ["So12UIAppearanceP", "setImage"]
+- !private ["So12UIAppearanceP", "transition"]
+- !private ["So21UIAppearanceContainerP", "setImage"]
+- !private ["So21UIAppearanceContainerP", "transition"]
+- !private ["So8UIButtonC", "setImage"]
+- !private ["So9UIControlC", "setImage"]
+- !private ["SC14UIControlStateV", "normal"]
+- !private ["So17UICoordinateSpaceP", "setImage"]
+- !private ["So17UICoordinateSpaceP", "transition"]
+- !private ["So13UIDynamicItemP", "setImage"]
+- !private ["So13UIDynamicItemP", "transition"]
+- !private ["So18UIFocusEnvironmentP", "setImage"]
+- !private ["So18UIFocusEnvironmentP", "transition"]
+- !private ["So11UIFocusItemP", "setImage"]
+- !private ["So11UIFocusItemP", "transition"]
+- !private ["So30UIPasteConfigurationSupportingP", "setImage"]
+- !private ["So30UIPasteConfigurationSupportingP", "transition"]
+- !private ["So11UIResponderC", "setImage"]
+- !private ["So11UIResponderC", "transition"]
+- !private ["So30UIResponderStandardEditActionsP", "setImage"]
+- !private ["So30UIResponderStandardEditActionsP", "transition"]
+- !private ["So35UISpringLoadedInteractionSupportingP", "setImage"]
+- !private ["So18UITraitEnvironmentP", "setImage"]
+- !private ["So18UITraitEnvironmentP", "transition"]
+- !private ["So6UIViewC", "setImage"]
+- !private ["So6UIViewC", "transition"]
+- !private ["SC22UIViewAnimationOptionsV", "allowUserInteraction"]
+- !private ["SC22UIViewAnimationOptionsV", "transitionCrossDissolve"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "setImage"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "transition"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setImage"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "transition"]
+depends-nominal:
+- "9Imaginary15ButtonDisplayerC"
+- !private "So15CALayerDelegateP"
+- !private "s7CVarArgP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s8HashableP"
+- "9Imaginary14ImageDisplayerP"
+- !private "So8NSCodingP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "s9OptionSetP"
+- !private "s16RawRepresentableP"
+- !private "s10SetAlgebraP"
+- !private "So48UIAccessibilityContentSizeCategoryImageAdjustingP"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
+- !private "So21UIAppearanceContainerP"
+- !private "So8UIButtonC"
+- !private "So9UIControlC"
+- !private "SC14UIControlStateV"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
+- !private "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So30UIPasteConfigurationSupportingP"
+- !private "So11UIResponderC"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So35UISpringLoadedInteractionSupportingP"
+- !private "So18UITraitEnvironmentP"
+- !private "So6UIViewC"
+- !private "SC22UIViewAnimationOptionsV"
+- !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/Cache.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Imaginary/Imaginary-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Imaginary.build/unextended-module.modulemap"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/module.modulemap"
+interface-hash: "b17eea2d4d4367d08b41ea45466b0323"

@@ -1,0 +1,344 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["So6UIViewC", ""]
+- ["So6UIViewC", "setImage"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "??"
+- "AssignmentPrecedence"
+- !private "AssociateKey"
+- !private "CastingPrecedence"
+- "Completion"
+- !private "Configuration"
+- !private "DispatchQueue"
+- "Image"
+- "ImageFetcher"
+- "Option"
+- !private "Result"
+- "URL"
+- "View"
+- !private "objc_AssociationPolicy"
+- !private "objc_getAssociatedObject"
+- !private "objc_setAssociatedObject"
+depends-member:
+- !private ["So15CALayerDelegateP", "AssociateKey"]
+- !private ["So15CALayerDelegateP", "Configuration"]
+- !private ["So15CALayerDelegateP", "DispatchQueue"]
+- !private ["So15CALayerDelegateP", "Option"]
+- !private ["So15CALayerDelegateP", "handle"]
+- !private ["So15CALayerDelegateP", "imageFetcher"]
+- !private ["So15CALayerDelegateP", "objc_AssociationPolicy"]
+- !private ["So15CALayerDelegateP", "objc_getAssociatedObject"]
+- !private ["So15CALayerDelegateP", "objc_setAssociatedObject"]
+- !private ["s7CVarArgP", "AssociateKey"]
+- !private ["s7CVarArgP", "Configuration"]
+- !private ["s7CVarArgP", "DispatchQueue"]
+- !private ["s7CVarArgP", "Option"]
+- !private ["s7CVarArgP", "async"]
+- !private ["s7CVarArgP", "handle"]
+- !private ["s7CVarArgP", "imageFetcher"]
+- !private ["s7CVarArgP", "main"]
+- !private ["s7CVarArgP", "objc_AssociationPolicy"]
+- !private ["s7CVarArgP", "objc_getAssociatedObject"]
+- !private ["s7CVarArgP", "objc_setAssociatedObject"]
+- !private ["9Imaginary13ConfigurationV", "trackError"]
+- !private ["s28CustomDebugStringConvertibleP", "AssociateKey"]
+- !private ["s28CustomDebugStringConvertibleP", "Configuration"]
+- !private ["s28CustomDebugStringConvertibleP", "DispatchQueue"]
+- !private ["s28CustomDebugStringConvertibleP", "Option"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "handle"]
+- !private ["s28CustomDebugStringConvertibleP", "imageFetcher"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- !private ["s28CustomDebugStringConvertibleP", "objc_AssociationPolicy"]
+- !private ["s28CustomDebugStringConvertibleP", "objc_getAssociatedObject"]
+- !private ["s28CustomDebugStringConvertibleP", "objc_setAssociatedObject"]
+- !private ["s23CustomStringConvertibleP", "AssociateKey"]
+- !private ["s23CustomStringConvertibleP", "Configuration"]
+- !private ["s23CustomStringConvertibleP", "DispatchQueue"]
+- !private ["s23CustomStringConvertibleP", "Option"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "handle"]
+- !private ["s23CustomStringConvertibleP", "imageFetcher"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- !private ["s23CustomStringConvertibleP", "objc_AssociationPolicy"]
+- !private ["s23CustomStringConvertibleP", "objc_getAssociatedObject"]
+- !private ["s23CustomStringConvertibleP", "objc_setAssociatedObject"]
+- !private ["So14DispatchObjectC", "async"]
+- !private ["So14DispatchObjectC", "main"]
+- !private ["So13DispatchQueueC", "async"]
+- !private ["So13DispatchQueueC", "main"]
+- !private ["s9EquatableP", "AssociateKey"]
+- !private ["s9EquatableP", "Configuration"]
+- !private ["s9EquatableP", "DispatchQueue"]
+- !private ["s9EquatableP", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["s9EquatableP", "Option"]
+- !private ["s9EquatableP", "async"]
+- !private ["s9EquatableP", "handle"]
+- !private ["s9EquatableP", "imageFetcher"]
+- !private ["s9EquatableP", "main"]
+- !private ["s9EquatableP", "objc_AssociationPolicy"]
+- !private ["s9EquatableP", "objc_getAssociatedObject"]
+- !private ["s9EquatableP", "objc_setAssociatedObject"]
+- !private ["s8HashableP", "AssociateKey"]
+- !private ["s8HashableP", "Configuration"]
+- !private ["s8HashableP", "DispatchQueue"]
+- !private ["s8HashableP", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["s8HashableP", "Option"]
+- !private ["s8HashableP", "async"]
+- !private ["s8HashableP", "handle"]
+- !private ["s8HashableP", "imageFetcher"]
+- !private ["s8HashableP", "main"]
+- !private ["s8HashableP", "objc_AssociationPolicy"]
+- !private ["s8HashableP", "objc_getAssociatedObject"]
+- !private ["s8HashableP", "objc_setAssociatedObject"]
+- !private ["9Imaginary14ImageDisplayerP", "display"]
+- !private ["9Imaginary12ImageFetcherC", "cancel"]
+- !private ["9Imaginary12ImageFetcherC", "fetch"]
+- !private ["9Imaginary14ImageProcessorP", "process"]
+- !private ["So8NSCodingP", "AssociateKey"]
+- !private ["So8NSCodingP", "Configuration"]
+- !private ["So8NSCodingP", "DispatchQueue"]
+- !private ["So8NSCodingP", "Option"]
+- !private ["So8NSCodingP", "handle"]
+- !private ["So8NSCodingP", "imageFetcher"]
+- !private ["So8NSCodingP", "objc_AssociationPolicy"]
+- !private ["So8NSCodingP", "objc_getAssociatedObject"]
+- !private ["So8NSCodingP", "objc_setAssociatedObject"]
+- !private ["So8NSObjectC", "AssociateKey"]
+- ["So8NSObjectC", "Completion"]
+- !private ["So8NSObjectC", "Configuration"]
+- !private ["So8NSObjectC", "DispatchQueue"]
+- ["So8NSObjectC", "Image"]
+- ["So8NSObjectC", "ImageFetcher"]
+- ["So8NSObjectC", "Option"]
+- !private ["So8NSObjectC", "Result"]
+- ["So8NSObjectC", "URL"]
+- !private ["So8NSObjectC", "async"]
+- ["So8NSObjectC", "handle"]
+- ["So8NSObjectC", "imageFetcher"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So8NSObjectC", "objc_AssociationPolicy"]
+- !private ["So8NSObjectC", "objc_getAssociatedObject"]
+- !private ["So8NSObjectC", "objc_setAssociatedObject"]
+- ["So8NSObjectC", "setImage"]
+- !private ["So16NSObjectProtocolP", "AssociateKey"]
+- !private ["So16NSObjectProtocolP", "Configuration"]
+- !private ["So16NSObjectProtocolP", "DispatchQueue"]
+- !private ["So16NSObjectProtocolP", "Option"]
+- !private ["So16NSObjectProtocolP", "async"]
+- !private ["So16NSObjectProtocolP", "handle"]
+- !private ["So16NSObjectProtocolP", "imageFetcher"]
+- !private ["So16NSObjectProtocolP", "main"]
+- !private ["So16NSObjectProtocolP", "objc_AssociationPolicy"]
+- !private ["So16NSObjectProtocolP", "objc_getAssociatedObject"]
+- !private ["So16NSObjectProtocolP", "objc_setAssociatedObject"]
+- !private ["So9OS_objectC", "async"]
+- !private ["So9OS_objectC", "main"]
+- !private ["9Imaginary6OptionV", "fetcherMaker"]
+- !private ["9Imaginary6OptionV", "imageDisplayer"]
+- !private ["9Imaginary6OptionV", "imagePreprocessor"]
+- !private ["9Imaginary6OptionV", "init"]
+- !private ["s16RawRepresentableP", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["9Imaginary6ResultO", "error"]
+- !private ["9Imaginary6ResultO", "value"]
+- !private ["So29UIAccessibilityIdentificationP", "AssociateKey"]
+- !private ["So29UIAccessibilityIdentificationP", "Configuration"]
+- !private ["So29UIAccessibilityIdentificationP", "DispatchQueue"]
+- !private ["So29UIAccessibilityIdentificationP", "Option"]
+- !private ["So29UIAccessibilityIdentificationP", "handle"]
+- !private ["So29UIAccessibilityIdentificationP", "imageFetcher"]
+- !private ["So29UIAccessibilityIdentificationP", "objc_AssociationPolicy"]
+- !private ["So29UIAccessibilityIdentificationP", "objc_getAssociatedObject"]
+- !private ["So29UIAccessibilityIdentificationP", "objc_setAssociatedObject"]
+- !private ["So12UIAppearanceP", "AssociateKey"]
+- !private ["So12UIAppearanceP", "Configuration"]
+- !private ["So12UIAppearanceP", "DispatchQueue"]
+- !private ["So12UIAppearanceP", "Option"]
+- !private ["So12UIAppearanceP", "handle"]
+- !private ["So12UIAppearanceP", "imageFetcher"]
+- !private ["So12UIAppearanceP", "objc_AssociationPolicy"]
+- !private ["So12UIAppearanceP", "objc_getAssociatedObject"]
+- !private ["So12UIAppearanceP", "objc_setAssociatedObject"]
+- !private ["So21UIAppearanceContainerP", "AssociateKey"]
+- !private ["So21UIAppearanceContainerP", "Configuration"]
+- !private ["So21UIAppearanceContainerP", "DispatchQueue"]
+- !private ["So21UIAppearanceContainerP", "Option"]
+- !private ["So21UIAppearanceContainerP", "handle"]
+- !private ["So21UIAppearanceContainerP", "imageFetcher"]
+- !private ["So21UIAppearanceContainerP", "objc_AssociationPolicy"]
+- !private ["So21UIAppearanceContainerP", "objc_getAssociatedObject"]
+- !private ["So21UIAppearanceContainerP", "objc_setAssociatedObject"]
+- !private ["So17UICoordinateSpaceP", "AssociateKey"]
+- !private ["So17UICoordinateSpaceP", "Configuration"]
+- !private ["So17UICoordinateSpaceP", "DispatchQueue"]
+- !private ["So17UICoordinateSpaceP", "Option"]
+- !private ["So17UICoordinateSpaceP", "handle"]
+- !private ["So17UICoordinateSpaceP", "imageFetcher"]
+- !private ["So17UICoordinateSpaceP", "objc_AssociationPolicy"]
+- !private ["So17UICoordinateSpaceP", "objc_getAssociatedObject"]
+- !private ["So17UICoordinateSpaceP", "objc_setAssociatedObject"]
+- !private ["So13UIDynamicItemP", "AssociateKey"]
+- !private ["So13UIDynamicItemP", "Configuration"]
+- !private ["So13UIDynamicItemP", "DispatchQueue"]
+- !private ["So13UIDynamicItemP", "Option"]
+- !private ["So13UIDynamicItemP", "handle"]
+- !private ["So13UIDynamicItemP", "imageFetcher"]
+- !private ["So13UIDynamicItemP", "objc_AssociationPolicy"]
+- !private ["So13UIDynamicItemP", "objc_getAssociatedObject"]
+- !private ["So13UIDynamicItemP", "objc_setAssociatedObject"]
+- !private ["So18UIFocusEnvironmentP", "AssociateKey"]
+- !private ["So18UIFocusEnvironmentP", "Configuration"]
+- !private ["So18UIFocusEnvironmentP", "DispatchQueue"]
+- !private ["So18UIFocusEnvironmentP", "Option"]
+- !private ["So18UIFocusEnvironmentP", "handle"]
+- !private ["So18UIFocusEnvironmentP", "imageFetcher"]
+- !private ["So18UIFocusEnvironmentP", "objc_AssociationPolicy"]
+- !private ["So18UIFocusEnvironmentP", "objc_getAssociatedObject"]
+- !private ["So18UIFocusEnvironmentP", "objc_setAssociatedObject"]
+- !private ["So11UIFocusItemP", "AssociateKey"]
+- !private ["So11UIFocusItemP", "Configuration"]
+- !private ["So11UIFocusItemP", "DispatchQueue"]
+- !private ["So11UIFocusItemP", "Option"]
+- !private ["So11UIFocusItemP", "handle"]
+- !private ["So11UIFocusItemP", "imageFetcher"]
+- !private ["So11UIFocusItemP", "objc_AssociationPolicy"]
+- !private ["So11UIFocusItemP", "objc_getAssociatedObject"]
+- !private ["So11UIFocusItemP", "objc_setAssociatedObject"]
+- !private ["So30UIPasteConfigurationSupportingP", "AssociateKey"]
+- !private ["So30UIPasteConfigurationSupportingP", "Configuration"]
+- !private ["So30UIPasteConfigurationSupportingP", "DispatchQueue"]
+- !private ["So30UIPasteConfigurationSupportingP", "Option"]
+- !private ["So30UIPasteConfigurationSupportingP", "handle"]
+- !private ["So30UIPasteConfigurationSupportingP", "imageFetcher"]
+- !private ["So30UIPasteConfigurationSupportingP", "objc_AssociationPolicy"]
+- !private ["So30UIPasteConfigurationSupportingP", "objc_getAssociatedObject"]
+- !private ["So30UIPasteConfigurationSupportingP", "objc_setAssociatedObject"]
+- !private ["So11UIResponderC", "AssociateKey"]
+- ["So11UIResponderC", "Completion"]
+- !private ["So11UIResponderC", "Configuration"]
+- !private ["So11UIResponderC", "DispatchQueue"]
+- ["So11UIResponderC", "Image"]
+- ["So11UIResponderC", "ImageFetcher"]
+- ["So11UIResponderC", "Option"]
+- !private ["So11UIResponderC", "Result"]
+- ["So11UIResponderC", "URL"]
+- ["So11UIResponderC", "handle"]
+- ["So11UIResponderC", "imageFetcher"]
+- !private ["So11UIResponderC", "objc_AssociationPolicy"]
+- !private ["So11UIResponderC", "objc_getAssociatedObject"]
+- !private ["So11UIResponderC", "objc_setAssociatedObject"]
+- ["So11UIResponderC", "setImage"]
+- !private ["So30UIResponderStandardEditActionsP", "AssociateKey"]
+- !private ["So30UIResponderStandardEditActionsP", "Configuration"]
+- !private ["So30UIResponderStandardEditActionsP", "DispatchQueue"]
+- !private ["So30UIResponderStandardEditActionsP", "Option"]
+- !private ["So30UIResponderStandardEditActionsP", "handle"]
+- !private ["So30UIResponderStandardEditActionsP", "imageFetcher"]
+- !private ["So30UIResponderStandardEditActionsP", "objc_AssociationPolicy"]
+- !private ["So30UIResponderStandardEditActionsP", "objc_getAssociatedObject"]
+- !private ["So30UIResponderStandardEditActionsP", "objc_setAssociatedObject"]
+- !private ["So18UITraitEnvironmentP", "AssociateKey"]
+- !private ["So18UITraitEnvironmentP", "Configuration"]
+- !private ["So18UITraitEnvironmentP", "DispatchQueue"]
+- !private ["So18UITraitEnvironmentP", "Option"]
+- !private ["So18UITraitEnvironmentP", "handle"]
+- !private ["So18UITraitEnvironmentP", "imageFetcher"]
+- !private ["So18UITraitEnvironmentP", "objc_AssociationPolicy"]
+- !private ["So18UITraitEnvironmentP", "objc_getAssociatedObject"]
+- !private ["So18UITraitEnvironmentP", "objc_setAssociatedObject"]
+- !private ["So6UIViewC", "AssociateKey"]
+- ["So6UIViewC", "Completion"]
+- !private ["So6UIViewC", "Configuration"]
+- !private ["So6UIViewC", "DispatchQueue"]
+- ["So6UIViewC", "Image"]
+- ["So6UIViewC", "ImageFetcher"]
+- ["So6UIViewC", "Option"]
+- !private ["So6UIViewC", "Result"]
+- ["So6UIViewC", "URL"]
+- !private ["So6UIViewC", "handle"]
+- !private ["So6UIViewC", "imageFetcher"]
+- !private ["So6UIViewC", "objc_AssociationPolicy"]
+- !private ["So6UIViewC", "objc_getAssociatedObject"]
+- !private ["So6UIViewC", "objc_setAssociatedObject"]
+- ["So6UIViewC", "setImage"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "AssociateKey"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "Configuration"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "DispatchQueue"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "Option"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "handle"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "imageFetcher"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "objc_AssociationPolicy"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "objc_getAssociatedObject"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "objc_setAssociatedObject"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "AssociateKey"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Configuration"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "DispatchQueue"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Option"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "handle"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "imageFetcher"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "objc_AssociationPolicy"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "objc_getAssociatedObject"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "objc_setAssociatedObject"]
+- !private ["SC22objc_AssociationPolicyO", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+depends-nominal:
+- !private "So15CALayerDelegateP"
+- !private "s7CVarArgP"
+- !private "9Imaginary13ConfigurationV"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "So14DispatchObjectC"
+- !private "So13DispatchQueueC"
+- !private "s9EquatableP"
+- !private "s8HashableP"
+- !private "9Imaginary14ImageDisplayerP"
+- !private "9Imaginary12ImageFetcherC"
+- !private "9Imaginary14ImageProcessorP"
+- !private "So8NSCodingP"
+- "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So9OS_objectC"
+- !private "9Imaginary6OptionV"
+- !private "s16RawRepresentableP"
+- !private "9Imaginary6ResultO"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
+- !private "So21UIAppearanceContainerP"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
+- !private "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So18UITraitEnvironmentP"
+- "So6UIViewC"
+- !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "SC22objc_AssociationPolicyO"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/Cache.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Imaginary/Imaginary-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Imaginary.build/unextended-module.modulemap"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/module.modulemap"
+interface-hash: "8cdbe39b9c08f27133a3237730183300"

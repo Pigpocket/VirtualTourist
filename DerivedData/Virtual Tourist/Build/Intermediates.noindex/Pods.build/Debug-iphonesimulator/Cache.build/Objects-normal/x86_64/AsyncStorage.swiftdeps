@@ -1,0 +1,113 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AsyncStorage"
+provides-nominal:
+- "5Cache12AsyncStorageC"
+provides-member:
+- ["5Cache12AsyncStorageC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "AsyncStorage"
+- "AsyncStorageAware"
+- "Codable"
+- "DispatchQueue"
+- "Entry"
+- "Expiry"
+- "Result"
+- "StorageAware"
+- !private "StorageError"
+- "String"
+- "Void"
+depends-member:
+- ["5Cache12AsyncStorageC", "Codable"]
+- ["5Cache12AsyncStorageC", "DispatchQueue"]
+- ["5Cache12AsyncStorageC", "Entry"]
+- ["5Cache12AsyncStorageC", "Expiry"]
+- ["5Cache12AsyncStorageC", "Result"]
+- ["5Cache12AsyncStorageC", "StorageAware"]
+- !private ["5Cache12AsyncStorageC", "StorageError"]
+- ["5Cache12AsyncStorageC", "String"]
+- ["5Cache12AsyncStorageC", "Void"]
+- ["5Cache12AsyncStorageC", "deinit"]
+- ["5Cache12AsyncStorageC", "entry"]
+- ["5Cache12AsyncStorageC", "existsObject"]
+- ["5Cache12AsyncStorageC", "init"]
+- !private ["5Cache12AsyncStorageC", "internalStorage"]
+- ["5Cache12AsyncStorageC", "object"]
+- ["5Cache12AsyncStorageC", "removeAll"]
+- ["5Cache12AsyncStorageC", "removeExpiredObjects"]
+- ["5Cache12AsyncStorageC", "removeObject"]
+- ["5Cache12AsyncStorageC", "serialQueue"]
+- ["5Cache12AsyncStorageC", "setObject"]
+- !private ["5Cache17AsyncStorageAwareP", "Result"]
+- !private ["5Cache17AsyncStorageAwareP", "StorageError"]
+- ["5Cache17AsyncStorageAwareP", "entry"]
+- ["5Cache17AsyncStorageAwareP", "existsObject"]
+- !private ["5Cache17AsyncStorageAwareP", "internalStorage"]
+- ["5Cache17AsyncStorageAwareP", "object"]
+- ["5Cache17AsyncStorageAwareP", "removeAll"]
+- ["5Cache17AsyncStorageAwareP", "removeExpiredObjects"]
+- ["5Cache17AsyncStorageAwareP", "removeObject"]
+- ["5Cache17AsyncStorageAwareP", "serialQueue"]
+- ["5Cache17AsyncStorageAwareP", "setObject"]
+- ["5Cache17AsyncStorageAwareP", ""]
+- !private ["s7CVarArgP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["So14DispatchObjectC", "async"]
+- !private ["So13DispatchQueueC", "async"]
+- !private ["s9EquatableP", "async"]
+- !private ["s9EquatableP", "deallocated"]
+- !private ["s5ErrorP", "deallocated"]
+- !private ["s8HashableP", "async"]
+- !private ["s8HashableP", "deallocated"]
+- !private ["So8NSObjectC", "async"]
+- !private ["So16NSObjectProtocolP", "async"]
+- !private ["So9OS_objectC", "async"]
+- !private ["5Cache6ResultO", "error"]
+- !private ["5Cache6ResultO", "value"]
+- !private ["5Cache12StorageAwareP", "entry"]
+- !private ["5Cache12StorageAwareP", "removeAll"]
+- !private ["5Cache12StorageAwareP", "removeExpiredObjects"]
+- !private ["5Cache12StorageAwareP", "removeObject"]
+- !private ["5Cache12StorageAwareP", "setObject"]
+- !private ["5Cache12StorageErrorO", "deallocated"]
+- !private ["5Cache12StorageErrorO", "deinit"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+depends-nominal:
+- "5Cache12AsyncStorageC"
+- "5Cache17AsyncStorageAwareP"
+- !private "s7CVarArgP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "So14DispatchObjectC"
+- !private "So13DispatchQueueC"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s8HashableP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So9OS_objectC"
+- !private "5Cache6ResultO"
+- !private "5Cache12StorageAwareP"
+- !private "5Cache12StorageErrorO"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/unextended-module.modulemap"
+interface-hash: "f56fe9d99e07c706809450127374f62e"

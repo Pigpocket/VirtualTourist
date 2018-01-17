@@ -1,0 +1,322 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ImageDownloader"
+provides-nominal:
+- "9Imaginary15ImageDownloaderC"
+provides-member:
+- ["9Imaginary15ImageDownloaderC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "=="
+- !private ">"
+- !private ">="
+- "AssignmentPrecedence"
+- !private "Bool"
+- "BooleanLiteralType"
+- !private "CastingPrecedence"
+- !private "Configuration"
+- !private "Data"
+- !private "Decompressor"
+- "HTTPURLResponse"
+- "ImageDownloader"
+- !private "ImaginaryError"
+- !private "Int64"
+- "Result"
+- !private "TernaryPrecedence"
+- "URL"
+- "URLSession"
+- "URLSessionDataTask"
+- "Void"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "count"]
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "Int64"]
+- !private ["s7CVarArgP", "cancel"]
+- !private ["s7CVarArgP", "dataTask"]
+- !private ["s7CVarArgP", "expectedContentLength"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "resume"]
+- !private ["s7CVarArgP", "shared"]
+- !private ["s7CVarArgP", "statusCode"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "validateLength"]
+- !private ["s10CollectionP", "count"]
+- !private ["s10CollectionP", "subscript"]
+- !private ["s10ComparableP", "init"]
+- !private ["9Imaginary13ConfigurationV", "trackBytesDownloaded"]
+- !private ["s28CustomDebugStringConvertibleP", "Int64"]
+- !private ["s28CustomDebugStringConvertibleP", "cancel"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "dataTask"]
+- !private ["s28CustomDebugStringConvertibleP", "expectedContentLength"]
+- !private ["s28CustomDebugStringConvertibleP", "resume"]
+- !private ["s28CustomDebugStringConvertibleP", "shared"]
+- !private ["s28CustomDebugStringConvertibleP", "statusCode"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "validateLength"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "Int64"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "cancel"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "dataTask"]
+- !private ["s23CustomStringConvertibleP", "expectedContentLength"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "resume"]
+- !private ["s23CustomStringConvertibleP", "shared"]
+- !private ["s23CustomStringConvertibleP", "statusCode"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "validateLength"]
+- !private ["10Foundation4DataV", "count"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "count"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "subscript"]
+- !private ["9Imaginary12DecompressorC", "decompress"]
+- !private ["9Imaginary12DecompressorC", "init"]
+- !private ["s10DictionaryV", "subscript"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "count"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "subscript"]
+- !private ["s9EquatableP", "Int64"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "cancel"]
+- !private ["s9EquatableP", "conversionError"]
+- !private ["s9EquatableP", "count"]
+- !private ["s9EquatableP", "dataTask"]
+- !private ["s9EquatableP", "expectedContentLength"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "invalidContentLength"]
+- !private ["s9EquatableP", "invalidResponse"]
+- !private ["s9EquatableP", "invalidStatusCode"]
+- !private ["s9EquatableP", "resume"]
+- !private ["s9EquatableP", "shared"]
+- !private ["s9EquatableP", "statusCode"]
+- !private ["s9EquatableP", "validateLength"]
+- !private ["s5ErrorP", "conversionError"]
+- !private ["s5ErrorP", "invalidContentLength"]
+- !private ["s5ErrorP", "invalidResponse"]
+- !private ["s5ErrorP", "invalidStatusCode"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["So15HTTPURLResponseC", "Bool"]
+- !private ["So15HTTPURLResponseC", "Data"]
+- !private ["So15HTTPURLResponseC", "Int64"]
+- !private ["So15HTTPURLResponseC", "expectedContentLength"]
+- !private ["So15HTTPURLResponseC", "statusCode"]
+- !private ["So15HTTPURLResponseC", "validateLength"]
+- !private ["s8HashableP", "Int64"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "cancel"]
+- !private ["s8HashableP", "conversionError"]
+- !private ["s8HashableP", "count"]
+- !private ["s8HashableP", "dataTask"]
+- !private ["s8HashableP", "expectedContentLength"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "invalidContentLength"]
+- !private ["s8HashableP", "invalidResponse"]
+- !private ["s8HashableP", "invalidStatusCode"]
+- !private ["s8HashableP", "resume"]
+- !private ["s8HashableP", "shared"]
+- !private ["s8HashableP", "statusCode"]
+- !private ["s8HashableP", "validateLength"]
+- !private ["9Imaginary15ImageDownloaderC", "Configuration"]
+- !private ["9Imaginary15ImageDownloaderC", "Decompressor"]
+- !private ["9Imaginary15ImageDownloaderC", "HTTPURLResponse"]
+- !private ["9Imaginary15ImageDownloaderC", "ImaginaryError"]
+- ["9Imaginary15ImageDownloaderC", "Result"]
+- ["9Imaginary15ImageDownloaderC", "URL"]
+- ["9Imaginary15ImageDownloaderC", "URLSession"]
+- ["9Imaginary15ImageDownloaderC", "URLSessionDataTask"]
+- ["9Imaginary15ImageDownloaderC", "Void"]
+- !private ["9Imaginary15ImageDownloaderC", "active"]
+- ["9Imaginary15ImageDownloaderC", "cancel"]
+- ["9Imaginary15ImageDownloaderC", "deinit"]
+- ["9Imaginary15ImageDownloaderC", "download"]
+- ["9Imaginary15ImageDownloaderC", "init"]
+- !private ["9Imaginary15ImageDownloaderC", "session"]
+- !private ["9Imaginary15ImageDownloaderC", "task"]
+- !private ["9Imaginary0A5ErrorO", "conversionError"]
+- !private ["9Imaginary0A5ErrorO", "deinit"]
+- !private ["9Imaginary0A5ErrorO", "invalidContentLength"]
+- !private ["9Imaginary0A5ErrorO", "invalidResponse"]
+- !private ["9Imaginary0A5ErrorO", "invalidStatusCode"]
+- !private ["s5Int64V", "init"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s17MutableCollectionP", "count"]
+- !private ["So8NSCodingP", "Int64"]
+- !private ["So8NSCodingP", "expectedContentLength"]
+- !private ["So8NSCodingP", "statusCode"]
+- !private ["So8NSCodingP", "validateLength"]
+- !private ["So9NSCopyingP", "Int64"]
+- !private ["So9NSCopyingP", "cancel"]
+- !private ["So9NSCopyingP", "expectedContentLength"]
+- !private ["So9NSCopyingP", "resume"]
+- !private ["So9NSCopyingP", "statusCode"]
+- !private ["So9NSCopyingP", "validateLength"]
+- !private ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "Data"]
+- !private ["So8NSObjectC", "Int64"]
+- !private ["So8NSObjectC", "cancel"]
+- !private ["So8NSObjectC", "dataTask"]
+- !private ["So8NSObjectC", "expectedContentLength"]
+- !private ["So8NSObjectC", "resume"]
+- !private ["So8NSObjectC", "shared"]
+- !private ["So8NSObjectC", "statusCode"]
+- !private ["So8NSObjectC", "validateLength"]
+- !private ["So16NSObjectProtocolP", "Int64"]
+- !private ["So16NSObjectProtocolP", "cancel"]
+- !private ["So16NSObjectProtocolP", "dataTask"]
+- !private ["So16NSObjectProtocolP", "expectedContentLength"]
+- !private ["So16NSObjectProtocolP", "resume"]
+- !private ["So16NSObjectProtocolP", "shared"]
+- !private ["So16NSObjectProtocolP", "statusCode"]
+- !private ["So16NSObjectProtocolP", "validateLength"]
+- !private ["So14NSSecureCodingP", "Int64"]
+- !private ["So14NSSecureCodingP", "expectedContentLength"]
+- !private ["So14NSSecureCodingP", "statusCode"]
+- !private ["So14NSSecureCodingP", "validateLength"]
+- !private ["s7NumericP", "init"]
+- !private ["So17ProgressReportingP", "cancel"]
+- !private ["So17ProgressReportingP", "resume"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- !private ["10Foundation20ReferenceConvertibleP", "count"]
+- !private ["9Imaginary6ResultO", "error"]
+- !private ["9Imaginary6ResultO", "value"]
+- !private ["s8SequenceP", "count"]
+- !private ["s8SequenceP", "subscript"]
+- !private ["s13SignedIntegerP", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["s10StrideableP", "init"]
+- !private ["So11URLResponseC", "Bool"]
+- !private ["So11URLResponseC", "Data"]
+- !private ["So11URLResponseC", "Int64"]
+- !private ["So11URLResponseC", "expectedContentLength"]
+- !private ["So11URLResponseC", "statusCode"]
+- !private ["So11URLResponseC", "validateLength"]
+- !private ["So10URLSessionC", "dataTask"]
+- !private ["So10URLSessionC", "shared"]
+- !private ["So18URLSessionDataTaskC", "cancel"]
+- !private ["So18URLSessionDataTaskC", "resume"]
+- !private ["So14URLSessionTaskC", "cancel"]
+- !private ["So14URLSessionTaskC", "resume"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s15_CVarArgAlignedP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s10_IndexableP", "count"]
+- !private ["s10_IndexableP", "subscript"]
+- !private ["s14_IndexableBaseP", "count"]
+- !private ["s14_IndexableBaseP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Int64"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "cancel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dataTask"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "expectedContentLength"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "resume"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "shared"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "statusCode"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "validateLength"]
+- !private ["s17_MutableIndexableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- !private ["s11_StrideableP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "s13BinaryIntegerP"
+- !private "Sb"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "9Imaginary13ConfigurationV"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation4DataV"
+- !private "s9DecodableP"
+- !private "9Imaginary12DecompressorC"
+- !private "s10DictionaryV"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s17FixedWidthIntegerP"
+- !private "So15HTTPURLResponseC"
+- !private "s8HashableP"
+- "9Imaginary15ImageDownloaderC"
+- !private "9Imaginary0A5ErrorO"
+- !private "s5Int64V"
+- !private "s25LosslessStringConvertibleP"
+- !private "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "s7NumericP"
+- !private "So17ProgressReportingP"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "9Imaginary6ResultO"
+- !private "s8SequenceP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "s10StrideableP"
+- !private "So11URLResponseC"
+- !private "So10URLSessionC"
+- !private "So18URLSessionDataTaskC"
+- !private "So14URLSessionTaskC"
+- !private "s23_BidirectionalIndexableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s15_CVarArgAlignedP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/Cache.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Imaginary/Imaginary-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Imaginary.build/unextended-module.modulemap"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/module.modulemap"
+interface-hash: "08017e8b55d2444710825b9b62e528a3"
