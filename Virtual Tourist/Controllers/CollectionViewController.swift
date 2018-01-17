@@ -14,6 +14,18 @@ import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
     
+    // MARK: Properties
+    
+    var insertedIndexPaths: [IndexPath]!
+    var deletedIndexPaths: [IndexPath]!
+    var updatedIndexPaths: [IndexPath]!
+    var selectedPin: Pin!
+    var innerSpace: CGFloat = 1.0
+    var numberOfCellsOnRow: CGFloat = 3.0
+    var annotation = MKPointAnnotation()
+    var pageCount: Int = 1
+    var selectedIndexes = [IndexPath]()
+    
     // MARK: Outlets
     
     @IBOutlet weak var newCollectionButton: UIBarButtonItem!
@@ -38,25 +50,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         return fetchedResultsController
     }()
     
-    // MARK: Properties
-    
-    // Keep the changes. We will keep track of insertions, deletions, and updates.
-    var insertedIndexPaths: [IndexPath]!
-    var deletedIndexPaths: [IndexPath]!
-    var updatedIndexPaths: [IndexPath]!
-    
-    var selectedPin: Pin!
-    var innerSpace: CGFloat = 1.0
-    var numberOfCellsOnRow: CGFloat = 3.0
-    var annotation = MKPointAnnotation()
-    var pageCount: Int = 1
-    var selectedIndexes = [IndexPath]()
-    
     // MARK: Actions
     
     @IBAction func newCollectionAction(_ sender: Any) {
-        
-        print("selectedIndexes count is: \(selectedIndexes.count)")
         
         // If no images are selected, get a new image collection
         if selectedIndexes.isEmpty {

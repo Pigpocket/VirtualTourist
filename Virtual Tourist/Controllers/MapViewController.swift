@@ -17,7 +17,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
-    
     var selectedPin: Pin?
     var images: [Images?] = []
     
@@ -26,6 +25,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deletePinsLabel: UILabel!
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         deletePinsLabel.isHidden = true
     }
     
+    func loadAnnotations() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+        
+        do {
+            if let pins = try? CoreDataStack.sharedInstance().context.fetch(fetchRequest) as! [Pin] {
+                var pinAnnotations = [PinAnnotation]()
+                
+                for pin in pins {
+                    let latitude = CLLocationDegrees(pin.latitude)
+                    let longitude = CLLocationDegrees(pin.longitude)
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    pinAnnotations.append(PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: coordinate))
+                }
+                mapView.addAnnotations(pinAnnotations)
+            }
+        }
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: true)
         
@@ -59,7 +79,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    // MARK: Lifecycle
+    // MARK: Actions
     
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer) {
         if gestureRecognizer.state != .began { return }
@@ -91,24 +111,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
     }
     
-    func loadAnnotations() {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
-
-        do {
-            if let pins = try? CoreDataStack.sharedInstance().context.fetch(fetchRequest) as! [Pin] {
-                var pinAnnotations = [PinAnnotation]()
-                
-                for pin in pins {
-                    let latitude = CLLocationDegrees(pin.latitude)
-                    let longitude = CLLocationDegrees(pin.longitude)
-                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    pinAnnotations.append(PinAnnotation(objectID: pin.objectID, title: nil, subtitle: nil, coordinate: coordinate))
-                }
-                mapView.addAnnotations(pinAnnotations)
-            }
-        }
-    }
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {
