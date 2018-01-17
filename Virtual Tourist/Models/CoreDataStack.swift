@@ -97,11 +97,10 @@ internal extension CoreDataStack  {
         backgroundContext.perform(){
             batch(self.backgroundContext)
             
-            // Save it to the parent context, so normal saving
-            // can work
-            do{
+            // Save it to the parent context, so normal saving can work
+            do {
                 try self.backgroundContext.save()
-            }catch{
+            } catch {
                 fatalError("Error while saving backgroundContext: \(error)")
             }
         }
@@ -120,15 +119,15 @@ internal extension CoreDataStack  {
 extension CoreDataStack {
     
     func save() {
-        context.performAndWait(){
-            if self.context.hasChanges{
+        context.performAndWait() {
+            if self.context.hasChanges {
                 do {
                     try self.context.save()
                 } catch {
                     fatalError("Fatal error while saving main context: \(error)")
                 }
                 
-                self.persistingContext.perform(){
+                self.persistingContext.perform() {
                     do {
                         try self.persistingContext.save()
                     } catch {
@@ -154,7 +153,7 @@ extension CoreDataStack {
             }
         }
     
-    /*
+    
     func autoSave(_ delayInSeconds : Int) {
         
         if delayInSeconds > 0 {
@@ -173,5 +172,5 @@ extension CoreDataStack {
             }
         }
     }
- */
+
 }
