@@ -1,0 +1,108 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ImageFetcher"
+provides-nominal:
+- "9Imaginary12ImageFetcherC"
+provides-member:
+- ["9Imaginary12ImageFetcherC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "Configuration"
+- "ImageDownloader"
+- "ImageFetcher"
+- !private "ImageWrapper"
+- "Result"
+- "Storage"
+- "URL"
+- "Void"
+depends-member:
+- !private ["5Cache12AsyncStorageC", "object"]
+- !private ["5Cache17AsyncStorageAwareP", "object"]
+- !private ["9Imaginary13ConfigurationV", "imageStorage"]
+- !private ["s28CustomDebugStringConvertibleP", "absoluteString"]
+- !private ["s29CustomPlaygroundQuickLookableP", "absoluteString"]
+- !private ["s23CustomStringConvertibleP", "absoluteString"]
+- !private ["s9DecodableP", "absoluteString"]
+- !private ["s9DecodableP", "image"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "absoluteString"]
+- !private ["s9EncodableP", "image"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "absoluteString"]
+- !private ["s8HashableP", "absoluteString"]
+- !private ["9Imaginary15ImageDownloaderC", "cancel"]
+- !private ["9Imaginary15ImageDownloaderC", "download"]
+- !private ["9Imaginary15ImageDownloaderC", "init"]
+- !private ["9Imaginary12ImageFetcherC", "Configuration"]
+- ["9Imaginary12ImageFetcherC", "ImageDownloader"]
+- !private ["9Imaginary12ImageFetcherC", "ImageWrapper"]
+- ["9Imaginary12ImageFetcherC", "Result"]
+- ["9Imaginary12ImageFetcherC", "Storage"]
+- ["9Imaginary12ImageFetcherC", "URL"]
+- ["9Imaginary12ImageFetcherC", "Void"]
+- ["9Imaginary12ImageFetcherC", "cancel"]
+- ["9Imaginary12ImageFetcherC", "deinit"]
+- !private ["9Imaginary12ImageFetcherC", "downloader"]
+- ["9Imaginary12ImageFetcherC", "fetch"]
+- !private ["9Imaginary12ImageFetcherC", "fetchFromNetwork"]
+- ["9Imaginary12ImageFetcherC", "init"]
+- !private ["9Imaginary12ImageFetcherC", "storage"]
+- !private ["5Cache12ImageWrapperV", "image"]
+- !private ["5Cache12ImageWrapperV", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "absoluteString"]
+- !private ["5Cache6ResultO", "error"]
+- !private ["5Cache6ResultO", "value"]
+- !private ["9Imaginary6ResultO", "error"]
+- !private ["9Imaginary6ResultO", "value"]
+- !private ["5Cache7StorageC", "async"]
+- !private ["5Cache7StorageC", "setObject"]
+- !private ["5Cache12StorageAwareP", "async"]
+- !private ["5Cache12StorageAwareP", "setObject"]
+- !private ["10Foundation3URLV", "absoluteString"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "absoluteString"]
+- !private ["s21_ObjectiveCBridgeableP", "absoluteString"]
+depends-nominal:
+- !private "5Cache12AsyncStorageC"
+- !private "5Cache17AsyncStorageAwareP"
+- !private "9Imaginary13ConfigurationV"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s8HashableP"
+- !private "9Imaginary15ImageDownloaderC"
+- "9Imaginary12ImageFetcherC"
+- !private "5Cache12ImageWrapperV"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "5Cache6ResultO"
+- !private "9Imaginary6ResultO"
+- !private "5Cache7StorageC"
+- !private "5Cache12StorageAwareP"
+- !private "10Foundation3URLV"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Modules/Cache.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Imaginary/Imaginary-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Products/Debug-iphonesimulator/Cache/Cache.framework/Headers/Cache-Swift.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Imaginary.build/unextended-module.modulemap"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/module.modulemap"
+interface-hash: "48ea54e124cb3f1e4d30f18078edce08"

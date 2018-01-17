@@ -1,6 +1,6 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
 options: "46126c314513ea7c7f629f3234ed0e55"
-build_time: [1516225361, 93053000]
+build_time: [1516226841, 905024000]
 inputs:
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Cache/Source/Shared/Storage/AsyncStorage.swift": [1514003206, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Cache/Source/Shared/Storage/AsyncStorageAware.swift": [1514003206, 0]

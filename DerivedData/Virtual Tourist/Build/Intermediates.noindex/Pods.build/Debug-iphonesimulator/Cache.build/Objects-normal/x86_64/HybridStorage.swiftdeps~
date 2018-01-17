@@ -1,0 +1,83 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "HybridStorage"
+provides-nominal:
+- "5Cache13HybridStorageC"
+provides-member:
+- ["5Cache13HybridStorageC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "Codable"
+- "DiskStorage"
+- "Entry"
+- "Expiry"
+- "HybridStorage"
+- "MemoryStorage"
+- "StorageAware"
+- "String"
+depends-member:
+- !private ["5Cache11DiskStorageC", "deinit"]
+- !private ["5Cache11DiskStorageC", "entry"]
+- !private ["5Cache11DiskStorageC", "removeAll"]
+- !private ["5Cache11DiskStorageC", "removeExpiredObjects"]
+- !private ["5Cache11DiskStorageC", "removeObject"]
+- !private ["5Cache11DiskStorageC", "setObject"]
+- !private ["5Cache5EntryV", "object"]
+- ["5Cache13HybridStorageC", "Codable"]
+- ["5Cache13HybridStorageC", "DiskStorage"]
+- ["5Cache13HybridStorageC", "Entry"]
+- ["5Cache13HybridStorageC", "Expiry"]
+- ["5Cache13HybridStorageC", "MemoryStorage"]
+- ["5Cache13HybridStorageC", "String"]
+- ["5Cache13HybridStorageC", "deinit"]
+- ["5Cache13HybridStorageC", "diskStorage"]
+- ["5Cache13HybridStorageC", "entry"]
+- ["5Cache13HybridStorageC", "existsObject"]
+- ["5Cache13HybridStorageC", "init"]
+- ["5Cache13HybridStorageC", "memoryStorage"]
+- ["5Cache13HybridStorageC", "object"]
+- ["5Cache13HybridStorageC", "removeAll"]
+- ["5Cache13HybridStorageC", "removeExpiredObjects"]
+- ["5Cache13HybridStorageC", "removeObject"]
+- ["5Cache13HybridStorageC", "setObject"]
+- !private ["5Cache13MemoryStorageC", "deinit"]
+- !private ["5Cache13MemoryStorageC", "entry"]
+- !private ["5Cache13MemoryStorageC", "removeAll"]
+- !private ["5Cache13MemoryStorageC", "removeExpiredObjects"]
+- !private ["5Cache13MemoryStorageC", "removeObject"]
+- !private ["5Cache13MemoryStorageC", "setObject"]
+- !private ["5Cache12StorageAwareP", "diskStorage"]
+- ["5Cache12StorageAwareP", "entry"]
+- ["5Cache12StorageAwareP", "existsObject"]
+- !private ["5Cache12StorageAwareP", "memoryStorage"]
+- ["5Cache12StorageAwareP", "object"]
+- ["5Cache12StorageAwareP", "removeAll"]
+- ["5Cache12StorageAwareP", "removeExpiredObjects"]
+- ["5Cache12StorageAwareP", "removeObject"]
+- ["5Cache12StorageAwareP", "setObject"]
+- ["5Cache12StorageAwareP", ""]
+depends-nominal:
+- !private "5Cache11DiskStorageC"
+- !private "5Cache5EntryV"
+- "5Cache13HybridStorageC"
+- !private "5Cache13MemoryStorageC"
+- "5Cache12StorageAwareP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Target Support Files/Cache/Cache-umbrella.h"
+- "/Users/tomassidenfaden/Projects/Virtual-Tourist/DerivedData/Virtual Tourist/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Cache.build/unextended-module.modulemap"
+interface-hash: "04c0333751d4723d25b7564a5e1852d3"

@@ -1,0 +1,20 @@
+version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
+options: "997d15a396b5b1eabfc9b5f2d068426f"
+build_time: [1516225363, 808324000]
+inputs:
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/ButtonBackgroundDisplayer.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/ButtonDisplayer.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/Configuration.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/Decompressor.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/ImageDisplayer.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Fetcher/ImageDownloader.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Fetcher/ImageFetcher.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/ImageProcessor.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/ImageViewDisplayer.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/ImaginaryError.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Fetcher/MultipleImageFetcher.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/Option.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/Result.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/TintImageProcessor.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Library/Types.swift": [1514003207, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/Shared/Extensions/View+Imaginary.swift": [1514003207, 0]

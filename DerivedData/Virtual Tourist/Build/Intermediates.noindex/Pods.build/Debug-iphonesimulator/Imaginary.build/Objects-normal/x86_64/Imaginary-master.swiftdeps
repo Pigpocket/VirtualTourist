@@ -1,6 +1,6 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
 options: "997d15a396b5b1eabfc9b5f2d068426f"
-build_time: [1516225363, 808324000]
+build_time: [1516226845, 290694000]
 inputs:
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/ButtonBackgroundDisplayer.swift": [1514003207, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Pods/Imaginary/Sources/iOS/ButtonDisplayer.swift": [1514003207, 0]
