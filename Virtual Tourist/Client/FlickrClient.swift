@@ -12,8 +12,11 @@ import CoreData
 
 class FlickrClient: NSObject {
     
-    enum HTTPMethod: String {
-        case GET, POST, PUT, DELETE
+    class func sharedInstance() -> FlickrClient {
+        struct Singleton {
+            static var sharedInstance = FlickrClient()
+        }
+        return Singleton.sharedInstance
     }
     
     func taskForGetImages(methodParameters: [String:Any], latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
@@ -22,7 +25,6 @@ class FlickrClient: NSObject {
         let session = URLSession.shared
         let urlString = Constants.Flickr.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
         let url = URL(string: urlString)!
-        //print("This is what the URL request looks like: \n ****** \n \(url) \n ********")
         let request = URLRequest(url: url)
         
         // create network request
@@ -50,13 +52,11 @@ class FlickrClient: NSObject {
             }
             
             self.parseJSONObject(data, completionHandlerForConvertData: completionHandlerForGetImages)
-            
-        // start the task!
         }
         task.resume()
     }
     
-    // MARK: Helper for Escaping Parameters in URL
+    // MARK: JSON Parsing function
     
     func parseJSONObject(_ data: Data, completionHandlerForConvertData: (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
@@ -70,6 +70,8 @@ class FlickrClient: NSObject {
         }
         completionHandlerForConvertData(parsedResult, nil)
     }
+    
+    // MARK: Helper for Escaping Parameters in URL
     
     private func escapedParameters(_ parameters: [String:AnyObject]) -> String {
         
@@ -88,22 +90,15 @@ class FlickrClient: NSObject {
                 
                 // append it
                 keyValuePairs.append(key + "=" + "\(escapedValue!)")
-                
             }
-            
             return "?\(keyValuePairs.joined(separator: "&"))"
         }
-    }
-    
-    class func sharedInstance() -> FlickrClient {
-        struct Singleton {
-            static var sharedInstance = FlickrClient()
-        }
-        return Singleton.sharedInstance
     }
 }
 
 extension FlickrClient {
+    
+    // MARK: Convenience function for getImages
     
     func getImagesFromFlickr(pin: Pin, context: NSManagedObjectContext, page: Any, completionHandlerForGetImages: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
@@ -121,46 +116,39 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
             
-            //var imageArray = [Images]()
-            
-            if let error = error {
-                completionHandlerForGetImages(false, "There was an error getting the images: \(error)")
-            } else {
-                
-                // Create a dictionary from the data:
-                
-            /* GUARD: Are the "photos" and "photo" keys in our result? */
-            if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
+                if let error = error {
+                    completionHandlerForGetImages(false, "There was an error getting the images: \(error)")
+                } else {
                     
-                for photo in photoArray {
+                /* GUARD: Are the "photos" and "photo" keys in our result? */
+                if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
                     
-                    let image = Images(context: CoreDataStack.sharedInstance().context)
-                    
-                    // GUARD: Does our photo have a key for 'url_m'?
-                    guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                        completionHandlerForGetImages(false, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
-                        return
-                    }
-                    
-                    // Get metadata
-                    let imageURL = URL(string: imageUrlString)!
-                    let title = photo["title"] as? String ?? ""
-                    
-                    
-                    // Assign the metadata to images NSManagedObject
-                    image.imageURL = String(describing: imageURL)
-                    image.pin = pin
-                    image.title = title
+                    for photo in photoArray {
+                        
+                        let image = Images(context: CoreDataStack.sharedInstance().context)
+                        
+                        // GUARD: Does our photo have a key for 'url_m'?
+                        guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
+                            completionHandlerForGetImages(false, "Unable to find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photo)")
+                            return
+                        }
+                        
+                        // Get metadata
+                        let imageURL = URL(string: imageUrlString)!
+                        let title = photo["title"] as? String ?? ""
+                        
+                        // Assign the metadata to images NSManagedObject
+                        image.imageURL = String(describing: imageURL)
+                        image.pin = pin
+                        image.title = title
 
-                    CoreDataStack.sharedInstance().context.insert(image)
+                        CoreDataStack.sharedInstance().context.insert(image)
+                    }
+                    CoreDataStack.sharedInstance().saveContext()
                 }
-                
-                CoreDataStack.sharedInstance().saveContext()
-            }
                 completionHandlerForGetImages(true, nil)
-                print("Networking completed")
+            }
         }
-    }
     }
     
 }
