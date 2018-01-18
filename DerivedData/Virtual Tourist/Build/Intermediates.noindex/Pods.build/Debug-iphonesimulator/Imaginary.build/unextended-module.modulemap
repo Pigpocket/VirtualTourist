@@ -1,0 +1,10 @@
+framework module Imaginary {
+  umbrella header "Imaginary-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Imaginary.__Swift {
+    exclude header "Imaginary-Swift.h"
+}
