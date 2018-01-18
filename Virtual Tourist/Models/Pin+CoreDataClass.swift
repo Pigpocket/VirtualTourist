@@ -22,14 +22,4 @@ public class Pin: NSManagedObject {
             fatalError("Unable to find entity name")
         }
     }
-    
-    // MARK: Remove photos
-    
-    func removePhotos(context: NSManagedObjectContext) {
-        if let images = images {
-            for image in images {
-                context.delete(image as! NSManagedObject)
-            }
-        }
-    }
 }
