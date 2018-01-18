@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
-import Imaginary
+//import Imaginary
 import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
@@ -187,14 +187,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.activityIndicator.startAnimating()
         }
         let image = self.fetchedResultsController.object(at: indexPath)
-        let url = URL(string: image.imageURL!)
+        //let url = URL(string: image.imageURL!)
         
-        cell.imageView.setImage(url: url!) { result in
-            performUIUpdatesOnMain {
-                cell.activityIndicator.stopAnimating()
-            }
-        }
-            
+        cell.imageView.image = image.image
+        
+        
+//        cell.imageView.setImage(url: url!) { result in
+//            performUIUpdatesOnMain {
+//                cell.activityIndicator.stopAnimating()
+//            }
+//        }
+        
         if let _ = self.selectedIndexes.index(of: indexPath) {
             cell.imageView.alpha = 0.5
         } else {

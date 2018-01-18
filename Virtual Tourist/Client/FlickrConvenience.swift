@@ -6,7 +6,9 @@
 //  Copyright © 2018 Tomas Sidenfaden. All rights reserved.
 //
 
+import UIKit
 import Foundation
+import CoreData
 
 extension FlickrClient {
     
@@ -51,6 +53,12 @@ extension FlickrClient {
                         
                         // Assign the metadata to images NSManagedObject
                         image.imageURL = String(describing: imageURL)
+                        
+                        let data = try? Data(contentsOf: imageURL)
+                        if let data = data {
+                            image.imageData = data as NSData
+                        }
+                        
                         image.pin = pin
                         image.title = title
                         
