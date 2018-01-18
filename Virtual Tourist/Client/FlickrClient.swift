@@ -22,7 +22,6 @@ class FlickrClient: NSObject {
         let session = URLSession.shared
         let urlString = Constants.Flickr.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
         let url = URL(string: urlString)!
-        //print("This is what the URL request looks like: \n ****** \n \(url) \n ********")
         let request = URLRequest(url: url)
         
         // create network request
@@ -48,10 +47,7 @@ class FlickrClient: NSObject {
                 completionHandlerForGetImages(nil, NSError(domain: "taskForGetImages", code: 2, userInfo: userInfo))
                 return
             }
-            
             self.parseJSONObject(data, completionHandlerForConvertData: completionHandlerForGetImages)
-            
-        // start the task!
         }
         task.resume()
     }
@@ -121,8 +117,6 @@ extension FlickrClient {
         
         taskForGetImages(methodParameters: methodParameters, latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
             
-            //var imageArray = [Images]()
-            
             if let error = error {
                 completionHandlerForGetImages(false, "There was an error getting the images: \(error)")
             } else {
@@ -146,21 +140,18 @@ extension FlickrClient {
                     let imageURL = URL(string: imageUrlString)!
                     let title = photo["title"] as? String ?? ""
                     
-                    
                     // Assign the metadata to images NSManagedObject
                     image.imageURL = String(describing: imageURL)
                     image.pin = pin
                     image.title = title
 
                     CoreDataStack.sharedInstance().context.insert(image)
-                }
-                
+                    }
                 CoreDataStack.sharedInstance().saveContext()
-            }
+                }
                 completionHandlerForGetImages(true, nil)
-                print("Networking completed")
+            }
         }
-    }
     }
     
 }
