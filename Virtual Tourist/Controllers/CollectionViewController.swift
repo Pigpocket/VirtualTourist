@@ -40,7 +40,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
-    // Keep the changes. We will keep track of insertions, deletions, and updates.
+    // Keep track of insertions, deletions, and updates.
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths: [IndexPath]!
     var updatedIndexPaths: [IndexPath]!
@@ -56,8 +56,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBAction func newCollectionAction(_ sender: Any) {
         
-        print("selectedIndexes count is: \(selectedIndexes.count)")
-        
         // If no images are selected, get a new image collection
         if selectedIndexes.isEmpty {
             
@@ -65,7 +63,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             pageCount += 1
             
             // Delete existing images
-            self.deleteImages2()
+            self.deleteImages()
 
             // Get new images from Flickr
             FlickrClient.sharedInstance().getImagesFromFlickr(pin: selectedPin, context: CoreDataStack.sharedInstance().context, page: pageCount, completionHandlerForGetImages: { (success, error) in
@@ -76,28 +74,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                     return
                 }
                 
-                
                 if success {
                     performUIUpdatesOnMain {
-                    print("***Success! The selectedPin has \(String(describing: self.selectedPin.images?.count)) images")
-                    if self.selectedPin.images?.count != 0 {
-                        self.noImagesLabel.isHidden = true
-                        print("Label is hidden = \(self.noImagesLabel.isHidden)")
-                    } else {
-                        self.noImagesLabel.isHidden = false
-                        print("Label is hidden = \(self.noImagesLabel.isHidden)")
-                    }
-                    self.collectionView.reloadData()
+                        self.configureLabel()
+                        self.collectionView.reloadData()
                     }
                 }
             })
             
-
-            
         // If there were images selected, remove them
         } else {
             
-            self.deleteImages2()
+            self.deleteImages()
             
             collectionView.performBatchUpdates ({
             
@@ -133,13 +121,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         setAnnotations()
         
         performUIUpdatesOnMain {
-            if self.selectedPin.images?.count != 0 {
-                self.noImagesLabel.isHidden = true
-                print("Label is hidden = \(self.noImagesLabel.isHidden)")
-            } else {
-                self.noImagesLabel.isHidden = false
-                print("Label is hidden = \(self.noImagesLabel.isHidden)")
-            }
+            self.configureLabel()
         }
         
         // Start the fetched results controller
@@ -212,7 +194,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             performUIUpdatesOnMain {
                 cell.activityIndicator.stopAnimating()
             }
-            
         }
             
         if let _ = self.selectedIndexes.index(of: indexPath) {
@@ -220,12 +201,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         } else {
             cell.imageView.alpha = 1.0
         }
-        
     
         return cell
     }
     
-    func deleteImages2() {
+    func configureLabel() {
+        if self.selectedPin.images?.count != 0 {
+            self.noImagesLabel.isHidden = true
+        } else {
+            self.noImagesLabel.isHidden = false
+        }
+    }
+    
+    func deleteImages() {
         var imagesToDelete = [Images]()
         
         if selectedIndexes.isEmpty {
