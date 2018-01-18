@@ -71,4 +71,22 @@ extension FlickrClient {
         }
     }
     
+    /*func downloadImageFromURLPath(path: String, pin: Pin, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        let task = self.taskForGETMethod(path, parameters: nil, parseJSON: false) { (result, error) in
+            if error != nil {
+                completionHandler(false, "Photo download failed")
+            } else {
+                if let result = result as? NSData {
+                    let photo = Photo(data: result , pin: pin, context: self.sharedContext)
+                    self.sharedContext.insert(photo)
+                    self.sharedStack.save()
+                    completionHandler(true, nil)
+                } else {
+                    completionHandler(false, "Photo download failed")
+                }
+            }
+        }
+        task.resume()
+    } */
+    
 }

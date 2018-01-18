@@ -48,6 +48,7 @@ depends-member:
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterKeys"]
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterValues"]
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrResponseKeys"]
+- !private ["15Virtual_Tourist13CoreDataStackV", "backgroundContext"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "context"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "saveContext"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "sharedInstance"]

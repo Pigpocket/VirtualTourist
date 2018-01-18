@@ -27,7 +27,7 @@ public class Images: NSManagedObject {
     
     var image: UIImage? {
         if imageData != nil {
-            return UIImage(data: self.imageData! as Data)
+            return UIImage(data: imageData! as Data)
         }
         return nil
     }

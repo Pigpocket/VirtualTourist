@@ -1,16 +1,16 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
 options: "33479472aa1c53a979ef680e833958c3"
-build_time: [1516302792, 337635000]
+build_time: [1516309210, 602509000]
 inputs:
-  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/Images+CoreDataClass.swift": [1516302404, 0]
-  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Controllers/CollectionViewController.swift": [1516302404, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/Images+CoreDataClass.swift": [1516306782, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Controllers/CollectionViewController.swift": [1516308501, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Client/FlickrClient.swift": [1516301275, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/CoreDataStack.swift": [1516226427, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Controllers/MapViewController.swift": [1516236155, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/Pin+CoreDataProperties.swift": [1513455296, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Controllers/CollectionViewCell.swift": [1516239762, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/AppDelegate.swift": [1516226427, 0]
-  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Client/FlickrConvenience.swift": [1516302404, 0]
+  "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Client/FlickrConvenience.swift": [1516309210, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Client/Constants.swift": [1516226427, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/Images+CoreDataProperties.swift": [1513455296, 0]
   "/Users/tomassidenfaden/Projects/Virtual-Tourist/Virtual Tourist/Models/Pin+CoreDataClass.swift": [1516234930, 0]
