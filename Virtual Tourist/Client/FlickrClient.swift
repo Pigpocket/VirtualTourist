@@ -16,12 +16,17 @@ class FlickrClient: NSObject {
         case GET, POST, PUT, DELETE
     }
     
-    func taskForGetImages(methodParameters: [String:Any], latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
+    func taskForGetImages(_ url: String?, parameters: [String:AnyObject]?, latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         // create url and request
         let session = URLSession.shared
-        let urlString = Constants.Flickr.APIBaseURL + escapedParameters(methodParameters as [String:AnyObject])
-        let url = URL(string: urlString)!
+        var urlString = (url != nil) ? url : Constants.Flickr.APIBaseURL
+        if parameters != nil {
+            var mutableParameters = parameters
+            mutableParameters![Constants.FlickrParameterKeys.APIKey] = Constants.FlickrParameterValues.APIKey as AnyObject?
+            urlString = urlString! + FlickrClient.sharedInstance().escapedParameters(mutableParameters!)
+        }
+        let url = URL(string: urlString!)!
         let request = URLRequest(url: url)
         
         // create network request

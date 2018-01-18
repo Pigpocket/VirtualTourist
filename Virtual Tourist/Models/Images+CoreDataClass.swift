@@ -15,11 +15,12 @@ import CoreData
 public class Images: NSManagedObject {
 
     // MARK: - Initializer
-    convenience init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+    convenience init(data: NSData, pin: Pin, context: NSManagedObjectContext) {
         if let entity = NSEntityDescription.entity(forEntityName: "Images", in: context) {
             self.init(entity: entity, insertInto: context)
-            self.title = dictionary[Constants.FlickrResponseKeys.Title] as? String
-            self.imageURL = dictionary[Constants.FlickrResponseKeys.MediumURL] as? String
+            self.imageData = data
+            self.pin = pin
+            //self.imageURL = dictionary[Constants.FlickrResponseKeys.MediumURL] as? String
         } else {
             fatalError("Unable to find entity name")
         }

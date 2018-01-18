@@ -9,6 +9,7 @@ provides-member:
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!="
 - !private "&&"
 - !private "+"
 - !private "<="
@@ -28,6 +29,7 @@ depends-top-level:
 - "NSObject"
 - "String"
 - "StringLiteralType"
+- "TernaryPrecedence"
 - !private "URL"
 - !private "URLRequest"
 - !private "URLSession"
@@ -57,7 +59,6 @@ depends-member:
 - !private ["s7CVarArgP", "addingPercentEncoding"]
 - !private ["s7CVarArgP", "append"]
 - !private ["s7CVarArgP", "dataTask"]
-- !private ["s7CVarArgP", "escapedParameters"]
 - !private ["s7CVarArgP", "hashValue"]
 - ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "isEmpty"]
@@ -68,6 +69,7 @@ depends-member:
 - !private ["s7CVarArgP", "resume"]
 - !private ["s7CVarArgP", "shared"]
 - !private ["s7CVarArgP", "statusCode"]
+- !private ["s7CVarArgP", "subscript"]
 - ["s7CVarArgP", ""]
 - !private ["10Foundation12CharacterSetV", "urlQueryAllowed"]
 - !private ["s10CollectionP", "addingPercentEncoding"]
@@ -75,10 +77,13 @@ depends-member:
 - ["s10CollectionP", "init"]
 - !private ["s10CollectionP", "isEmpty"]
 - !private ["s10CollectionP", "joined"]
+- !private ["s10CollectionP", "subscript"]
 - !private ["s10ComparableP", "addingPercentEncoding"]
 - !private ["s10ComparableP", "hashValue"]
 - ["s10ComparableP", "init"]
 - !private ["15Virtual_Tourist9ConstantsV", "Flickr"]
+- !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterKeys"]
+- !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterValues"]
 - !private ["s28CustomDebugStringConvertibleP", "Constants"]
 - !private ["s28CustomDebugStringConvertibleP", "FlickrClient"]
 - !private ["s28CustomDebugStringConvertibleP", "JSONSerialization"]
@@ -91,7 +96,6 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "addingPercentEncoding"]
 - !private ["s28CustomDebugStringConvertibleP", "append"]
 - !private ["s28CustomDebugStringConvertibleP", "dataTask"]
-- !private ["s28CustomDebugStringConvertibleP", "escapedParameters"]
 - ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
 - !private ["s28CustomDebugStringConvertibleP", "joined"]
@@ -101,6 +105,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "resume"]
 - !private ["s28CustomDebugStringConvertibleP", "shared"]
 - !private ["s28CustomDebugStringConvertibleP", "statusCode"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "urlQueryAllowed"]
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
@@ -114,6 +119,7 @@ depends-member:
 - ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "isEmpty"]
 - !private ["s17CustomReflectableP", "joined"]
+- !private ["s17CustomReflectableP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "Constants"]
 - !private ["s23CustomStringConvertibleP", "FlickrClient"]
 - !private ["s23CustomStringConvertibleP", "JSONSerialization"]
@@ -127,7 +133,6 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "addingPercentEncoding"]
 - !private ["s23CustomStringConvertibleP", "append"]
 - !private ["s23CustomStringConvertibleP", "dataTask"]
-- !private ["s23CustomStringConvertibleP", "escapedParameters"]
 - !private ["s23CustomStringConvertibleP", "hashValue"]
 - ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "isEmpty"]
@@ -138,6 +143,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "resume"]
 - !private ["s23CustomStringConvertibleP", "shared"]
 - !private ["s23CustomStringConvertibleP", "statusCode"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "urlQueryAllowed"]
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
@@ -147,8 +153,10 @@ depends-member:
 - ["s9DecodableP", "init"]
 - !private ["s9DecodableP", "isEmpty"]
 - !private ["s9DecodableP", "joined"]
+- !private ["s9DecodableP", "subscript"]
 - !private ["s9DecodableP", "urlQueryAllowed"]
 - !private ["s10DictionaryV", "isEmpty"]
+- !private ["s10DictionaryV", "subscript"]
 - !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "addingPercentEncoding"]
 - !private ["s9EncodableP", "append"]
@@ -156,6 +164,7 @@ depends-member:
 - ["s9EncodableP", "init"]
 - !private ["s9EncodableP", "isEmpty"]
 - !private ["s9EncodableP", "joined"]
+- !private ["s9EncodableP", "subscript"]
 - !private ["s9EncodableP", "urlQueryAllowed"]
 - !private ["s9EquatableP", "Constants"]
 - !private ["s9EquatableP", "FlickrClient"]
@@ -171,7 +180,6 @@ depends-member:
 - !private ["s9EquatableP", "addingPercentEncoding"]
 - !private ["s9EquatableP", "allowFragments"]
 - !private ["s9EquatableP", "dataTask"]
-- !private ["s9EquatableP", "escapedParameters"]
 - ["s9EquatableP", "hashValue"]
 - ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "jsonObject"]
@@ -191,6 +199,7 @@ depends-member:
 - !private ["s25ExpressibleByArrayLiteralP", "urlQueryAllowed"]
 - !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s30ExpressibleByDictionaryLiteralP", "isEmpty"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "addingPercentEncoding"]
 - ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
@@ -221,6 +230,8 @@ depends-member:
 - !private ["15Virtual_Tourist12FlickrClientC", "print"]
 - ["15Virtual_Tourist12FlickrClientC", "sharedInstance"]
 - ["15Virtual_Tourist12FlickrClientC", "taskForGetImages"]
+- !private ["15Virtual_Tourist9ConstantsV19FlickrParameterKeysV", "APIKey"]
+- !private ["15Virtual_Tourist9ConstantsV21FlickrParameterValuesV", "APIKey"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "DELETE"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "GET"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "POST"]
@@ -244,7 +255,6 @@ depends-member:
 - !private ["s8HashableP", "_getBuiltinLogicValue"]
 - !private ["s8HashableP", "addingPercentEncoding"]
 - !private ["s8HashableP", "dataTask"]
-- !private ["s8HashableP", "escapedParameters"]
 - ["s8HashableP", "hashValue"]
 - ["s8HashableP", "init"]
 - !private ["s8HashableP", "jsonObject"]
@@ -319,7 +329,6 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "URLSession"]
 - !private ["So16NSObjectProtocolP", "addingPercentEncoding"]
 - !private ["So16NSObjectProtocolP", "dataTask"]
-- !private ["So16NSObjectProtocolP", "escapedParameters"]
 - ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "jsonObject"]
 - !private ["So16NSObjectProtocolP", "parseJSONObject"]
@@ -357,6 +366,7 @@ depends-member:
 - ["s8SequenceP", "init"]
 - !private ["s8SequenceP", "isEmpty"]
 - !private ["s8SequenceP", "joined"]
+- !private ["s8SequenceP", "subscript"]
 - !private ["s10SetAlgebraP", "allowFragments"]
 - !private ["s10SetAlgebraP", "urlQueryAllowed"]
 - !private ["s13SignedIntegerP", "hashValue"]
@@ -408,11 +418,13 @@ depends-member:
 - ["s10_IndexableP", "init"]
 - !private ["s10_IndexableP", "isEmpty"]
 - !private ["s10_IndexableP", "joined"]
+- !private ["s10_IndexableP", "subscript"]
 - !private ["s14_IndexableBaseP", "addingPercentEncoding"]
 - !private ["s14_IndexableBaseP", "append"]
 - ["s14_IndexableBaseP", "init"]
 - !private ["s14_IndexableBaseP", "isEmpty"]
 - !private ["s14_IndexableBaseP", "joined"]
+- !private ["s14_IndexableBaseP", "subscript"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Constants"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "FlickrClient"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "JSONSerialization"]
@@ -424,7 +436,6 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "URLSession"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "addingPercentEncoding"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "dataTask"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "escapedParameters"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "jsonObject"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "parseJSONObject"]
@@ -443,6 +454,7 @@ depends-member:
 - ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
 - !private ["s21_ObjectiveCBridgeableP", "joined"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
 - !private ["s21_ObjectiveCBridgeableP", "urlQueryAllowed"]
 - !private ["s22_RandomAccessIndexableP", "append"]
 - !private ["s22_RandomAccessIndexableP", "init"]
@@ -483,6 +495,8 @@ depends-nominal:
 - !private "s17FixedWidthIntegerP"
 - !private "15Virtual_Tourist9ConstantsV6FlickrV"
 - "15Virtual_Tourist12FlickrClientC"
+- !private "15Virtual_Tourist9ConstantsV19FlickrParameterKeysV"
+- !private "15Virtual_Tourist9ConstantsV21FlickrParameterValuesV"
 - "15Virtual_Tourist12FlickrClientC10HTTPMethodO"
 - !private "So15HTTPURLResponseC"
 - "s8HashableP"
@@ -564,4 +578,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "b688a0f787bab5c210012a1508f024e8"
+interface-hash: "33a87135a419d83c161e19bc1506749f"

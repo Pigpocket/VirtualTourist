@@ -4,110 +4,135 @@ provides-nominal:
 provides-member:
 - ["15Virtual_Tourist12FlickrClientC", ""]
 - ["15Virtual_Tourist12FlickrClientC", "getImagesFromFlickr"]
+- ["15Virtual_Tourist12FlickrClientC", "downloadImageFromURLPath"]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "??"
+- !private "!="
+- !private "+="
+- !private "=="
 - !private "AnyObject"
-- !private "AssignmentPrecedence"
 - "Bool"
 - "BooleanLiteralType"
 - "CastingPrecedence"
 - !private "Constants"
 - !private "CoreDataStack"
-- !private "Data"
 - !private "Dictionary"
+- !private "DispatchQueue"
 - "FlickrClient"
 - !private "Images"
 - !private "NSData"
 - "NSManagedObjectContext"
 - "Pin"
 - "String"
-- !private "URL"
 - "Void"
+- !private "print"
 depends-member:
+- !private ["Sa", "count"]
+- !private ["Sa", "isEmpty"]
+- !private ["s23BidirectionalCollectionP", "count"]
 - !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "isEmpty"]
+- !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["s7CVarArgP", "Constants"]
 - !private ["s7CVarArgP", "CoreDataStack"]
-- !private ["s7CVarArgP", "Data"]
+- !private ["s7CVarArgP", "DispatchQueue"]
 - !private ["s7CVarArgP", "Images"]
-- !private ["s7CVarArgP", "String"]
-- !private ["s7CVarArgP", "URL"]
-- !private ["s7CVarArgP", "imageData"]
-- !private ["s7CVarArgP", "imageURL"]
+- !private ["s7CVarArgP", "async"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "downloadImageFromURLPath"]
+- !private ["s7CVarArgP", "global"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "insert"]
+- !private ["s7CVarArgP", "isEmpty"]
 - !private ["s7CVarArgP", "latitude"]
 - !private ["s7CVarArgP", "longitude"]
-- !private ["s7CVarArgP", "pin"]
+- !private ["s7CVarArgP", "print"]
 - !private ["s7CVarArgP", "subscript"]
 - !private ["s7CVarArgP", "taskForGetImages"]
-- !private ["s7CVarArgP", "title"]
+- !private ["s10CollectionP", "count"]
 - !private ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "isEmpty"]
 - !private ["s10CollectionP", "subscript"]
 - !private ["s10ComparableP", "init"]
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterKeys"]
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterValues"]
 - !private ["15Virtual_Tourist9ConstantsV", "FlickrResponseKeys"]
-- !private ["15Virtual_Tourist13CoreDataStackV", "backgroundContext"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "context"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "saveContext"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "sharedInstance"]
 - !private ["s28CustomDebugStringConvertibleP", "Constants"]
 - !private ["s28CustomDebugStringConvertibleP", "CoreDataStack"]
-- !private ["s28CustomDebugStringConvertibleP", "Data"]
+- !private ["s28CustomDebugStringConvertibleP", "DispatchQueue"]
 - !private ["s28CustomDebugStringConvertibleP", "Images"]
-- !private ["s28CustomDebugStringConvertibleP", "String"]
-- !private ["s28CustomDebugStringConvertibleP", "URL"]
-- !private ["s28CustomDebugStringConvertibleP", "imageData"]
-- !private ["s28CustomDebugStringConvertibleP", "imageURL"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "downloadImageFromURLPath"]
+- !private ["s28CustomDebugStringConvertibleP", "global"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "insert"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
 - !private ["s28CustomDebugStringConvertibleP", "latitude"]
 - !private ["s28CustomDebugStringConvertibleP", "longitude"]
-- !private ["s28CustomDebugStringConvertibleP", "pin"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "taskForGetImages"]
-- !private ["s28CustomDebugStringConvertibleP", "title"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
 - !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "count"]
 - !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isEmpty"]
 - !private ["s17CustomReflectableP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "Constants"]
 - !private ["s23CustomStringConvertibleP", "CoreDataStack"]
-- !private ["s23CustomStringConvertibleP", "Data"]
+- !private ["s23CustomStringConvertibleP", "DispatchQueue"]
 - !private ["s23CustomStringConvertibleP", "Images"]
-- !private ["s23CustomStringConvertibleP", "String"]
-- !private ["s23CustomStringConvertibleP", "URL"]
-- !private ["s23CustomStringConvertibleP", "imageData"]
-- !private ["s23CustomStringConvertibleP", "imageURL"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "downloadImageFromURLPath"]
+- !private ["s23CustomStringConvertibleP", "global"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "insert"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
 - !private ["s23CustomStringConvertibleP", "latitude"]
 - !private ["s23CustomStringConvertibleP", "longitude"]
-- !private ["s23CustomStringConvertibleP", "pin"]
+- !private ["s23CustomStringConvertibleP", "print"]
 - !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "taskForGetImages"]
-- !private ["s23CustomStringConvertibleP", "title"]
-- !private ["10Foundation4DataV", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "count"]
 - !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "isEmpty"]
 - !private ["s9DecodableP", "subscript"]
 - !private ["s10DictionaryV", "subscript"]
+- !private ["So14DispatchObjectC", "async"]
+- !private ["So14DispatchObjectC", "global"]
+- !private ["So13DispatchQueueC", "async"]
+- !private ["So13DispatchQueueC", "global"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "count"]
 - !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "isEmpty"]
 - !private ["s9EncodableP", "subscript"]
 - !private ["s9EquatableP", "Constants"]
 - !private ["s9EquatableP", "CoreDataStack"]
-- !private ["s9EquatableP", "Data"]
+- !private ["s9EquatableP", "DispatchQueue"]
 - !private ["s9EquatableP", "Images"]
-- !private ["s9EquatableP", "String"]
-- !private ["s9EquatableP", "URL"]
-- !private ["s9EquatableP", "imageData"]
-- !private ["s9EquatableP", "imageURL"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "async"]
+- !private ["s9EquatableP", "background"]
+- !private ["s9EquatableP", "downloadImageFromURLPath"]
+- !private ["s9EquatableP", "global"]
 - !private ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "insert"]
 - !private ["s9EquatableP", "latitude"]
 - !private ["s9EquatableP", "longitude"]
-- !private ["s9EquatableP", "pin"]
+- !private ["s9EquatableP", "print"]
 - !private ["s9EquatableP", "taskForGetImages"]
-- !private ["s9EquatableP", "title"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s26ExpressibleByStringLiteralP", "init"]
@@ -116,15 +141,16 @@ depends-member:
 - ["15Virtual_Tourist12FlickrClientC", "Bool"]
 - !private ["15Virtual_Tourist12FlickrClientC", "Constants"]
 - !private ["15Virtual_Tourist12FlickrClientC", "CoreDataStack"]
-- !private ["15Virtual_Tourist12FlickrClientC", "Data"]
+- !private ["15Virtual_Tourist12FlickrClientC", "DispatchQueue"]
 - !private ["15Virtual_Tourist12FlickrClientC", "Images"]
 - !private ["15Virtual_Tourist12FlickrClientC", "NSData"]
 - ["15Virtual_Tourist12FlickrClientC", "NSManagedObjectContext"]
 - ["15Virtual_Tourist12FlickrClientC", "Pin"]
 - ["15Virtual_Tourist12FlickrClientC", "String"]
-- !private ["15Virtual_Tourist12FlickrClientC", "URL"]
 - ["15Virtual_Tourist12FlickrClientC", "Void"]
+- ["15Virtual_Tourist12FlickrClientC", "downloadImageFromURLPath"]
 - ["15Virtual_Tourist12FlickrClientC", "getImagesFromFlickr"]
+- !private ["15Virtual_Tourist12FlickrClientC", "print"]
 - !private ["15Virtual_Tourist12FlickrClientC", "taskForGetImages"]
 - !private ["15Virtual_Tourist9ConstantsV19FlickrParameterKeysV", "APIKey"]
 - !private ["15Virtual_Tourist9ConstantsV19FlickrParameterKeysV", "Extras"]
@@ -146,135 +172,145 @@ depends-member:
 - !private ["15Virtual_Tourist9ConstantsV18FlickrResponseKeysV", "Photos"]
 - !private ["s8HashableP", "Constants"]
 - !private ["s8HashableP", "CoreDataStack"]
-- !private ["s8HashableP", "Data"]
+- !private ["s8HashableP", "DispatchQueue"]
 - !private ["s8HashableP", "Images"]
-- !private ["s8HashableP", "String"]
-- !private ["s8HashableP", "URL"]
-- !private ["s8HashableP", "imageData"]
-- !private ["s8HashableP", "imageURL"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "async"]
+- !private ["s8HashableP", "background"]
+- !private ["s8HashableP", "downloadImageFromURLPath"]
+- !private ["s8HashableP", "global"]
 - !private ["s8HashableP", "init"]
 - !private ["s8HashableP", "insert"]
 - !private ["s8HashableP", "latitude"]
 - !private ["s8HashableP", "longitude"]
-- !private ["s8HashableP", "pin"]
+- !private ["s8HashableP", "print"]
 - !private ["s8HashableP", "taskForGetImages"]
-- !private ["s8HashableP", "title"]
-- !private ["15Virtual_Tourist6ImagesC", "imageData"]
-- !private ["15Virtual_Tourist6ImagesC", "imageURL"]
 - !private ["15Virtual_Tourist6ImagesC", "init"]
-- !private ["15Virtual_Tourist6ImagesC", "pin"]
-- !private ["15Virtual_Tourist6ImagesC", "title"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["s10MirrorPathP", "init"]
-- !private ["s17MutableCollectionP", "init"]
+- !private ["s17MutableCollectionP", "count"]
+- !private ["s17MutableCollectionP", "isEmpty"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "insert"]
 - !private ["So9NSCopyingP", "init"]
-- !private ["So20NSFetchRequestResultP", "imageData"]
-- !private ["So20NSFetchRequestResultP", "imageURL"]
 - !private ["So20NSFetchRequestResultP", "init"]
 - !private ["So20NSFetchRequestResultP", "latitude"]
 - !private ["So20NSFetchRequestResultP", "longitude"]
-- !private ["So20NSFetchRequestResultP", "pin"]
-- !private ["So20NSFetchRequestResultP", "title"]
 - !private ["So21NSItemProviderReadingP", "init"]
 - !private ["So21NSItemProviderWritingP", "init"]
 - !private ["So9NSLockingP", "insert"]
-- !private ["So15NSManagedObjectC", "imageData"]
-- !private ["So15NSManagedObjectC", "imageURL"]
 - !private ["So15NSManagedObjectC", "init"]
 - !private ["So15NSManagedObjectC", "latitude"]
 - !private ["So15NSManagedObjectC", "longitude"]
-- !private ["So15NSManagedObjectC", "pin"]
-- !private ["So15NSManagedObjectC", "title"]
 - !private ["So22NSManagedObjectContextC", "insert"]
 - !private ["So16NSMutableCopyingP", "init"]
 - !private ["So8NSObjectC", "AnyObject"]
 - ["So8NSObjectC", "Bool"]
 - !private ["So8NSObjectC", "Constants"]
 - !private ["So8NSObjectC", "CoreDataStack"]
-- !private ["So8NSObjectC", "Data"]
+- !private ["So8NSObjectC", "DispatchQueue"]
 - !private ["So8NSObjectC", "Images"]
 - !private ["So8NSObjectC", "NSData"]
 - ["So8NSObjectC", "NSManagedObjectContext"]
 - ["So8NSObjectC", "Pin"]
 - ["So8NSObjectC", "String"]
-- !private ["So8NSObjectC", "URL"]
 - ["So8NSObjectC", "Void"]
+- !private ["So8NSObjectC", "async"]
+- ["So8NSObjectC", "downloadImageFromURLPath"]
 - ["So8NSObjectC", "getImagesFromFlickr"]
-- !private ["So8NSObjectC", "imageData"]
-- !private ["So8NSObjectC", "imageURL"]
+- !private ["So8NSObjectC", "global"]
 - !private ["So8NSObjectC", "init"]
 - !private ["So8NSObjectC", "insert"]
 - !private ["So8NSObjectC", "latitude"]
 - !private ["So8NSObjectC", "longitude"]
-- !private ["So8NSObjectC", "pin"]
+- !private ["So8NSObjectC", "print"]
 - !private ["So8NSObjectC", "taskForGetImages"]
-- !private ["So8NSObjectC", "title"]
 - !private ["So16NSObjectProtocolP", "Constants"]
 - !private ["So16NSObjectProtocolP", "CoreDataStack"]
-- !private ["So16NSObjectProtocolP", "Data"]
+- !private ["So16NSObjectProtocolP", "DispatchQueue"]
 - !private ["So16NSObjectProtocolP", "Images"]
-- !private ["So16NSObjectProtocolP", "String"]
-- !private ["So16NSObjectProtocolP", "URL"]
-- !private ["So16NSObjectProtocolP", "imageData"]
-- !private ["So16NSObjectProtocolP", "imageURL"]
+- !private ["So16NSObjectProtocolP", "async"]
+- !private ["So16NSObjectProtocolP", "downloadImageFromURLPath"]
+- !private ["So16NSObjectProtocolP", "global"]
 - !private ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "insert"]
 - !private ["So16NSObjectProtocolP", "latitude"]
 - !private ["So16NSObjectProtocolP", "longitude"]
-- !private ["So16NSObjectProtocolP", "pin"]
+- !private ["So16NSObjectProtocolP", "print"]
 - !private ["So16NSObjectProtocolP", "taskForGetImages"]
-- !private ["So16NSObjectProtocolP", "title"]
 - !private ["So14NSSecureCodingP", "init"]
 - !private ["So8NSStringC", "init"]
+- !private ["So9OS_objectC", "async"]
+- !private ["So9OS_objectC", "global"]
 - !private ["15Virtual_Tourist3PinC", "latitude"]
 - !private ["15Virtual_Tourist3PinC", "longitude"]
-- !private ["s22RandomAccessCollectionP", "init"]
+- !private ["8Dispatch0A3QoSV0B6SClassO", "background"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- !private ["s22RandomAccessCollectionP", "isEmpty"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
 - !private ["s26RangeReplaceableCollectionP", "init"]
-- !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "isEmpty"]
+- !private ["s8SequenceP", "count"]
 - !private ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "isEmpty"]
 - !private ["s8SequenceP", "subscript"]
 - !private ["SS", "init"]
 - !private ["s14StringProtocolP", "init"]
 - !private ["s16TextOutputStreamP", "init"]
 - !private ["s20TextOutputStreamableP", "init"]
-- !private ["10Foundation3URLV", "init"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s23_BidirectionalIndexableP", "count"]
 - !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
 - !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
-- !private ["s34_ExpressibleByFileReferenceLiteralP", "init"]
 - !private ["s33_ExpressibleByStringInterpolationP", "init"]
 - !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "count"]
 - !private ["s10_IndexableP", "init"]
+- !private ["s10_IndexableP", "isEmpty"]
 - !private ["s10_IndexableP", "subscript"]
+- !private ["s14_IndexableBaseP", "count"]
 - !private ["s14_IndexableBaseP", "init"]
+- !private ["s14_IndexableBaseP", "isEmpty"]
 - !private ["s14_IndexableBaseP", "subscript"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Constants"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "CoreDataStack"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "Data"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "DispatchQueue"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Images"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "String"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "URL"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "imageData"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "imageURL"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "downloadImageFromURLPath"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "global"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "insert"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "latitude"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "longitude"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "pin"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "taskForGetImages"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "title"]
-- !private ["s17_MutableIndexableP", "init"]
+- !private ["s17_MutableIndexableP", "count"]
+- !private ["s17_MutableIndexableP", "isEmpty"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
 - !private ["s21_ObjectiveCBridgeableP", "subscript"]
-- !private ["s22_RandomAccessIndexableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- !private ["s22_RandomAccessIndexableP", "isEmpty"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
 - !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "isEmpty"]
 - !private ["s16_SwiftStringViewP", "init"]
 depends-nominal:
+- !private "Sa"
 - !private "s23BidirectionalCollectionP"
+- !private "Sb"
 - !private "s7CVarArgP"
 - !private "s10CollectionP"
 - !private "s10ComparableP"
@@ -284,11 +320,14 @@ depends-nominal:
 - !private "s29CustomPlaygroundQuickLookableP"
 - !private "s17CustomReflectableP"
 - !private "s23CustomStringConvertibleP"
-- !private "10Foundation4DataV"
 - !private "s9DecodableP"
 - !private "s10DictionaryV"
+- !private "So14DispatchObjectC"
+- !private "So13DispatchQueueC"
 - !private "s9EncodableP"
 - !private "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
 - !private "s30ExpressibleByDictionaryLiteralP"
 - !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
 - !private "s26ExpressibleByStringLiteralP"
@@ -315,22 +354,24 @@ depends-nominal:
 - !private "So16NSObjectProtocolP"
 - !private "So14NSSecureCodingP"
 - !private "So8NSStringC"
+- !private "So9OS_objectC"
 - !private "15Virtual_Tourist3PinC"
+- !private "8Dispatch0A3QoSV0B6SClassO"
 - !private "s22RandomAccessCollectionP"
 - !private "s26RangeReplaceableCollectionP"
-- !private "10Foundation20ReferenceConvertibleP"
 - !private "s8SequenceP"
 - !private "SS"
 - !private "s14StringProtocolP"
 - !private "s16TextOutputStreamP"
 - !private "s20TextOutputStreamableP"
-- !private "10Foundation3URLV"
+- !private "s14_ArrayProtocolP"
 - !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
 - !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - !private "s34_ExpressibleByBuiltinStringLiteralP"
 - !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
 - !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
-- !private "s34_ExpressibleByFileReferenceLiteralP"
 - !private "s33_ExpressibleByStringInterpolationP"
 - !private "s35_HasCustomAnyHashableRepresentationP"
 - !private "s10_IndexableP"
@@ -360,4 +401,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "97afa8d372409ede88b00cb5f793ea86"
+interface-hash: "3356fc5e3314a4df6d2943d9db53f6d7"

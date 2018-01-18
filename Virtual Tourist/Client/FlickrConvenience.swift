@@ -26,7 +26,7 @@ extension FlickrClient {
             Constants.FlickrParameterKeys.Page: page
         ]
         
-        taskForGetImages(methodParameters: methodParameters, latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
+        taskForGetImages(nil, parameters: methodParameters as [String : AnyObject], latitude: pin.latitude, longitude: pin.longitude) { (results, error) in
             
             if let error = error {
                 completionHandlerForGetImages(false, "There was an error getting the images: \(error)")
@@ -35,11 +35,16 @@ extension FlickrClient {
                 // Create a dictionary from the data:
                 
                 /* GUARD: Are the "photos" and "photo" keys in our result? */
-                if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
-                    
+                    if let photosDictionary = results![Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
+
+                        print("This the photosDictionary: \(photosDictionary)")
+                    var imageCount = 0
+                    if photoArray.isEmpty {
+                        completionHandlerForGetImages(false, "Unable to download photos")
+                    }
                     for photo in photoArray {
                         
-                        let image = Images(context: CoreDataStack.sharedInstance().context)
+                        //let image = Images(context: CoreDataStack.sharedInstance().context)
                         
                         // GUARD: Does our photo have a key for 'url_m'?
                         guard let imageUrlString = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
@@ -47,46 +52,43 @@ extension FlickrClient {
                             return
                         }
                         
-                        // Get metadata
-                        let imageURL = URL(string: imageUrlString)!
-                        let title = photo["title"] as? String ?? ""
-                        
-                        // Assign the metadata to images NSManagedObject
-                        image.imageURL = String(describing: imageURL)
-                        
-                        let data = try? Data(contentsOf: imageURL)
-                        if let data = data {
-                            image.imageData = data as NSData
-                        }
-                        
-                        image.pin = pin
-                        image.title = title
-                        
-                        CoreDataStack.sharedInstance().context.insert(image)
+                        self.downloadImageFromURLPath(path: imageUrlString, pin: pin, completionHandler: { (completed, errorMessage) in
+                            if completed {
+                                imageCount += 1
+                                if imageCount == photoArray.count {
+                                    completionHandlerForGetImages(true, nil)
+                                }
+                            }
+                            if (errorMessage != nil) {
+                                completionHandlerForGetImages(false, errorMessage)
+                            }
+                        })
                     }
-                    CoreDataStack.sharedInstance().saveContext()
+                } else {
+                    completionHandlerForGetImages(false, "Unable to get images")
                 }
-                completionHandlerForGetImages(true, nil)
             }
         }
     }
     
-    /*func downloadImageFromURLPath(path: String, pin: Pin, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
-        let task = self.taskForGETMethod(path, parameters: nil, parseJSON: false) { (result, error) in
+    
+    func downloadImageFromURLPath(path: String, pin: Pin, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        
+        taskForGetImages(path, parameters: nil, latitude: pin.latitude, longitude: pin.longitude) { (result, error) in
             if error != nil {
                 completionHandler(false, "Photo download failed")
             } else {
                 if let result = result as? NSData {
-                    let photo = Photo(data: result , pin: pin, context: self.sharedContext)
-                    self.sharedContext.insert(photo)
-                    self.sharedStack.save()
+                    let image = Images(data: result, pin: pin, context: CoreDataStack.sharedInstance().context)
+                    CoreDataStack.sharedInstance().context.insert(image)
+                    CoreDataStack.sharedInstance().saveContext()
                     completionHandler(true, nil)
                 } else {
                     completionHandler(false, "Photo download failed")
                 }
             }
         }
-        task.resume()
-    } */
+        //task.resume()
+    }
     
 }

@@ -9,6 +9,7 @@ provides-member:
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!="
 - !private "&&"
 - !private "+"
 - !private "<="
@@ -28,6 +29,7 @@ depends-top-level:
 - "NSObject"
 - "String"
 - "StringLiteralType"
+- "TernaryPrecedence"
 - !private "URL"
 - !private "URLRequest"
 - !private "URLSession"
@@ -67,7 +69,9 @@ depends-member:
 - !private ["s7CVarArgP", "print"]
 - !private ["s7CVarArgP", "resume"]
 - !private ["s7CVarArgP", "shared"]
+- !private ["s7CVarArgP", "sharedInstance"]
 - !private ["s7CVarArgP", "statusCode"]
+- !private ["s7CVarArgP", "subscript"]
 - ["s7CVarArgP", ""]
 - !private ["10Foundation12CharacterSetV", "urlQueryAllowed"]
 - !private ["s10CollectionP", "addingPercentEncoding"]
@@ -75,10 +79,13 @@ depends-member:
 - ["s10CollectionP", "init"]
 - !private ["s10CollectionP", "isEmpty"]
 - !private ["s10CollectionP", "joined"]
+- !private ["s10CollectionP", "subscript"]
 - !private ["s10ComparableP", "addingPercentEncoding"]
 - !private ["s10ComparableP", "hashValue"]
 - ["s10ComparableP", "init"]
 - !private ["15Virtual_Tourist9ConstantsV", "Flickr"]
+- !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterKeys"]
+- !private ["15Virtual_Tourist9ConstantsV", "FlickrParameterValues"]
 - !private ["s28CustomDebugStringConvertibleP", "Constants"]
 - !private ["s28CustomDebugStringConvertibleP", "FlickrClient"]
 - !private ["s28CustomDebugStringConvertibleP", "JSONSerialization"]
@@ -100,7 +107,9 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "print"]
 - !private ["s28CustomDebugStringConvertibleP", "resume"]
 - !private ["s28CustomDebugStringConvertibleP", "shared"]
+- !private ["s28CustomDebugStringConvertibleP", "sharedInstance"]
 - !private ["s28CustomDebugStringConvertibleP", "statusCode"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "urlQueryAllowed"]
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
@@ -114,6 +123,7 @@ depends-member:
 - ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "isEmpty"]
 - !private ["s17CustomReflectableP", "joined"]
+- !private ["s17CustomReflectableP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "Constants"]
 - !private ["s23CustomStringConvertibleP", "FlickrClient"]
 - !private ["s23CustomStringConvertibleP", "JSONSerialization"]
@@ -137,7 +147,9 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "print"]
 - !private ["s23CustomStringConvertibleP", "resume"]
 - !private ["s23CustomStringConvertibleP", "shared"]
+- !private ["s23CustomStringConvertibleP", "sharedInstance"]
 - !private ["s23CustomStringConvertibleP", "statusCode"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "urlQueryAllowed"]
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
@@ -147,8 +159,10 @@ depends-member:
 - ["s9DecodableP", "init"]
 - !private ["s9DecodableP", "isEmpty"]
 - !private ["s9DecodableP", "joined"]
+- !private ["s9DecodableP", "subscript"]
 - !private ["s9DecodableP", "urlQueryAllowed"]
 - !private ["s10DictionaryV", "isEmpty"]
+- !private ["s10DictionaryV", "subscript"]
 - !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "addingPercentEncoding"]
 - !private ["s9EncodableP", "append"]
@@ -156,6 +170,7 @@ depends-member:
 - ["s9EncodableP", "init"]
 - !private ["s9EncodableP", "isEmpty"]
 - !private ["s9EncodableP", "joined"]
+- !private ["s9EncodableP", "subscript"]
 - !private ["s9EncodableP", "urlQueryAllowed"]
 - !private ["s9EquatableP", "Constants"]
 - !private ["s9EquatableP", "FlickrClient"]
@@ -180,6 +195,7 @@ depends-member:
 - ["s9EquatableP", "rawValue"]
 - !private ["s9EquatableP", "resume"]
 - !private ["s9EquatableP", "shared"]
+- !private ["s9EquatableP", "sharedInstance"]
 - !private ["s9EquatableP", "statusCode"]
 - !private ["s9EquatableP", "urlQueryAllowed"]
 - ["s9EquatableP", ""]
@@ -191,6 +207,7 @@ depends-member:
 - !private ["s25ExpressibleByArrayLiteralP", "urlQueryAllowed"]
 - !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s30ExpressibleByDictionaryLiteralP", "isEmpty"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "addingPercentEncoding"]
 - ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
@@ -221,6 +238,8 @@ depends-member:
 - !private ["15Virtual_Tourist12FlickrClientC", "print"]
 - ["15Virtual_Tourist12FlickrClientC", "sharedInstance"]
 - ["15Virtual_Tourist12FlickrClientC", "taskForGetImages"]
+- !private ["15Virtual_Tourist9ConstantsV19FlickrParameterKeysV", "APIKey"]
+- !private ["15Virtual_Tourist9ConstantsV21FlickrParameterValuesV", "APIKey"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "DELETE"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "GET"]
 - ["15Virtual_Tourist12FlickrClientC10HTTPMethodO", "POST"]
@@ -253,6 +272,7 @@ depends-member:
 - ["s8HashableP", "rawValue"]
 - !private ["s8HashableP", "resume"]
 - !private ["s8HashableP", "shared"]
+- !private ["s8HashableP", "sharedInstance"]
 - !private ["s8HashableP", "statusCode"]
 - !private ["s8HashableP", "urlQueryAllowed"]
 - ["s8HashableP", ""]
@@ -326,6 +346,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "print"]
 - !private ["So16NSObjectProtocolP", "resume"]
 - !private ["So16NSObjectProtocolP", "shared"]
+- !private ["So16NSObjectProtocolP", "sharedInstance"]
 - !private ["So16NSObjectProtocolP", "statusCode"]
 - ["So16NSObjectProtocolP", ""]
 - !private ["So14NSSecureCodingP", "addingPercentEncoding"]
@@ -357,6 +378,7 @@ depends-member:
 - ["s8SequenceP", "init"]
 - !private ["s8SequenceP", "isEmpty"]
 - !private ["s8SequenceP", "joined"]
+- !private ["s8SequenceP", "subscript"]
 - !private ["s10SetAlgebraP", "allowFragments"]
 - !private ["s10SetAlgebraP", "urlQueryAllowed"]
 - !private ["s13SignedIntegerP", "hashValue"]
@@ -408,11 +430,13 @@ depends-member:
 - ["s10_IndexableP", "init"]
 - !private ["s10_IndexableP", "isEmpty"]
 - !private ["s10_IndexableP", "joined"]
+- !private ["s10_IndexableP", "subscript"]
 - !private ["s14_IndexableBaseP", "addingPercentEncoding"]
 - !private ["s14_IndexableBaseP", "append"]
 - ["s14_IndexableBaseP", "init"]
 - !private ["s14_IndexableBaseP", "isEmpty"]
 - !private ["s14_IndexableBaseP", "joined"]
+- !private ["s14_IndexableBaseP", "subscript"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Constants"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "FlickrClient"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "JSONSerialization"]
@@ -431,6 +455,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "resume"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "shared"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "sharedInstance"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "statusCode"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
 - !private ["s17_MutableIndexableP", "append"]
@@ -443,6 +468,7 @@ depends-member:
 - ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
 - !private ["s21_ObjectiveCBridgeableP", "joined"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
 - !private ["s21_ObjectiveCBridgeableP", "urlQueryAllowed"]
 - !private ["s22_RandomAccessIndexableP", "append"]
 - !private ["s22_RandomAccessIndexableP", "init"]
@@ -483,6 +509,8 @@ depends-nominal:
 - !private "s17FixedWidthIntegerP"
 - !private "15Virtual_Tourist9ConstantsV6FlickrV"
 - "15Virtual_Tourist12FlickrClientC"
+- !private "15Virtual_Tourist9ConstantsV19FlickrParameterKeysV"
+- !private "15Virtual_Tourist9ConstantsV21FlickrParameterValuesV"
 - "15Virtual_Tourist12FlickrClientC10HTTPMethodO"
 - !private "So15HTTPURLResponseC"
 - "s8HashableP"
@@ -564,4 +592,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "b688a0f787bab5c210012a1508f024e8"
+interface-hash: "33a87135a419d83c161e19bc1506749f"
