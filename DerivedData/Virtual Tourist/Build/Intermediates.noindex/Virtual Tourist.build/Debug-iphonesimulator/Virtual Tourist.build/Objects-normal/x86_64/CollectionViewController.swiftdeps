@@ -20,7 +20,6 @@ provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
 - !private "*"
-- !private "+"
 - !private "+="
 - !private "-"
 - !private "/"
@@ -69,7 +68,6 @@ depends-top-level:
 - !private "UIScreen"
 - "UIViewController"
 - !private "URL"
-- !private "UnicodeScalarType"
 - !private "Void"
 - !private "performUIUpdatesOnMain"
 - !private "print"
@@ -87,7 +85,6 @@ depends-member:
 - !private ["s23BidirectionalCollectionP", "index"]
 - ["s23BidirectionalCollectionP", "init"]
 - !private ["s23BidirectionalCollectionP", "isEmpty"]
-- !private ["s23BidirectionalCollectionP", "item"]
 - !private ["s23BidirectionalCollectionP", "remove"]
 - !private ["s23BidirectionalCollectionP", "removeAll"]
 - !private ["s23BidirectionalCollectionP", "subscript"]
@@ -248,7 +245,6 @@ depends-member:
 - !private ["s10CollectionP", "index"]
 - ["s10CollectionP", "init"]
 - !private ["s10CollectionP", "isEmpty"]
-- !private ["s10CollectionP", "item"]
 - !private ["s10CollectionP", "remove"]
 - !private ["s10CollectionP", "removeAll"]
 - !private ["s10CollectionP", "subscript"]
@@ -347,7 +343,6 @@ depends-member:
 - ["15Virtual_Tourist24CollectionViewControllerC", "viewForZoomingInScrollView"]
 - ["15Virtual_Tourist24CollectionViewControllerC", "viewWillAppear"]
 - !private ["s10ComparableP", "init"]
-- !private ["s10ComparableP", "item"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "context"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "saveContext"]
 - !private ["15Virtual_Tourist13CoreDataStackV", "sharedInstance"]
@@ -409,7 +404,6 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "insertedIndexPaths"]
 - !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
 - !private ["s28CustomDebugStringConvertibleP", "isHidden"]
-- !private ["s28CustomDebugStringConvertibleP", "item"]
 - !private ["s28CustomDebugStringConvertibleP", "itemSize"]
 - !private ["s28CustomDebugStringConvertibleP", "itemWidth"]
 - !private ["s28CustomDebugStringConvertibleP", "latitude"]
@@ -490,7 +484,6 @@ depends-member:
 - !private ["s17CustomReflectableP", "index"]
 - ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "isEmpty"]
-- !private ["s17CustomReflectableP", "item"]
 - !private ["s17CustomReflectableP", "remove"]
 - !private ["s17CustomReflectableP", "removeAll"]
 - !private ["s17CustomReflectableP", "size"]
@@ -554,7 +547,6 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "insertedIndexPaths"]
 - !private ["s23CustomStringConvertibleP", "isEmpty"]
 - !private ["s23CustomStringConvertibleP", "isHidden"]
-- !private ["s23CustomStringConvertibleP", "item"]
 - !private ["s23CustomStringConvertibleP", "itemSize"]
 - !private ["s23CustomStringConvertibleP", "itemWidth"]
 - !private ["s23CustomStringConvertibleP", "latitude"]
@@ -628,7 +620,6 @@ depends-member:
 - !private ["s9DecodableP", "index"]
 - ["s9DecodableP", "init"]
 - !private ["s9DecodableP", "isEmpty"]
-- !private ["s9DecodableP", "item"]
 - !private ["s9DecodableP", "remove"]
 - !private ["s9DecodableP", "removeAll"]
 - !private ["s9DecodableP", "size"]
@@ -641,7 +632,6 @@ depends-member:
 - !private ["s9EncodableP", "index"]
 - ["s9EncodableP", "init"]
 - !private ["s9EncodableP", "isEmpty"]
-- !private ["s9EncodableP", "item"]
 - !private ["s9EncodableP", "remove"]
 - !private ["s9EncodableP", "removeAll"]
 - !private ["s9EncodableP", "size"]
@@ -704,7 +694,6 @@ depends-member:
 - !private ["s9EquatableP", "insertItems"]
 - !private ["s9EquatableP", "insertedIndexPaths"]
 - !private ["s9EquatableP", "isHidden"]
-- !private ["s9EquatableP", "item"]
 - !private ["s9EquatableP", "itemSize"]
 - !private ["s9EquatableP", "itemWidth"]
 - !private ["s9EquatableP", "latitude"]
@@ -779,7 +768,6 @@ depends-member:
 - !private ["s25ExpressibleByArrayLiteralP", "index"]
 - ["s25ExpressibleByArrayLiteralP", "init"]
 - !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
-- !private ["s25ExpressibleByArrayLiteralP", "item"]
 - !private ["s25ExpressibleByArrayLiteralP", "remove"]
 - !private ["s25ExpressibleByArrayLiteralP", "removeAll"]
 - !private ["s25ExpressibleByArrayLiteralP", "subscript"]
@@ -845,7 +833,6 @@ depends-member:
 - !private ["s8HashableP", "insertItems"]
 - !private ["s8HashableP", "insertedIndexPaths"]
 - !private ["s8HashableP", "isHidden"]
-- !private ["s8HashableP", "item"]
 - !private ["s8HashableP", "itemSize"]
 - !private ["s8HashableP", "itemWidth"]
 - !private ["s8HashableP", "latitude"]
@@ -915,7 +902,6 @@ depends-member:
 - ["s8HashableP", ""]
 - ["15Virtual_Tourist6ImagesC", "deinit"]
 - !private ["15Virtual_Tourist6ImagesC", "imageURL"]
-- !private ["10Foundation9IndexPathV", "item"]
 - !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["So12MKAnnotationP", "coordinate"]
@@ -1004,7 +990,6 @@ depends-member:
 - !private ["s17MutableCollectionP", "index"]
 - ["s17MutableCollectionP", "init"]
 - !private ["s17MutableCollectionP", "isEmpty"]
-- !private ["s17MutableCollectionP", "item"]
 - !private ["s17MutableCollectionP", "remove"]
 - !private ["s17MutableCollectionP", "removeAll"]
 - !private ["s17MutableCollectionP", "subscript"]
@@ -1558,7 +1543,6 @@ depends-member:
 - !private ["s22RandomAccessCollectionP", "index"]
 - ["s22RandomAccessCollectionP", "init"]
 - !private ["s22RandomAccessCollectionP", "isEmpty"]
-- !private ["s22RandomAccessCollectionP", "item"]
 - !private ["s22RandomAccessCollectionP", "remove"]
 - !private ["s22RandomAccessCollectionP", "removeAll"]
 - !private ["s22RandomAccessCollectionP", "subscript"]
@@ -1577,13 +1561,11 @@ depends-member:
 - !private ["s16RawRepresentableP", "vertical"]
 - !private ["s16RawRepresentableP", "whiteLarge"]
 - !private ["10Foundation20ReferenceConvertibleP", "init"]
-- !private ["10Foundation20ReferenceConvertibleP", "item"]
 - !private ["s8SequenceP", "append"]
 - !private ["s8SequenceP", "count"]
 - !private ["s8SequenceP", "index"]
 - ["s8SequenceP", "init"]
 - !private ["s8SequenceP", "isEmpty"]
-- !private ["s8SequenceP", "item"]
 - !private ["s8SequenceP", "remove"]
 - !private ["s8SequenceP", "removeAll"]
 - !private ["s8SequenceP", "subscript"]
@@ -2830,7 +2812,6 @@ depends-member:
 - !private ["s23_BidirectionalIndexableP", "index"]
 - ["s23_BidirectionalIndexableP", "init"]
 - !private ["s23_BidirectionalIndexableP", "isEmpty"]
-- !private ["s23_BidirectionalIndexableP", "item"]
 - !private ["s23_BidirectionalIndexableP", "remove"]
 - !private ["s23_BidirectionalIndexableP", "removeAll"]
 - !private ["s23_BidirectionalIndexableP", "subscript"]
@@ -2879,7 +2860,6 @@ depends-member:
 - !private ["s10_IndexableP", "index"]
 - ["s10_IndexableP", "init"]
 - !private ["s10_IndexableP", "isEmpty"]
-- !private ["s10_IndexableP", "item"]
 - !private ["s10_IndexableP", "remove"]
 - !private ["s10_IndexableP", "removeAll"]
 - !private ["s10_IndexableP", "subscript"]
@@ -2888,7 +2868,6 @@ depends-member:
 - !private ["s14_IndexableBaseP", "index"]
 - ["s14_IndexableBaseP", "init"]
 - !private ["s14_IndexableBaseP", "isEmpty"]
-- !private ["s14_IndexableBaseP", "item"]
 - !private ["s14_IndexableBaseP", "remove"]
 - !private ["s14_IndexableBaseP", "removeAll"]
 - !private ["s14_IndexableBaseP", "subscript"]
@@ -3014,7 +2993,6 @@ depends-member:
 - !private ["s17_MutableIndexableP", "index"]
 - ["s17_MutableIndexableP", "init"]
 - !private ["s17_MutableIndexableP", "isEmpty"]
-- !private ["s17_MutableIndexableP", "item"]
 - !private ["s17_MutableIndexableP", "remove"]
 - !private ["s17_MutableIndexableP", "removeAll"]
 - !private ["s17_MutableIndexableP", "subscript"]
@@ -3025,7 +3003,6 @@ depends-member:
 - !private ["s21_ObjectiveCBridgeableP", "index"]
 - ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
-- !private ["s21_ObjectiveCBridgeableP", "item"]
 - !private ["s21_ObjectiveCBridgeableP", "remove"]
 - !private ["s21_ObjectiveCBridgeableP", "removeAll"]
 - !private ["s21_ObjectiveCBridgeableP", "size"]
@@ -3036,7 +3013,6 @@ depends-member:
 - !private ["s22_RandomAccessIndexableP", "index"]
 - ["s22_RandomAccessIndexableP", "init"]
 - !private ["s22_RandomAccessIndexableP", "isEmpty"]
-- !private ["s22_RandomAccessIndexableP", "item"]
 - !private ["s22_RandomAccessIndexableP", "remove"]
 - !private ["s22_RandomAccessIndexableP", "removeAll"]
 - !private ["s22_RandomAccessIndexableP", "subscript"]
@@ -3079,7 +3055,6 @@ depends-nominal:
 - !private "15Virtual_Tourist12FlickrClientC"
 - "s8HashableP"
 - "15Virtual_Tourist6ImagesC"
-- !private "10Foundation9IndexPathV"
 - !private "s25LosslessStringConvertibleP"
 - "So12MKAnnotationP"
 - !private "SC16MKCoordinateSpanV"

@@ -184,13 +184,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.activityIndicator.center = CGPoint(x: cell.frame.size.width/2, y: cell.frame.size.height/2)
         
         performUIUpdatesOnMain {
-        cell.activityIndicator.startAnimating()
+            cell.activityIndicator.startAnimating()
         }
         let image = self.fetchedResultsController.object(at: indexPath)
         let url = URL(string: image.imageURL!)
         
         cell.imageView.setImage(url: url!) { result in
-            
             performUIUpdatesOnMain {
                 cell.activityIndicator.stopAnimating()
             }
@@ -241,8 +240,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        print("You selected cell #\(indexPath.item)!")
         
         let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
         
@@ -261,35 +258,27 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         insertedIndexPaths = [IndexPath]()
         deletedIndexPaths = [IndexPath]()
         updatedIndexPaths = [IndexPath]()
-        
-        print("in controllerWillChangeContent")
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
             
         case .insert:
-            print("Insert an item")
             insertedIndexPaths.append(newIndexPath!)
             break
         case .delete:
-            print("Delete an item")
             deletedIndexPaths.append(indexPath!)
             break
         case .update:
-            print("Update an item.")
             updatedIndexPaths.append(indexPath!)
             break
         case .move:
-            print("Move an item. We don't expect to see this in this app.")
             break
         }
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        print("in controllerDidChangeContent. changes.count: \(insertedIndexPaths.count + deletedIndexPaths.count)")
-        
+
         collectionView.performBatchUpdates({() -> Void in
             
             for indexPath in self.insertedIndexPaths {
@@ -306,5 +295,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
         }, completion: nil)
     }
+    
 }
 
