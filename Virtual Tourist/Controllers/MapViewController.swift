@@ -17,7 +17,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
-    
     var selectedPin: Pin?
     var images: [Images?] = []
     
@@ -49,11 +48,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.setEditing(editing, animated: true)
         
         if editing {
-            print("Are we editing NOW: \(isEditing)")
             mapView.frame.origin.y = 0
             deletePinsLabel.isHidden = false
         } else {
-            print("Are we editing: \(isEditing)")
             mapView.frame.origin.y = 64
             deletePinsLabel.isHidden = true
         }
@@ -63,7 +60,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer) {
         if gestureRecognizer.state != .began { return }
-        print("Tap gesture recognized")
         
         // Create the annotation
         let touchPoint = gestureRecognizer.location(in: mapView)
@@ -86,9 +82,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     print("There was an error get images objects")
                     return
                 }
-                }
             }
-        print("The context has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
+        }
     }
     
     func loadAnnotations() {
@@ -136,7 +131,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
         }
         
         if isEditing {
-            print("We're in editing mode")
             do {
                 let pinAnnotation = view.annotation as! PinAnnotation
                 let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")

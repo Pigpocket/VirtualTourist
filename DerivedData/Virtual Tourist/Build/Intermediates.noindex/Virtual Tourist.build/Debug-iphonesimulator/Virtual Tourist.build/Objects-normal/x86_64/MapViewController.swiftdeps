@@ -41,7 +41,7 @@ depends-top-level:
 - !private "NSPredicate"
 - "Pin"
 - !private "PinAnnotation"
-- !private "StringLiteralType"
+- "StringLiteralType"
 - "UIBarButtonItem"
 - "UIGestureRecognizer"
 - "UIGestureRecognizerDelegate"
@@ -104,7 +104,6 @@ depends-member:
 - ["s7CVarArgP", "gestureRecognizerShouldBegin"]
 - !private ["s7CVarArgP", "getImagesFromFlickr"]
 - !private ["s7CVarArgP", "handleLongPress"]
-- !private ["s7CVarArgP", "hasChanges"]
 - !private ["s7CVarArgP", "identifier"]
 - ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "isEditing"]
@@ -175,7 +174,6 @@ depends-member:
 - ["s28CustomDebugStringConvertibleP", "gestureRecognizerShouldBegin"]
 - !private ["s28CustomDebugStringConvertibleP", "getImagesFromFlickr"]
 - !private ["s28CustomDebugStringConvertibleP", "handleLongPress"]
-- !private ["s28CustomDebugStringConvertibleP", "hasChanges"]
 - !private ["s28CustomDebugStringConvertibleP", "identifier"]
 - ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "isEditing"]
@@ -251,7 +249,6 @@ depends-member:
 - ["s23CustomStringConvertibleP", "gestureRecognizerShouldBegin"]
 - !private ["s23CustomStringConvertibleP", "getImagesFromFlickr"]
 - !private ["s23CustomStringConvertibleP", "handleLongPress"]
-- !private ["s23CustomStringConvertibleP", "hasChanges"]
 - !private ["s23CustomStringConvertibleP", "identifier"]
 - ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "isEditing"]
@@ -328,7 +325,6 @@ depends-member:
 - ["s9EquatableP", "gestureRecognizerShouldBegin"]
 - !private ["s9EquatableP", "getImagesFromFlickr"]
 - !private ["s9EquatableP", "handleLongPress"]
-- !private ["s9EquatableP", "hasChanges"]
 - !private ["s9EquatableP", "identifier"]
 - ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "isEditing"]
@@ -406,7 +402,6 @@ depends-member:
 - ["s8HashableP", "gestureRecognizerShouldBegin"]
 - !private ["s8HashableP", "getImagesFromFlickr"]
 - !private ["s8HashableP", "handleLongPress"]
-- !private ["s8HashableP", "hasChanges"]
 - !private ["s8HashableP", "identifier"]
 - ["s8HashableP", "init"]
 - !private ["s8HashableP", "isEditing"]
@@ -567,7 +562,6 @@ depends-member:
 - ["So8NSCodingP", "gestureRecognizer"]
 - ["So8NSCodingP", "gestureRecognizerShouldBegin"]
 - !private ["So8NSCodingP", "handleLongPress"]
-- !private ["So8NSCodingP", "hasChanges"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "isEditing"]
 - !private ["So8NSCodingP", "isHidden"]
@@ -641,14 +635,12 @@ depends-member:
 - !private ["So21NSItemProviderWritingP", "init"]
 - !private ["So9NSLockingP", "delete"]
 - !private ["So9NSLockingP", "fetch"]
-- !private ["So9NSLockingP", "hasChanges"]
 - !private ["So15NSManagedObjectC", "init"]
 - !private ["So15NSManagedObjectC", "latitude"]
 - !private ["So15NSManagedObjectC", "longitude"]
 - !private ["So15NSManagedObjectC", "objectID"]
 - !private ["So22NSManagedObjectContextC", "delete"]
 - !private ["So22NSManagedObjectContextC", "fetch"]
-- !private ["So22NSManagedObjectContextC", "hasChanges"]
 - !private ["So16NSMutableCopyingP", "init"]
 - ["So8NSObjectC", "Bool"]
 - !private ["So8NSObjectC", "CLLocationCoordinate2D"]
@@ -693,7 +685,6 @@ depends-member:
 - ["So8NSObjectC", "gestureRecognizerShouldBegin"]
 - !private ["So8NSObjectC", "getImagesFromFlickr"]
 - ["So8NSObjectC", "handleLongPress"]
-- !private ["So8NSObjectC", "hasChanges"]
 - !private ["So8NSObjectC", "identifier"]
 - ["So8NSObjectC", "images"]
 - ["So8NSObjectC", "init"]
@@ -755,7 +746,6 @@ depends-member:
 - ["So16NSObjectProtocolP", "gestureRecognizerShouldBegin"]
 - !private ["So16NSObjectProtocolP", "getImagesFromFlickr"]
 - !private ["So16NSObjectProtocolP", "handleLongPress"]
-- !private ["So16NSObjectProtocolP", "hasChanges"]
 - !private ["So16NSObjectProtocolP", "identifier"]
 - ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "isEditing"]
@@ -1388,7 +1378,6 @@ depends-member:
 - ["10Foundation27_KeyValueCodingAndObservingP", "gestureRecognizerShouldBegin"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "getImagesFromFlickr"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "handleLongPress"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "hasChanges"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "identifier"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "isEditing"]
