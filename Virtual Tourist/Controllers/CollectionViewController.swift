@@ -187,16 +187,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.activityIndicator.startAnimating()
         }
         let image = self.fetchedResultsController.object(at: indexPath)
-        //let url = URL(string: image.imageURL!)
         
-        cell.imageView.image = image.image
-        
-        
-//        cell.imageView.setImage(url: url!) { result in
-//            performUIUpdatesOnMain {
-//                cell.activityIndicator.stopAnimating()
-//            }
-//        }
+        performUIUpdatesOnMain {
+            cell.imageView.image = image.image
+            cell.activityIndicator.stopAnimating()
+        }
         
         if let _ = self.selectedIndexes.index(of: indexPath) {
             cell.imageView.alpha = 0.5
