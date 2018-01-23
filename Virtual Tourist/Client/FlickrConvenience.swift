@@ -53,12 +53,6 @@ extension FlickrClient {
                         
                         // Assign the metadata to images NSManagedObject
                         image.imageURL = String(describing: imageURL)
-                        
-                        let data = try? Data(contentsOf: imageURL)
-                        if let data = data {
-                            image.imageData = data as NSData
-                        }
-                        
                         image.pin = pin
                         image.title = title
                         
@@ -71,22 +65,22 @@ extension FlickrClient {
         }
     }
     
-    /*func downloadImageFromURLPath(path: String, pin: Pin, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
-        let task = self.taskForGETMethod(path, parameters: nil, parseJSON: false) { (result, error) in
-            if error != nil {
-                completionHandler(false, "Photo download failed")
-            } else {
-                if let result = result as? NSData {
-                    let photo = Photo(data: result , pin: pin, context: self.sharedContext)
-                    self.sharedContext.insert(photo)
-                    self.sharedStack.save()
-                    completionHandler(true, nil)
-                } else {
-                    completionHandler(false, "Photo download failed")
+    func withBigImage(_ urlString: String?, completionHandler handler: @escaping (_ image:UIImage) -> Void){
+        
+        DispatchQueue.global(qos: .userInitiated).async { () -> Void in
+            
+            if let url = URL(string: urlString!) {
+                if let imgData = try? Data(contentsOf: url) {
+                    if let img = UIImage(data: imgData) {
+                    
+                        CoreDataStack.sharedInstance().saveContext()
+                        performUIUpdatesOnMain {
+                            handler(img)
+                        }
+                    }
                 }
             }
         }
-        task.resume()
-    } */
+    }
     
 }

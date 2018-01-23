@@ -186,20 +186,31 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         performUIUpdatesOnMain {
             cell.activityIndicator.startAnimating()
         }
-        
         let image = self.fetchedResultsController.object(at: indexPath)
         
-        performUIUpdatesOnMain {
-            cell.imageView.image = image.image
-            cell.activityIndicator.stopAnimating()
+        if image.imageData == nil {
+            print("Image data doesn't exist")
+            
+            FlickrClient.sharedInstance().withBigImage(image.imageURL, completionHandler: { (cellImage) in
+                
+                performUIUpdatesOnMain {
+                    cell.imageView.image = cellImage
+                    cell.activityIndicator.stopAnimating()
+                }
+            })
+        } else {
+            print("Image data exists")
+            performUIUpdatesOnMain {
+                cell.imageView.image = image.image
+                cell.activityIndicator.stopAnimating()
             }
+        }
         
         if let _ = self.selectedIndexes.index(of: indexPath) {
             cell.imageView.alpha = 0.5
         } else {
             cell.imageView.alpha = 1.0
         }
-    
         return cell
     }
     

@@ -52,6 +52,12 @@ class FlickrClient: NSObject {
         task.resume()
     }
     
+    /*func taskForGetImageObjects(_ url: URL, ) {
+        
+        let session = URLSession.shared
+        
+    } */
+    
     // MARK: Helper for Escaping Parameters in URL
     
     func parseJSONObject(_ data: Data, completionHandlerForConvertData: (_ results: AnyObject?, _ error: NSError?) -> Void) {
