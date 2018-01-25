@@ -12,10 +12,6 @@ import CoreData
 
 class FlickrClient: NSObject {
     
-    enum HTTPMethod: String {
-        case GET, POST, PUT, DELETE
-    }
-    
     func taskForGetImages(methodParameters: [String:Any], latitude: Any, longitude: Any, completionHandlerForGetImages: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         // create url and request
@@ -51,12 +47,6 @@ class FlickrClient: NSObject {
         }
         task.resume()
     }
-    
-    /*func taskForGetImageObjects(_ url: URL, ) {
-        
-        let session = URLSession.shared
-        
-    } */
     
     // MARK: Helper for Escaping Parameters in URL
     

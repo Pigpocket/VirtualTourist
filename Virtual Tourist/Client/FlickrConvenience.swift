@@ -73,13 +73,11 @@ extension FlickrClient {
                 if let imgData = try? Data(contentsOf: url) {
                     if let img = UIImage(data: imgData) {
                         
+                        
                         performUIUpdatesOnMain {
                             let image = Images(context: CoreDataStack.sharedInstance().context)
                             image.imageData = imgData as NSData
                             CoreDataStack.sharedInstance().saveContext()
-                        }
-                        
-                        performUIUpdatesOnMain {
                             handler(img)
                         }
                     }

@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import MapKit
-//import Imaginary
 import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
@@ -112,7 +111,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mapView.delegate = self
+        mapView.delegate = self
         
         collectionFlow.minimumLineSpacing = 1.0
         collectionFlow.minimumInteritemSpacing = 1.0
@@ -189,17 +188,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let image = self.fetchedResultsController.object(at: indexPath)
         
         if image.imageData == nil {
-            print("Image data doesn't exist")
             
             FlickrClient.sharedInstance().withBigImage(image.imageURL, completionHandler: { (cellImage) in
                 
                 performUIUpdatesOnMain {
+                    image.imageData = UIImagePNGRepresentation(cellImage)! as NSData
+                    CoreDataStack.sharedInstance().saveContext()
                     cell.imageView.image = cellImage
                     cell.activityIndicator.stopAnimating()
                 }
             })
         } else {
-            print("Image data exists")
+
             performUIUpdatesOnMain {
                 cell.imageView.image = image.image
                 cell.activityIndicator.stopAnimating()
