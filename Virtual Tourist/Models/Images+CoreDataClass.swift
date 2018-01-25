@@ -24,5 +24,12 @@ public class Images: NSManagedObject {
             fatalError("Unable to find entity name")
         }
     }
+    
+    var image: UIImage? {
+        if imageData != nil {
+            return UIImage(data: imageData! as Data)
+        }
+        return nil
+    }
 
 }
