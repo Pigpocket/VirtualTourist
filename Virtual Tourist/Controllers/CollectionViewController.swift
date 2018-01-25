@@ -188,7 +188,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let image = self.fetchedResultsController.object(at: indexPath)
         
         if image.imageData == nil {
-            
+            print("Image data doesn't exist")
             FlickrClient.sharedInstance().withBigImage(image.imageURL, completionHandler: { (cellImage) in
                 
                 performUIUpdatesOnMain {
@@ -199,7 +199,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             })
         } else {
-
+            print("Image data exists")
             performUIUpdatesOnMain {
                 cell.imageView.image = image.image
                 cell.activityIndicator.stopAnimating()

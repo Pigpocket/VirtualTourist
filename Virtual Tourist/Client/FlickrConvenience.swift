@@ -75,9 +75,6 @@ extension FlickrClient {
                         
                         
                         performUIUpdatesOnMain {
-                            let image = Images(context: CoreDataStack.sharedInstance().context)
-                            image.imageData = imgData as NSData
-                            CoreDataStack.sharedInstance().saveContext()
                             handler(img)
                         }
                     }

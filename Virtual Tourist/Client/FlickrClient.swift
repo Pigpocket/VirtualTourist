@@ -95,6 +95,3 @@ class FlickrClient: NSObject {
     }
 }
 
-extension FlickrClient {
-    
-}
