@@ -221,7 +221,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             self.noImagesLabel.isHidden = false
         }
     }
-    
     func deleteImages() {
         var imagesToDelete = [Images]()
         
